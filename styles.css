@@ -1,5 +1,5 @@
-/* HSA Monster Landing Page Styles */
-/* Indigo/Teal theme matching iOS app colors */
+/* WealthTrunk Landing Page Styles */
+/* Teal theme matching iOS app brand colors (#097276 light, #289FA7 dark) */
 
 /* ============================================
    CSS Variables & Theme
@@ -52,14 +52,14 @@
     --text-secondary: #A8A8C0;
     --text-muted: #6B6B8C;
 
-    --accent-primary: #5E5CE6;
+    --accent-primary: #289FA7;
     --accent-secondary: #41CEBD;
     --accent-tertiary: #4299CE;
-    --accent-glow: rgba(94, 92, 230, 0.3);
+    --accent-glow: rgba(40, 159, 167, 0.3);
 
-    --gradient-primary: linear-gradient(135deg, #5E5CE6 0%, #41CEBD 50%, #4299CE 100%);
+    --gradient-primary: linear-gradient(135deg, #289FA7 0%, #41CEBD 50%, #4299CE 100%);
     --gradient-secondary: linear-gradient(135deg, #41CEBD 0%, #4299CE 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, rgba(94, 92, 230, 0.15) 0%, transparent 70%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, rgba(40, 159, 167, 0.15) 0%, transparent 70%);
 
     --border-color: rgba(168, 168, 192, 0.1);
     --border-color-strong: rgba(168, 168, 192, 0.2);
@@ -67,7 +67,7 @@
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 40px rgba(94, 92, 230, 0.2);
+    --shadow-glow: 0 0 40px rgba(40, 159, 167, 0.2);
 }
 
 /* Light Theme */
@@ -82,14 +82,14 @@
     --text-secondary: #3D3D5C;
     --text-muted: #6B6B8C;
 
-    --accent-primary: #5856D6;
-    --accent-secondary: #56CEC0;
-    --accent-tertiary: #56A2CE;
-    --accent-glow: rgba(88, 86, 214, 0.2);
+    --accent-primary: #097276;
+    --accent-secondary: #41CEBD;
+    --accent-tertiary: #4299CE;
+    --accent-glow: rgba(9, 114, 118, 0.2);
 
-    --gradient-primary: linear-gradient(135deg, #5856D6 0%, #56CEC0 50%, #56A2CE 100%);
-    --gradient-secondary: linear-gradient(135deg, #56CEC0 0%, #56A2CE 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, rgba(88, 86, 214, 0.1) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(135deg, #097276 0%, #41CEBD 50%, #4299CE 100%);
+    --gradient-secondary: linear-gradient(135deg, #41CEBD 0%, #4299CE 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, rgba(9, 114, 118, 0.1) 0%, transparent 70%);
 
     --border-color: rgba(61, 61, 92, 0.1);
     --border-color-strong: rgba(61, 61, 92, 0.2);
@@ -97,7 +97,7 @@
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
-    --shadow-glow: 0 0 40px rgba(88, 86, 214, 0.1);
+    --shadow-glow: 0 0 40px rgba(9, 114, 118, 0.1);
 }
 
 /* ============================================
@@ -167,7 +167,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .orange-text {
-    color: #CE5F41;
+    color: var(--accent-secondary);
 }
 
 /* ============================================
@@ -545,7 +545,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--accent-primary);
-    background: rgba(94, 92, 230, 0.1);
+    background: var(--accent-glow);
     padding: var(--space-xs) var(--space-md);
     border-radius: var(--radius-full);
     margin-bottom: var(--space-md);
@@ -590,9 +590,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .feature-card:hover {
     background: var(--bg-card-hover);
-    border-color: #CE5F41; /* orange */
+    border-color: var(--accent-secondary);
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg), 0 0 20px rgba(206, 95, 65, 0.15);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(65, 206, 189, 0.15);
 }
 
 .feature-icon {
@@ -601,7 +601,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     justify-content: center;
     width: 56px;
     height: 56px;
-    background: #CE5F41; /* orange */
+    background: var(--accent-secondary);
     border-radius: var(--radius-lg);
     margin-bottom: var(--space-lg);
     color: white;
@@ -860,6 +860,103 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 /* ============================================
+   Reviews Section
+   ============================================ */
+.reviews-section {
+    padding: var(--space-4xl) 0;
+    background: var(--bg-secondary);
+}
+
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-strong);
+    border-radius: var(--radius-full);
+}
+
+.rating-badge .stars {
+    display: flex;
+    gap: 2px;
+    color: #FFB800;
+}
+
+.rating-text {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+}
+
+.review-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    transition: all var(--transition-base);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.review-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.review-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.review-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.review-stars {
+    display: flex;
+    gap: 2px;
+    color: #FFB800;
+}
+
+.review-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.review-text {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: var(--space-md);
+}
+
+.review-author {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Reviews responsive */
+@media (max-width: 768px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
    FAQ Section
    ============================================ */
 .faq-section {
@@ -955,8 +1052,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: var(--space-3xl);
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: var(--space-2xl);
     margin-bottom: var(--space-2xl);
 }
 
