@@ -418,6 +418,29 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3 class="newsletter-title">Stay in the Loop</h3>
+                <p class="newsletter-description">Get notified about new features, updates, and tips for getting the most out of WealthTrunk.</p>
+                <form action="https://github.us7.list-manage.com/subscribe/post-json?u=bbe19100ca72aaef4a7dd5050&amp;id=c4cc28c991&amp;f_id=0023a0e0f0" method="POST" class="newsletter-form" id="newsletter-form">
+                    <input type="email" name="EMAIL" placeholder="Enter your email" required class="newsletter-input">
+                    <input type="hidden" name="tags" value="3404296">
+                    <!-- Bot protection -->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_bbe19100ca72aaef4a7dd5050_c4cc28c991" tabindex="-1" value="">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+                <p class="newsletter-success" id="newsletter-success" style="display: none;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    You're subscribed! We'll keep you posted.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -453,7 +476,7 @@
                 <div class="footer-links">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="mailto:schultzapps@gmail.com?subject=WealthTrunk%20Feedback">Contact Us</a></li>
+                        <li><a href="#" id="contact-link">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -538,6 +561,41 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // Newsletter Form (Mailchimp JSONP)
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterSuccess = document.getElementById('newsletter-success');
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const email = newsletterForm.querySelector('input[name="EMAIL"]').value;
+            const tags = newsletterForm.querySelector('input[name="tags"]').value;
+            const url = newsletterForm.action + '&EMAIL=' + encodeURIComponent(email) + '&tags=' + tags + '&c=mailchimpCallback';
+
+            window.mailchimpCallback = function(response) {
+                if (response.result === 'success' || response.msg.includes('already subscribed')) {
+                    newsletterForm.style.display = 'none';
+                    newsletterSuccess.style.display = 'flex';
+                } else {
+                    alert('Something went wrong: ' + response.msg);
+                }
+                delete window.mailchimpCallback;
+            };
+
+            const script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
+        });
+
+        // Email obfuscation
+        document.getElementById('contact-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const user = 'schultzapps';
+            const domain = 'gmail.com';
+            const subject = 'WealthTrunk Feedback';
+            window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent(subject);
         });
     </script>
 </body>

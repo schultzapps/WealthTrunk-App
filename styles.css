@@ -1092,6 +1092,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .cta-section {
     padding: var(--space-4xl) 0;
+    background: var(--bg-secondary);
 }
 
 .cta-box {
@@ -1127,6 +1128,97 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* ============================================
+   Newsletter Section
+   ============================================ */
+.newsletter-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+}
+
+.newsletter-content {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.newsletter-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: var(--space-xl);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-strong);
+    border-radius: var(--radius-xl);
+    padding: 6px;
+    transition: all var(--transition-fast);
+}
+
+.newsletter-form:focus-within {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.newsletter-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--text-primary);
+    min-width: 0;
+}
+
+.newsletter-input::placeholder {
+    color: var(--text-muted);
+}
+
+.newsletter-form .btn {
+    flex-shrink: 0;
+}
+
+.newsletter-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    color: var(--accent-primary);
+    font-weight: 500;
+    margin-top: var(--space-md);
+}
+
+.newsletter-success svg {
+    flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+    .newsletter-form {
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding: var(--space-sm);
+    }
+
+    .newsletter-input {
+        text-align: center;
+    }
+
+    .newsletter-form .btn {
+        width: 100%;
+    }
 }
 
 /* ============================================
