@@ -213,7 +213,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .btn-large {
-    padding: var(--space-md) var(--space-xl);
+    height: 44px;
+    padding: 0 var(--space-xl);
     font-size: 1rem;
 }
 
@@ -1125,9 +1126,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     color: var(--text-secondary);
     font-size: 1.125rem;
     margin-bottom: var(--space-xl);
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+.appstore-badge {
+    display: inline-block;
+}
+
+.appstore-badge img {
+    height: 44px;
+    width: auto;
 }
 
 /* ============================================
