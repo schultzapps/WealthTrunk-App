@@ -287,12 +287,22 @@
     
     <div class="contact-info">
         <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
-        <p><strong>Email:</strong> <a href="mailto:schultzapps@gmail.com">schultzapps@gmail.com</a></p>
+        <p><strong>Email:</strong> <a href="#" id="contact-email" class="email-link">Contact Us</a></p>
         <p>We will respond to your inquiry within a reasonable timeframe.</p>
     </div>
     
     <div class="summary-box">
         <p><strong>Summary:</strong> WealthTrunk is designed with your privacy as a top priority. Your financial data and photos stay exclusively on your device and, if you choose, in your private iCloud account. We only collect anonymous analytics to improve the app. We never see, store, or share your personal information.</p>
     </div>
+
+    <script>
+        // Email obfuscation
+        document.getElementById('contact-email').addEventListener('click', function(e) {
+            e.preventDefault();
+            const user = 'schultzapps';
+            const domain = 'gmail.com';
+            window.location.href = 'mail' + 'to:' + user + '@' + domain;
+        });
+    </script>
 </body>
 </html>
