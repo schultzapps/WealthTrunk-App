@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's New? - WealthTrunk</title>
+    <meta name="description" content="See what's new in WealthTrunk. Release notes, feature updates, and improvements for the net worth tracking app.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wealthtrunk.app/release-notes.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="What's New? - WealthTrunk">
+    <meta property="og:description" content="See what's new in WealthTrunk. Release notes, feature updates, and improvements.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wealthtrunk.app/release-notes.html">
+    <meta property="og:image" content="https://wealthtrunk.app/images/social-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/appicon.png?v=2">
+    <link rel="apple-touch-icon" href="images/appicon.png?v=2">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLDM112N75"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TLDM112N75');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/appicon.png" alt="WealthTrunk" class="logo-icon">
+                <span class="logo-text">WealthTrunk</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#reviews">Reviews</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="release-notes.html" class="active">What's New?</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="index.html#download" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> Download</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Release Notes Content -->
+    <main class="release-notes">
+        <div class="release-notes-container">
+            <div class="release-notes-header">
+                <span class="section-label">Changelog</span>
+                <h1>What's New?</h1>
+                <p class="section-description">Updates, improvements, and new features in WealthTrunk.</p>
+            </div>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.17</h2>
+                    <time class="release-date">February 27, 2026</time>
+                </div>
+                <ul class="release-changes">
+                    <li>PDF Net Worth Statement Overhauled
+                        <ul>
+                            <li>Cleaner layouts, full/muted color options, and a 4 or 5 chart layout picker</li>
+                            <li>PDF Statements now include whichever charts you have on your dashboard</li>
+                        </ul>
+                    </li>
+                    <li>Improved dashboard loading performance</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.16</h2>
+                    <time class="release-date">February 18, 2026</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Track Your Portfolios
+                        <ul>
+                            <li>Optionally monitor stocks, ETFs, funds, and crypto within your accounts with live market data</li>
+                            <li>Allocation charts visualize your portfolio on the Dashboard</li>
+                            <li>Sync your holdings market value to your account balance with one tap</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.15</h2>
+                    <time class="release-date">January 31, 2026</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Easier Returns Input: Tap the expected return field to enter any value up to 100%, or use the slider for quick adjustments</li>
+                    <li>YTD chart option now shows up in January so you can track your progress from the start of the year</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.14</h2>
+                    <time class="release-date">January 12, 2026</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Backup & Restore: Fully backup your data and restore it on new devices, perfect for cloning data to a partner's device</li>
+                    <li>Smoother Experience: Improved animations, more swipe actions, and better controls</li>
+                    <li>Interface Refinements: Cleaner layouts on profile list and settings menus</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.13</h2>
+                    <time class="release-date">January 6, 2026</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Account views are now cleaner and more focused, providing dedicated paths to your full balance history and projection tools</li>
+                    <li>The recently added pie charts are now in dedicated cards you can add from the Dashboard Settings, improving performance and flexibility</li>
+                    <li>For any accounts, a dedicated Projection Simulator lets you experiment with growth scenarios or debt paydown via an interactive, slider-driven interface</li>
+                    <li>Under the hood enhancements to make saving records and loading lists more snappy</li>
+                    <li>UI polish across the app, including colors, buttons, and filters</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.12</h2>
+                    <time class="release-date">December 23, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Added a new Help & FAQ section in Settings covering everything from privacy to calculation methodology</li>
+                    <li>Language support for German (de) and Japanese (ja)</li>
+                    <li>Fixed an issue where dependent forecast ages wouldn't persist</li>
+                    <li>Improved performance when using sliders in account projection scenarios</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.11</h2>
+                    <time class="release-date">December 22, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Visual Polish & Improvements
+                        <ul>
+                            <li>The Account Tab gets more robust grouping options so you can view data however you prefer</li>
+                            <li>Updated icons and headers with softer colors and consistent shadows</li>
+                            <li>Resolved a bug where the 'Expected Return' sliders were unresponsive on iOS 18 devices</li>
+                        </ul>
+                    </li>
+                    <li>Balance Entry Overhaul
+                        <ul>
+                            <li>Added a progress bar so you can easily see if you've logged all your balances for a selected day</li>
+                            <li>Collapsible Groups: Tap group headers to hide or expand sections. Collapsed groups now show group totals and a green checkmark once every account in that section is finished</li>
+                            <li>An overhauled backend to make viewing and updating balances more responsive</li>
+                            <li>Account rows are now easier to read, featuring larger balance input fields</li>
+                            <li>Consistent experience whether updating one account or many</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.10</h2>
+                    <time class="release-date">December 17, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Better Clarity
+                        <ul>
+                            <li>You can now assign accounts growing contribution amounts, perfect if your contributions grow with your salary</li>
+                            <li>A touch of animations and optimizations to make charts and numbers load smoother</li>
+                            <li>Added Contribution/Payment and Rate columns for quicker insights on wider screens. Try landscape mode on your account list!</li>
+                            <li>Logos now search as you type for a more responsive experience</li>
+                        </ul>
+                    </li>
+                    <li>A More Helpful Onboarding Experience
+                        <ul>
+                            <li>Now a 'Returning User' button to restore iCloud data whenever you need</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.9</h2>
+                    <time class="release-date">December 9, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Better Dashboard and Charts
+                        <ul>
+                            <li>Charts have cleaner scaling, full currency values when interacting, better alignment, and softer gradients for enhanced readability</li>
+                            <li>Better date filter handling. The history chart calculates intelligent values to create a full data picture when you filter by limited data ranges</li>
+                        </ul>
+                    </li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.8</h2>
+                    <time class="release-date">December 1, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>iPad & Mac Users get an upgrade. Everything syncs across all devices, and the app scales perfectly for larger screen sizes or during multitasking</li>
+                    <li>The Dashboard has seen a few charts get enhanced with toggles to view them by $ or %</li>
+                    <li>The Feedback button bug has been fixed. Email us! We want to hear from you</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.7</h2>
+                    <time class="release-date">November 26, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Record balances faster with the new calendar-based view, complete with grouping and sorting to update all accounts in a few minutes</li>
+                    <li>Logos everywhere: more record types now support logos, shown across lists and detail screens for a cleaner, more visual experience</li>
+                    <li>A sleeker interface with reorganized toolbars for quicker access to Settings, Add actions, and visibility controls</li>
+                    <li>Polished visuals with smoother logo fade-ins, sharper initials, refreshed icons, and updated account badges with adaptive glass styling</li>
+                    <li>Bugs squashed: fixed custom account types, safer email link handling, better chart scroll behavior, and improved balance logging for free users</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.6</h2>
+                    <time class="release-date">November 20, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Revamped onboarding for a better new-user experience</li>
+                    <li>Privacy button now hides more numbers across the app so you can share with a friend</li>
+                    <li>Account charts show single data point if there's no history</li>
+                    <li>Logo customization is now available for free users under the account limit</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.5</h2>
+                    <time class="release-date">November 14, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Reminders: Stay on top of your finances with customizable weekly or monthly notifications to update your account balances or export your net worth statement</li>
+                    <li>Interactive Currency Flip: Tap your account balance to instantly flip between your account currency and default currency with a smooth 3D animation</li>
+                    <li>Streamlined onboarding flow with better navigation and visual design</li>
+                    <li>More intuitive currency selection interface</li>
+                    <li>Refined notification setup during initial app configuration</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.4</h2>
+                    <time class="release-date">October 26, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Now supports multiple currencies! Set a default app currency, then apply different currencies for individual accounts</li>
+                    <li>Exchange rates are automatically refreshed daily for aggregating accounts</li>
+                    <li>Account historical balance list is now grouped by month</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.3</h2>
+                    <time class="release-date">October 18, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Search or upload logos to accounts for a better experience</li>
+                    <li>Create custom account types or tax categories for even more customization</li>
+                    <li>Additional language support for Spanish, French, Chinese</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.2</h2>
+                    <time class="release-date">October 3, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Updates to dashboard charts and layout, including additional data indicators and date filtering</li>
+                    <li>Visual Polish: Net Worth Card feature gradient overlays, buttons, and layouts across the app have been improved</li>
+                    <li>Light/Dark Mode Controls: Take full control of your app's appearance with new light/dark mode override options in settings</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2.1</h2>
+                    <time class="release-date">September 24, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>iOS 26 Ready: Enjoy the latest Liquid Glass design with updated buttons, toolbars, and smooth new animations throughout the app</li>
+                    <li>All New Settings Menu: Selecting active profiles and changing settings is now under one menu, for a simplified and cleaner interface</li>
+                    <li>Smarter Interface: Toolbars now intelligently hide buttons when they're not needed, keeping your screen clean and focused on what matters</li>
+                    <li>Visual Polish: Net Worth Cards now feature gradient overlays, buttons and layouts across the app have been improved</li>
+                    <li>Light/Dark Mode Controls: Take full control of your app's appearance with new light/dark mode override options in settings</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.2</h2>
+                    <time class="release-date">September 17, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>iOS 26 Ready: Enjoy the latest Liquid Glass design with updated buttons, toolbars, and smooth new animations throughout the app</li>
+                    <li>All New Settings Menu: Selecting active profiles and changing settings is now under one menu, for a simplified and cleaner interface</li>
+                    <li>Smarter Interface: Toolbars now intelligently hide buttons when they're not needed, keeping your screen clean and focused on what matters</li>
+                    <li>Visual Polish: Net Worth Cards now feature gradient overlays, buttons and layouts across the app have been improved</li>
+                    <li>Light/Dark Mode Controls: Take full control of your app's appearance with new light/dark mode override options in settings</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.1</h2>
+                    <time class="release-date">September 1, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Added support for push notifications to stay connected</li>
+                    <li>Updated interface with cleaner navigation, refined button styling, and a more polished look throughout the app</li>
+                    <li>Improved date handling so your notes display and save dates exactly as you enter them</li>
+                    <li>Fixed navigation issues when tapping accounts</li>
+                    <li>Resolved problems with note date saving and display</li>
+                </ul>
+            </article>
+
+            <article class="release-entry">
+                <div class="release-meta">
+                    <h2 class="release-version">Version 1.0</h2>
+                    <time class="release-date">August 26, 2025</time>
+                </div>
+                <ul class="release-changes">
+                    <li>Initial release of WealthTrunk</li>
+                </ul>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/appicon.png" alt="WealthTrunk" class="logo-icon">
+                        <span class="logo-text">WealthTrunk</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Track, project and grow wealth. See your complete financial picture.
+                    </p>
+                    <p class="footer-tagline footer-made-in">
+                        Made with &#10084;&#65039; in Atlanta, GA
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#reviews">Reviews</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#download">Download</a></li>
+                        <li><a href="release-notes.html">What's New?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://wealthtrunk.app/Privacy_Policy.html">Privacy Policy</a></li>
+                        <li><a href="https://wealthtrunk.app/Terms_of_Service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" id="contact-link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Our Other Apps</h4>
+                    <ul>
+                        <li><a href="https://hsamonster.com/">HSA Monster</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WealthTrunk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Email obfuscation
+        document.getElementById('contact-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const user = 'schultzapps';
+            const domain = 'gmail.com';
+            const subject = 'WealthTrunk Feedback';
+            window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent(subject);
+        });
+    </script>
+</body>
+</html>
