@@ -749,7 +749,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     height: 380px;
     transform: scale(1) rotateY(0deg) !important;
     opacity: 1 !important;
-    border-color: var(--accent-primary);
     box-shadow: var(--shadow-lg), 0 0 30px var(--accent-glow);
     z-index: 2;
 }
