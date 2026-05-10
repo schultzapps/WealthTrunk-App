@@ -16,4 +16,8 @@
     <loc>https://wealthtrunk.app/Engagement_Program.html</loc>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://wealthtrunk.app/press-kit.html</loc>
+    <priority>0.5</priority>
+  </url>
 </urlset>
