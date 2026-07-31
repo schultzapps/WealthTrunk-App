@@ -201,6 +201,26 @@
     color: var(--text-muted);
     padding: var(--space-sm) var(--space-lg) 0;
     font-variant-numeric: tabular-nums;
+    /* Anchor for the payoff mark, which is placed at a data-driven x rather
+       than being spaced out with the start/end labels. */
+    position: relative;
+}
+
+/* Marks where the solid line actually reaches zero, which is partway across
+   the plot whenever a longer comparison line sets the x-domain. `--x` is the
+   payoff position as a percentage of plot width, written by the calculator;
+   the translate centers the label on it. */
+.axis-mark {
+    position: absolute;
+    left: calc(var(--space-lg) + (100% - var(--space-lg) * 2) * var(--x, 0));
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #CE5F41;
+    font-weight: 600;
+}
+
+.axis-mark[hidden] {
+    display: none;
 }
 
 .chart-legend {
@@ -217,6 +237,13 @@
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
+}
+
+/* `display` on .legend-item would otherwise beat the hidden attribute, which
+   the debt calculator uses to drop the comparison entry when there's no
+   comparison line to label. */
+.legend-item[hidden] {
+    display: none;
 }
 
 .legend-swatch {
@@ -270,6 +297,36 @@
 }
 
 .stat-value.accent {
+    color: var(--accent-secondary);
+}
+
+/* Value + savings on one line, so the delta costs no extra vertical space.
+   Baseline alignment keeps the small delta sitting on the big figure's
+   baseline rather than floating at its optical center. */
+.stat-value-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+/* What an extra payment takes off the figure beside it. Hidden when there's
+   nothing to compare against. */
+.stat-delta {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.stat-delta[hidden] {
+    display: none;
+}
+
+/* Money saved is the good direction, so it gets the positive accent even
+   though the number itself is negative. */
+.stat-delta.is-saving {
     color: var(--accent-secondary);
 }
 
@@ -394,6 +451,19 @@
 .currency-input input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+/* Rate variant: same shell as a currency field, but the unit trails the
+   number ("7 %") instead of leading it. A rate needs far fewer columns than
+   a balance, so the input is narrowed to keep the box from looking empty. */
+.currency-input .suffix {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.percent-input input {
+    width: 4ch;
 }
 
 /* Select (federal bracket, state tax) */
@@ -1219,6 +1289,48 @@
 }
 
 .result-value.is-negative {
+    color: #CE5F41;
+}
+
+/* ============================================
+   Debt paydown — the same chart, recolored.
+   A falling balance is a good thing, but it isn't *growth*, so the
+   curve uses the liability color the net-worth tool already
+   established (#CE5F41) rather than the teal accent. Scoped to the
+   debt calculator so no other page is affected.
+   ============================================ */
+[data-calculator="debt"] {
+    /* Read by the SVG area gradient, which is built in JS. */
+    --chart-accent: #CE5F41;
+}
+
+[data-calculator="debt"] .chart-line-hsa,
+[data-calculator="debt"] .chart-rule {
+    stroke: #CE5F41;
+}
+
+[data-calculator="debt"] .chart-dot {
+    fill: #CE5F41;
+}
+
+[data-calculator="debt"] .legend-swatch:not(.dashed) {
+    background: #CE5F41;
+}
+
+/* The headline is a duration ("4 yr 3 mo"), not a currency figure, so it
+   needs to shrink to fit rather than assume a money-sized string. */
+[data-calculator="debt"] .result-value {
+    font-size: clamp(1.9rem, 6vw, 2.9rem);
+}
+
+/* Payment too small to ever retire the loan. */
+[data-calculator="debt"] .result-value.is-warning {
+    color: #CE5F41;
+}
+
+/* Interest is the number this tool exists to make you flinch at, so it
+   gets the emphasis the growth calculators give to gains. */
+[data-calculator="debt"] .stat-value.accent {
     color: #CE5F41;
 }
 

@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pension Present Value Calculator: Lump Sum Worth | WealthTrunk</title>
-    <meta name="description" content="Free pension present value calculator. Convert a monthly pension or annuity into a single lump-sum value in today’s money so you can put it on your net worth statement.">
-    <meta name="keywords" content="pension present value calculator, pension value calculator, annuity present value, commuted value calculator, CETV calculator, pension lump sum calculator, defined benefit valuation, future income value">
+    <title>Debt Paydown Calculator: See Your Payoff Date | WealthTrunk</title>
+    <meta name="description" content="Free debt payoff calculator. See when your loan or credit card is paid off, what the interest really costs, and how much an extra payment saves.">
+    <meta name="keywords" content="debt paydown calculator, debt payoff calculator, loan payoff calculator, credit card payoff calculator, amortization calculator, extra payment calculator, interest savings calculator">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://wealthtrunk.app/pension-value-calculator.html">
+    <link rel="canonical" href="https://wealthtrunk.app/debt-paydown-calculator.html">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Pension Present Value Calculator: Lump Sum Worth | WealthTrunk">
-    <meta property="og:description" content="Free pension present value calculator. Convert a monthly pension or annuity into a single lump-sum value in today’s money so you can put it on your net worth statement.">
+    <meta property="og:title" content="Debt Paydown Calculator: See Your Payoff Date | WealthTrunk">
+    <meta property="og:description" content="Free debt payoff calculator. See when your loan or credit card is paid off, what the interest really costs, and how much an extra payment saves.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wealthtrunk.app/pension-value-calculator.html">
+    <meta property="og:url" content="https://wealthtrunk.app/debt-paydown-calculator.html">
     <meta property="og:image" content="https://wealthtrunk.app/images/social-preview.png">
     <meta property="og:site_name" content="WealthTrunk">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pension Present Value Calculator: Lump Sum Worth | WealthTrunk">
-    <meta name="twitter:description" content="Free pension present value calculator. Convert a monthly pension or annuity into a single lump-sum value in today’s money so you can put it on your net worth statement.">
+    <meta name="twitter:title" content="Debt Paydown Calculator: See Your Payoff Date | WealthTrunk">
+    <meta name="twitter:description" content="Free debt payoff calculator. See when your loan or credit card is paid off, what the interest really costs, and how much an extra payment saves.">
     <meta name="twitter:image" content="https://wealthtrunk.app/images/social-preview.png">
 
     <!-- Favicon -->
@@ -41,12 +41,12 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Pension Present Value Calculator",
-      "url": "https://wealthtrunk.app/pension-value-calculator.html",
+      "name": "Debt Paydown Calculator",
+      "url": "https://wealthtrunk.app/debt-paydown-calculator.html",
       "applicationCategory": "FinanceApplication",
       "browserRequirements": "Requires JavaScript",
       "operatingSystem": "Any",
-      "description": "Free calculator that converts a future monthly pension or annuity income into a present-value lump sum in today\u2019s money.",
+      "description": "Free calculator that shows when a loan or credit card is paid off, how much of the total is interest, and what an extra monthly payment saves.",
       "isAccessibleForFree": true,
       "offers": {
         "@type": "Offer",
@@ -80,8 +80,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Pension Value Calculator",
-          "item": "https://wealthtrunk.app/pension-value-calculator.html"
+          "name": "Debt Paydown Calculator",
+          "item": "https://wealthtrunk.app/debt-paydown-calculator.html"
         }
       ]
     }
@@ -93,50 +93,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Why would I need the present value of a pension?",
+          "name": "How is the payoff date calculated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A net worth statement needs one number per asset, and a pension pays out over decades instead. Present value converts that future income stream into a single lump sum in today's money, so the pension can sit on the same balance sheet as your accounts and property."
+            "text": "Month by month. Each month interest is added to the balance at one month's worth of your APR [ (1 + rate)^(1/12) − 1 ] and then your payment is subtracted. The loan is paid off the first month the balance reaches zero. That's the same order the WealthTrunk app uses for liability accounts, so the projection here matches what you'll see in the app for the same inputs."
           }
         },
         {
           "@type": "Question",
-          "name": "What discount rate should I use?",
+          "name": "Why does a small extra payment save so much?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The discount rate is the return you could otherwise earn on a lump sum today. For a fixed pension that doesn't rise with inflation, a higher rate of roughly 5\u20137% accounts for inflation eroding those future payments. For an inflation-adjusted pension, a lower rate of roughly 2\u20134% is more appropriate. A higher rate always produces a lower present value."
+            "text": "Every extra dollar comes off the principal, and that dollar stops accruing interest for the entire remaining life of the loan. Early payments have the longest time to work, which is why an extra amount that looks trivial next to the balance can cut years off the term."
           }
         },
         {
           "@type": "Question",
-          "name": "What term length should I choose?",
+          "name": "What does 'Never' mean in the result?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "How many years you expect the income to be paid. For a lifetime pension, pick a reasonable life expectancy, like age 90. Longer terms increase the present value, but with diminishing effect: at a 5% discount rate, payments 50 years out contribute very little."
+            "text": "Your payment is smaller than the interest charged in the first month, so the balance grows instead of shrinking and the loan is never retired. The disclaimer under the chart shows the monthly amount you'd need to clear just the interest."
           }
         },
         {
           "@type": "Question",
-          "name": "Why is there no lifetime or perpetuity option?",
+          "name": "Are these results adjusted for inflation?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It was deliberately left out. Treating income as lasting forever overstates its value at older ages and lets you avoid thinking about an end date. Forcing a term makes that assumption explicit. If you really want to approximate 'forever', set the term to 50 years. At a 5% discount rate that captures around 98% of the perpetuity value anyway."
+            "text": "No, and deliberately so. A debt is a fixed nominal obligation — the payment you owe doesn't shrink because prices rose. Every figure here is in today's dollars at face value, which is what you'll actually write checks for. That's the opposite convention from our investment calculator, where inflation matters to what a balance can buy."
           }
         },
         {
           "@type": "Question",
-          "name": "My provider gave me a transfer value. Should I use that instead?",
+          "name": "Does this handle credit cards with a minimum payment?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. If you have a provider-issued lump sum (CETV, commuted value, or cash-balance figure) use that number. It reflects your actual scheme's terms and is far more precise than any general-purpose calculator."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does this account for survivor benefits or inflation indexing?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. This is deliberately an elementary calculator. Joint-life survivorship, mortality tables, COLA indexing, and tax treatment are all omitted. Those factors can move the answer substantially, so treat the result as a ballpark rather than a valuation."
+            "text": "Partly. It models a fixed monthly payment, which is what most people actually set up. A credit card's true minimum shrinks as the balance falls, which stretches payoff much further than a fixed payment of the same starting size. Enter what you genuinely pay each month rather than the card's stated minimum."
           }
         }
       ]
@@ -185,7 +177,7 @@
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
-                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_pension_nav&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_pension_nav">Download</a>
+                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_debt_nav&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_debt_nav">Download</a>
             </div>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
@@ -204,48 +196,57 @@
                 <span class="sep" aria-hidden="true">/</span>
                 <a href="tools.html">Tools</a>
                 <span class="sep" aria-hidden="true">/</span>
-                <span aria-current="page">Pension Value Calculator</span>
+                <span aria-current="page">Debt Paydown Calculator</span>
             </nav>
 
             <!-- Hero -->
             <header class="tool-hero">
                 <span class="section-label">Free Tool</span>
-                <h1>Pension Value Calculator</h1>
+                <h1>Debt Paydown Calculator</h1>
                 <p class="lead">
-                    Listing future income like pensions on your net worth statement can be difficult. This calculator converts a future income stream into
-                    <strong>a lump sum in today's money</strong>, so you list a pension or annuity along with your other assets. This calculator is built into WealthTrunk, so you can track future income alongside everything else you own.
+                    Find the month your loan or card will finally be gone, or see what an extra
+                    payment buys you. This is the same projection engine that powers liability
+                    forecasts inside the <a href="index.html">WealthTrunk app</a>.
                 </p>
             </header>
 
             <!-- Calculator -->
-            <section class="calc" data-calculator="pension" aria-label="Pension present value calculator">
+            <section class="calc" data-calculator="debt" aria-label="Debt paydown calculator">
 
                 <div class="calc-results">
                     <div class="result-card">
                         <div class="result-head">
-                            <div class="result-value" id="result-value">$0</div>
-                            <div class="result-caption" id="result-caption">Present Value Today</div>
+                            <div class="result-value" id="result-value">0</div>
+                            <div class="result-caption" id="result-caption">Until Debt-Free</div>
                         </div>
-                        <div class="chart-wrap" role="group" aria-label="Projection over time. Drag or use the arrow keys to read a single point.">
+                        <div class="chart-wrap" role="group" aria-label="Balance over time. Drag or use the arrow keys to read a single point.">
                             <svg class="chart-svg" id="calc-chart" preserveAspectRatio="none" aria-hidden="true"></svg>
                         </div>
                         <div class="chart-axis">
                             <span id="axis-start">Today</span>
-                            <span id="axis-end">Year 35</span>
+                            <span class="axis-mark" id="axis-payoff" hidden></span>
+                            <span id="axis-end">Debt-free</span>
                         </div>
                         <div class="chart-legend">
-                            <span class="legend-item"><span class="legend-swatch"></span>Cumulative payments</span>
+                            <span class="legend-item"><span class="legend-swatch"></span>Balance owed</span>
+                            <span class="legend-item" id="legend-compare" hidden><span class="legend-swatch dashed"></span>Without the extra payment</span>
                         </div>
                     </div>
 
                     <div class="stat-grid">
                         <div class="stat-card">
-                            <div class="stat-title">Present Value</div>
-                            <div class="stat-value" id="stat-a-value">$0</div>
+                            <div class="stat-title">Total Interest</div>
+                            <div class="stat-value-row">
+                                <span class="stat-value accent" id="stat-a-value">$0</span>
+                                <span class="stat-delta" id="stat-a-delta" hidden></span>
+                            </div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-title">Total Paid Out</div>
-                            <div class="stat-value accent" id="stat-b-value">$0</div>
+                            <div class="stat-title">Total You'll Pay</div>
+                            <div class="stat-value-row">
+                                <span class="stat-value" id="stat-b-value">$0</span>
+                                <span class="stat-delta" id="stat-b-delta" hidden></span>
+                            </div>
                         </div>
                     </div>
 
@@ -258,163 +259,141 @@
                     <div class="inputs-card">
                         <div class="field">
                             <div class="field-row">
-                                <label class="field-label" for="monthly-income">Monthly income</label>
+                                <label class="field-label" for="debt-balance">Balance owed</label>
                                 <span class="currency-input">
                                     <span class="prefix">$</span>
-                                    <input type="text" id="monthly-income" inputmode="numeric" autocomplete="off" value="0">
+                                    <input type="text" id="debt-balance" inputmode="numeric" autocomplete="off" value="25,000">
                                 </span>
                             </div>
                         </div>
                         <div class="field">
                             <div class="field-row">
-                                <label class="field-label" for="years-until-start">Start year</label>
-                                <span class="field-value" id="years-until-start-value">2036</span>
+                                <label class="field-label" for="loan-rate-input">Interest rate (APR)</label>
+                                <span class="currency-input percent-input">
+                                    <input type="text" id="loan-rate-input" inputmode="decimal" autocomplete="off" value="7"
+                                           aria-label="Interest rate (APR), percent">
+                                    <span class="suffix">%</span>
+                                </span>
                             </div>
-                            <input class="slider" type="range" id="years-until-start" min="0" max="50" step="1" value="10">
+                            <input class="slider" type="range" id="loan-rate" min="0" max="30" step="0.25" value="7"
+                                   aria-label="Interest rate (APR)">
                         </div>
                         <div class="field">
                             <div class="field-row">
-                                <label class="field-label" for="term-years">Term length</label>
-                                <span class="field-value" id="term-years-value">25 years</span>
+                                <label class="field-label" for="monthly-payment">Monthly payment</label>
+                                <span class="currency-input">
+                                    <span class="prefix">$</span>
+                                    <input type="text" id="monthly-payment" inputmode="numeric" autocomplete="off" value="500">
+                                </span>
                             </div>
-                            <input class="slider" type="range" id="term-years" min="1" max="50" step="1" value="25">
-                            <p class="field-hint">How many years the income is paid for, starting <span id="start-year-echo">in 2036</span>.</p>
+                            <input class="slider" type="range" id="monthly-payment-slider" min="0" max="5000" step="25" value="500"
+                                   aria-label="Monthly payment">
                         </div>
                         <div class="field">
                             <div class="field-row">
-                                <label class="field-label" for="discount-rate">Discount rate</label>
-                                <span class="field-value" id="discount-rate-value">5.0%</span>
+                                <label class="field-label" for="extra-payment">Extra each month</label>
+                                <span class="currency-input">
+                                    <span class="prefix">$</span>
+                                    <input type="text" id="extra-payment" inputmode="numeric" autocomplete="off" value="0">
+                                </span>
                             </div>
-                            <input class="slider" type="range" id="discount-rate" min="0.5" max="10" step="0.5" value="5">
-                            <p class="field-hint">The return you could otherwise earn on a lump sum today.</p>
+                            <input class="slider" type="range" id="extra-payment-slider" min="0" max="2000" step="25" value="0"
+                                   aria-label="Extra payment each month">
+                            <p class="field-hint">
+                                Anything above your required payment. The dashed line shows where
+                                you'd be without it.
+                            </p>
                         </div>
-                    
+
                         <button type="button" class="btn btn-primary btn-hero calc-jump" id="calc-jump">
                             Calculate
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
                         </button>
                     </div>
-
-                    <p class="calc-disclaimer">
-                        If your provider gave you a transfer or commuted value, use that number
-                        instead — it reflects your actual scheme.
-                    </p>
                 </div>
             </section>
 
             <!-- Inline CTA -->
             <div class="inline-cta">
-                <p><strong>Put it on the balance sheet.</strong> WealthTrunk has account types for employer pensions, state pensions and annuities, with this same calculator built in so the value updates alongside everything else.</p>
-                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_pension_inline&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_pension_inline">Get the free app</a>
+                <p><strong>Debt is only half the picture.</strong> WealthTrunk tracks what you owe alongside what you own, projects both forward, and shows your real net worth in one place.</p>
+                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_debt_inline&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_debt_inline">Get the free app</a>
             </div>
 
             <!-- How it works -->
             <section class="tool-section">
-                <h2>How present value works</h2>
-                <p>
-                    A dollar paid in thirty years is worth less than a dollar today, because a dollar
-                    today could be invested in the meantime. Present value runs that logic backwards:
-                    it asks what lump sum, invested at your discount rate, would produce the same
-                    stream of payments.
-                </p>
+                <h2>How this calculator works</h2>
                 <div class="step-list">
                     <div class="step-item">
                         <span class="num" aria-hidden="true"></span>
                         <div>
-                            <h3>Each payment is discounted</h3>
+                            <h3>Interest is charged monthly</h3>
                             <p>
-                                Every monthly payment is divided by growth at the discount rate over
-                                the time until it arrives. Payments far in the future shrink the most.
+                                Your APR is converted to a monthly rate —
+                                (1 + rate)<sup>1/12</sup> − 1 — and applied to whatever is still
+                                outstanding. As the balance falls, so does the interest, which is
+                                why the curve steepens as it approaches zero.
                             </p>
                         </div>
                     </div>
                     <div class="step-item">
                         <span class="num" aria-hidden="true"></span>
                         <div>
-                            <h3>The stream is summed</h3>
+                            <h3>Your payment lands after the interest</h3>
                             <p>
-                                All the discounted payments across the term are added together,
-                                giving the value at the moment the income starts.
+                                Each month's interest is added first, then your payment comes off
+                                the total. Whatever is left over after covering the interest is the
+                                only part that actually reduces the debt.
                             </p>
                         </div>
                     </div>
                     <div class="step-item">
                         <span class="num" aria-hidden="true"></span>
                         <div>
-                            <h3>Deferral is applied</h3>
+                            <h3>Extra payments compound in reverse</h3>
                             <p>
-                                If the income hasn't started yet, that figure is discounted again
-                                across the waiting years to bring it back to today.
+                                Every extra dollar goes straight at the principal and stops earning
+                                the lender interest for the rest of the loan. Add even a small
+                                amount and watch both the payoff date and the interest total move.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>The interest total is the real price</h3>
+                            <p>
+                                The stat cards separate what you borrowed from what the debt costs
+                                you on top. On a long loan at a high rate, the interest can rival
+                                the balance itself.
                             </p>
                         </div>
                     </div>
                 </div>
-                <p>
-                    The chart shows cumulative payments actually received — flat until the income
-                    starts, then climbing. The headline figure is the discounted value of that whole
-                    stream, which is why it's far lower than the total paid out.
-                </p>
-            </section>
-
-            <!-- Choosing a rate -->
-            <section class="tool-section">
-                <h2>Choosing a discount rate</h2>
-                <div class="table-scroll">
-                    <table class="tool-table">
-                        <thead>
-                            <tr>
-                                <th scope="col">If your income is…</th>
-                                <th scope="col">Typical rate</th>
-                                <th scope="col">Why</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Fixed — never rises</th>
-                                <td>5–7%</td>
-                                <td>A higher rate accounts for inflation eroding fixed payments over time</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Inflation-adjusted</th>
-                                <td>2–4%</td>
-                                <td>Payments keep pace with prices, so less discounting is needed</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    The rate you pick moves the answer more than any other input. It's worth trying
-                    both ends of the range to see how wide the result gets.
-                </p>
             </section>
 
             <!-- FAQ -->
             <section class="tool-section">
-                <h2>Pension value FAQ</h2>
+                <h2>Debt paydown calculator FAQ</h2>
                 <div class="tool-faq">
                     <details open>
-                        <summary>Why would I need the present value of a pension?</summary>
-                        <p>A net worth statement needs one number per asset, and a pension pays out over decades instead. Present value converts that future income stream into a single lump sum in today's money, so the pension can sit on the same balance sheet as your accounts and property.</p>
+                        <summary>How is the payoff date calculated?</summary>
+                        <p>Month by month. Each month interest is added to the balance at one month's worth of your APR — (1 + rate)^(1/12) − 1 — and then your payment is subtracted. The loan is paid off the first month the balance reaches zero. That's the same order the WealthTrunk app uses for liability accounts, so the projection here matches what you'll see in the app for the same inputs.</p>
                     </details>
                     <details>
-                        <summary>What discount rate should I use?</summary>
-                        <p>The discount rate is the return you could otherwise earn on a lump sum today. For a fixed pension that doesn't rise with inflation, a higher rate of roughly 5–7% accounts for inflation eroding those future payments. For an inflation-adjusted pension, a lower rate of roughly 2–4% is more appropriate. A higher rate always produces a lower present value.</p>
+                        <summary>Why does a small extra payment save so much?</summary>
+                        <p>Every extra dollar comes off the principal, and that dollar stops accruing interest for the entire remaining life of the loan. Early payments have the longest time to work, which is why an extra amount that looks trivial next to the balance can cut years off the term.</p>
                     </details>
                     <details>
-                        <summary>What term length should I choose?</summary>
-                        <p>How many years you expect the income to be paid. For a lifetime pension, pick a reasonable life expectancy — many people use age 90. Longer terms increase the present value, but with diminishing effect: at a 5% discount rate, payments 50 years out contribute very little.</p>
+                        <summary>What does "Never" mean in the result?</summary>
+                        <p>Your payment is smaller than the interest charged in the first month, so the balance grows instead of shrinking and the loan is never retired. The note under the chart shows the monthly amount you'd need just to cover the interest.</p>
                     </details>
                     <details>
-                        <summary>Why is there no lifetime or perpetuity option?</summary>
-                        <p>It was deliberately left out. Treating income as lasting forever overstates its value at older ages and lets you avoid thinking about an end date. Forcing a term makes that assumption explicit. If you really want to approximate 'forever', set the term to 50 years — at a 5% discount rate that captures around 98% of the perpetuity value anyway.</p>
+                        <summary>Are these results adjusted for inflation?</summary>
+                        <p>No, and deliberately so. A debt is a fixed nominal obligation — the payment you owe doesn't shrink because prices rose. Every figure here is in today's dollars at face value, which is what you'll actually write checks for. That's the opposite convention from our <a href="investment-calculator.html">investment calculator</a>, where inflation matters to what a balance can buy.</p>
                     </details>
                     <details>
-                        <summary>My provider gave me a transfer value. Should I use that instead?</summary>
-                        <p>Yes. If you have a provider-issued lump sum — a CETV, commuted value, or cash-balance figure — use that number. It reflects your actual scheme's terms and is far more precise than any general-purpose calculator.</p>
-                    </details>
-                    <details>
-                        <summary>Does this account for survivor benefits or inflation indexing?</summary>
-                        <p>No. This is deliberately an elementary calculator. Joint-life survivorship, mortality tables, COLA indexing, and tax treatment are all omitted. Those factors can move the answer substantially, so treat the result as a ballpark rather than a valuation.</p>
+                        <summary>Does this handle credit cards with a minimum payment?</summary>
+                        <p>Partly. It models a fixed monthly payment, which is what most people actually set up. A credit card's true minimum shrinks as the balance falls, which stretches payoff much further than a fixed payment of the same starting size. Enter what you genuinely pay each month rather than the card's stated minimum.</p>
                     </details>
                 </div>
             </section>
@@ -423,15 +402,15 @@
             <section class="tool-section">
                 <h2>Keep going</h2>
                 <div class="related-grid">
-                    <a class="related-card" href="net-worth-calculator.html">
-                        <span class="eyebrow">Next tool</span>
-                        <h3>Net Worth Calculator</h3>
-                        <p>Add your pension's present value to everything else you own and owe.</p>
-                    </a>
                     <a class="related-card" href="investment-calculator.html">
                         <span class="eyebrow">Next tool</span>
                         <h3>Investment Calculator</h3>
-                        <p>Project what a balance and a monthly habit turn into over time.</p>
+                        <p>Debt gone? Point that same monthly payment at compound growth instead.</p>
+                    </a>
+                    <a class="related-card" href="net-worth-calculator.html">
+                        <span class="eyebrow">Next tool</span>
+                        <h3>Net Worth Calculator</h3>
+                        <p>Add up everything you own and owe — then export it straight into the app.</p>
                     </a>
                     <a class="related-card" href="tools.html">
                         <span class="eyebrow">All tools</span>
@@ -448,7 +427,7 @@
                     <p class="cta-description">
                         Start tracking your net worth today. See where you stand and where you're headed.
                     </p>
-                    <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_pension_cta&amp;mt=8" class="btn btn-primary btn-hero" data-download-location="wt_tools_pension_cta">
+                    <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_debt_cta&amp;mt=8" class="btn btn-primary btn-hero" data-download-location="wt_tools_debt_cta">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                         Download<span class="btn-label-full"> on the App Store</span>
                     </a>

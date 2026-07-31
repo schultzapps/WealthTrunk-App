@@ -6,11 +6,14 @@
 
    Growth  — ProjectionChartViewModel.swift:243
              (calculateAssetWithPhaseDTO + the monthly loop at :332)
+   Debt    — ProjectionChartViewModel.swift:269
+             (calculateSimpleLiabilityBalanceDTO + the liability branch at :350)
    Pension — FixedIncomeCalculatorView.swift:413 (presentValue)
 
-   Three modes, one engine:
+   Four modes, one engine:
      'investment' — balance + monthly contributions over N years
      'kids'       — same growth, horizon derived from a child's age
+     'debt'       — a balance amortized down by a fixed monthly payment
      'pension'    — present value of a deferred monthly income
 
    No dependencies; the chart is hand-rolled SVG.
@@ -34,6 +37,11 @@
         // Kids-specific
         childAge: 4,
         targetAge: 18,
+        // Debt paydown
+        debtBalance: 25000,
+        loanRate: 7,                 // percent APR
+        monthlyPayment: 500,
+        extraPayment: 0,
         // Pension
         monthlyIncome: 3000,
         yearsUntilStart: 10,
@@ -63,6 +71,27 @@
     }
     function percent(value, digits) {
         return value.toFixed(digits === undefined ? 1 : digits) + '%';
+    }
+
+    /* The calendar month `months` from now — "Mar 2029". A payoff schedule is
+       something you plan around a date, so both the payoff label and the
+       scrubbed readout use this rather than an elapsed-year count. */
+    function monthLabel(months) {
+        if (months === null || months === undefined) return '';
+        var d = new Date();
+        d.setDate(1);
+        d.setMonth(d.getMonth() + months);
+        return d.toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
+    }
+
+    /* A payoff duration reads better in mixed units than in bare months:
+       "4 yr 3 mo" beats "51 months" at a glance. */
+    function payoffLabel(months) {
+        if (months === null || months === undefined) return '—';
+        if (months < 12) return months + (months === 1 ? ' month' : ' months');
+        var y = Math.floor(months / 12);
+        var m = months % 12;
+        return y + ' yr' + (m ? ' ' + m + ' mo' : '');
     }
 
     /* ------------------------------------------------------------
@@ -168,6 +197,103 @@
         return Math.pow(1 + annualRate, 1 / 12) - 1;
     }
 
+    /* The app's hard stop on a liability forecast — 50 years, matching the
+       `liabilityFullPayoff` horizon in generateForecastDTO. A payment that
+       never clears the interest would otherwise loop forever. */
+    var MAX_DEBT_MONTHS = 600;
+
+    /**
+     * Month-by-month amortization, mirroring calculateSimpleLiabilityBalanceDTO.
+     *
+     * The app carries liabilities as *negative* balances and adds the payment
+     * to walk them toward zero. Here the balance is kept positive (it's the only
+     * thing on the page, so a minus sign in front of every figure would be
+     * noise) and the payment is subtracted instead — the arithmetic is
+     * identical, and the same annual-to-monthly conversion is used:
+     *   periodInterest = (1 + loanRate)^(1/12) − 1
+     *
+     * Interest accrues on the balance *before* the payment lands, exactly as in
+     * the Swift, and the loop breaks the month the balance reaches zero.
+     *
+     * Unlike the growth calculators this projects in nominal dollars: a debt is
+     * a fixed nominal obligation, and deflating it would understate what you
+     * actually have to write checks for.
+     */
+    Model.prototype.debt = function () {
+        var s = this.state;
+        var payment = s.monthlyPayment + s.extraPayment;
+        var periodInterest = monthlyRate(s.loanRate / 100);
+
+        var balance = s.debtBalance;
+        var totalInterest = 0;
+        var points = [{ year: 0, value: balance }];
+
+        // A payment that doesn't cover the first month's interest never retires
+        // the loan. Report it rather than drawing a line that rises forever.
+        var firstMonthInterest = balance * periodInterest;
+        if (balance > 0 && payment <= firstMonthInterest) {
+            return {
+                points: [{ year: 0, value: balance }, { year: 1, value: balance }],
+                finalBalance: balance,
+                totalInterest: 0,
+                totalPaid: 0,
+                months: null,
+                neverPaidOff: true,
+                minimumPayment: firstMonthInterest
+            };
+        }
+
+        // Closed-form term, used only to choose the chart's sampling rate before
+        // the loop runs. The balance itself still comes from the month-by-month
+        // loop below, which is what has to match the app.
+        //   n = −ln(1 − rB/p) / ln(1 + r)
+        var totalMonthsEstimate = periodInterest > 0
+            ? -Math.log(1 - (periodInterest * balance) / payment) / Math.log(1 + periodInterest)
+            : balance / payment;
+
+        var month = 0;
+        var paidOffMonth = null;
+        while (month < MAX_DEBT_MONTHS && balance > 0) {
+            month++;
+            var interest = balance * periodInterest;
+            totalInterest += interest;
+            balance = balance + interest - payment;
+            if (balance <= 0) {
+                balance = 0;
+                paidOffMonth = month;
+            }
+            // Short loans get monthly samples so the amortization curve reads as
+            // a curve; a 5-year term plotted yearly is only six points and looks
+            // like a straight line. Long mortgages stay on yearly samples to keep
+            // the point count (and the scrub granularity) sane.
+            var sampleEvery = totalMonthsEstimate > 180 ? 12 : 1;
+            if (month % sampleEvery === 0 || balance === 0) {
+                points.push({ year: month / 12, value: balance });
+            }
+        }
+
+        return {
+            points: points,
+            finalBalance: balance,
+            totalInterest: totalInterest,
+            // What actually leaves your pocket: principal plus interest. The
+            // final payment is partial, so this isn't payment × months.
+            totalPaid: s.debtBalance + totalInterest,
+            months: paidOffMonth,
+            neverPaidOff: false,
+            minimumPayment: firstMonthInterest
+        };
+    };
+
+    /* Interest paid if only the base payment is made — the baseline the extra
+       payment is measured against. Returns null when that payment never clears
+       the loan, in which case there's no finite saving to quote. */
+    Model.prototype.debtWithoutExtra = function () {
+        if (!this.state.extraPayment) return null;
+        var base = new Model(Object.assign({}, this.state, { extraPayment: 0 })).debt();
+        return base.neverPaidOff ? null : base;
+    };
+
     /**
      * Present value of a deferred annuity, mirroring FixedIncomeCalculatorView.
      *
@@ -243,11 +369,13 @@
         grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
         var top = document.createElementNS(SVG_NS, 'stop');
         top.setAttribute('offset', '0%');
-        top.setAttribute('stop-color', 'var(--accent-primary)');
+        // --chart-accent lets a calculator recolor the fill from CSS (the debt
+        // page does); it falls back to the teal accent everywhere else.
+        top.setAttribute('stop-color', 'var(--chart-accent, var(--accent-primary))');
         top.setAttribute('stop-opacity', '0.5');
         var bottom = document.createElementNS(SVG_NS, 'stop');
         bottom.setAttribute('offset', '100%');
-        bottom.setAttribute('stop-color', 'var(--accent-primary)');
+        bottom.setAttribute('stop-color', 'var(--chart-accent, var(--accent-primary))');
         bottom.setAttribute('stop-opacity', '0');
         grad.appendChild(top); grad.appendChild(bottom);
         defs.appendChild(grad);
@@ -329,6 +457,11 @@
         this.series = series;
         this.plotTop = top;
         this.plotBottom = bottom;
+        // Retained so scrubbing can map a pointer position back through the
+        // same x-domain the points were plotted with. When the domain runs
+        // past the main series (the debt chart extends it to cover the longer
+        // comparison line), index-over-width would drift off the cursor.
+        this.domainX = domainX;
 
         var linePath = smoothPath(pts, top, bottom);
         this.line.setAttribute('d', linePath);
@@ -401,9 +534,10 @@
         var root = document.querySelector('[data-calculator]');
         if (!root) return;
 
-        var mode = root.getAttribute('data-calculator'); // investment | kids | pension
+        var mode = root.getAttribute('data-calculator'); // investment | kids | debt | pension
         var isPension = mode === 'pension';
         var isKids = mode === 'kids';
+        var isDebt = mode === 'debt';
 
         var state = { mode: mode };
         Object.keys(DEFAULTS).forEach(function (k) {
@@ -427,6 +561,10 @@
         var disclaimerEl = $('calc-disclaimer');
         var axisStartEl = $('axis-start');
         var axisEndEl = $('axis-end');
+        var axisPayoffEl = $('axis-payoff');
+        var legendCompareEl = $('legend-compare');
+        var statADelta = $('stat-a-delta');
+        var statBDelta = $('stat-b-delta');
         var svg = $('calc-chart');
 
         var headline = new AnimatedValue(resultValueEl, money);
@@ -458,8 +596,38 @@
             realRateEl.classList.toggle('is-negative', real < 0);
         }
 
+        /* Savings line under a stat card. `amount` is the signed change against
+           the no-extra baseline; null (no extra payment entered, or a baseline
+           that never pays off) hides the line entirely rather than showing a
+           meaningless "$0". Rounds before testing for zero so a sub-dollar
+           rounding artifact doesn't render as "−$0". */
+        function paintDelta(el, amount) {
+            if (!el) return;
+            if (amount === null || amount === undefined || Math.round(amount) === 0) {
+                el.hidden = true;
+                return;
+            }
+            el.hidden = false;
+            el.textContent = (amount < 0 ? '−' : '+') + money(Math.abs(amount));
+            el.classList.toggle('is-saving', amount < 0);
+        }
+
+        /* Do two axis labels overlap on screen? Measured from laid-out boxes so
+           it accounts for the actual text width and viewport, with a small gap
+           so they don't render flush against each other. The caller must have
+           made `a` visible first — a hidden element measures as zero-width. */
+        function labelsCollide(a, b) {
+            if (!a || !b) return false;
+            var ra = a.getBoundingClientRect();
+            var rb = b.getBoundingClientRect();
+            if (!ra.width || !rb.width) return false;
+            var GAP = 8;
+            return ra.right + GAP > rb.left && rb.right + GAP > ra.left;
+        }
+
         function render() {
-            var result = isPension ? model.pension() : model.growth();
+            var result = isPension ? model.pension()
+                : (isDebt ? model.debt() : model.growth());
             var series = result.points;
 
             // Contributions-only comparison line (growth stripped out), so the
@@ -468,7 +636,15 @@
             // contributions would be compared against a real-terms balance and
             // could sit above it.
             var compare = null;
-            if (!isPension) {
+            var debtBaseline = null;
+            if (isDebt) {
+                // The dashed line is the same loan paid without the extra —
+                // so the gap between the curves is what the extra buys you.
+                // With no extra there's nothing to compare against. The same
+                // baseline also feeds the savings figures under the stats.
+                debtBaseline = model.debtWithoutExtra();
+                if (debtBaseline) compare = debtBaseline.points;
+            } else if (!isPension) {
                 var infl = state.inflationRate / 100;
                 compare = [{ year: 0, value: state.startingBalance }];
                 for (var i = 1; i < series.length; i++) {
@@ -486,12 +662,22 @@
                 }
             }
 
+            // The dashed line only exists when there's an extra payment to
+            // compare against, so its legend entry follows it.
+            if (legendCompareEl) legendCompareEl.hidden = !compare;
+
             var peak = series.reduce(function (mx, p) { return Math.max(mx, p.value); }, 0);
             if (compare) {
                 peak = compare.reduce(function (mx, p) { return Math.max(mx, p.value); }, peak);
             }
             var yMax = Math.ceil(peak * 1.05);
             var xMax = series.length ? series[series.length - 1].year : 1;
+            // The slower comparison path runs past the payoff of the main
+            // series, so the x-domain has to cover it — otherwise the dashed
+            // line is clipped at the frame edge and its ending is invisible.
+            if (compare && compare.length) {
+                xMax = Math.max(xMax, compare[compare.length - 1].year);
+            }
 
             chart.render(series, compare, yMax, xMax, reveal);
             chart.highlight(scrubbedIndex);
@@ -503,6 +689,34 @@
                 resultCaptionEl.textContent = 'Present Value Today';
                 statA.set(result.presentValue);
                 statB.set(result.totalPayments);
+            } else if (isDebt) {
+                // The headline is a duration, not an amount, so it bypasses the
+                // AnimatedValue tween (which counts money).
+                if (result.neverPaidOff) {
+                    resultValueEl.textContent = 'Never';
+                    resultCaptionEl.textContent = 'Payment doesn\'t cover interest';
+                } else if (scrubYear === null) {
+                    resultValueEl.textContent = payoffLabel(result.months);
+                    resultCaptionEl.textContent = 'Until Debt-Free';
+                } else {
+                    resultValueEl.textContent = money(valueAt(series, scrubYear));
+                    // A payoff schedule is a calendar, so a scrubbed point reads
+                    // as the month it lands on rather than an elapsed count.
+                    resultCaptionEl.textContent = scrubYear === 0
+                        ? 'Balance today'
+                        : 'Balance ' + monthLabel(Math.round(scrubYear * 12));
+                }
+                resultValueEl.classList.toggle('is-warning', !!result.neverPaidOff);
+                statA.set(result.totalInterest);
+                statB.set(result.totalPaid);
+
+                // What the extra payment saves off each stat, versus the same
+                // loan paid at the base amount. Both are negative numbers (the
+                // extra can only reduce them), so they render as "−$877".
+                paintDelta(statADelta, debtBaseline &&
+                    result.totalInterest - debtBaseline.totalInterest);
+                paintDelta(statBDelta, debtBaseline &&
+                    result.totalPaid - debtBaseline.totalPaid);
             } else {
                 var headlineValue = scrubYear === null
                     ? result.finalBalance
@@ -530,16 +744,79 @@
                     : (isPension ? String(thisYear) : 'Today');
             }
             if (axisEndEl) {
+                // The debt axis ends where the loan does, so the label is the
+                // payoff date rather than a fixed horizon.
                 axisEndEl.textContent = isKids
                     ? 'Age ' + state.targetAge
                     : (isPension
                         ? String(thisYear + state.yearsUntilStart + state.termYears)
-                        : 'Year ' + state.yearsInvested);
+                        : (isDebt
+                            ? (result.neverPaidOff
+                                ? 'Never paid off'
+                                // The right edge is the end of the *longest*
+                                // line drawn. With an extra payment that's the
+                                // dashed baseline, which runs past the payoff.
+                                : monthLabel(debtBaseline
+                                    ? debtBaseline.months
+                                    : result.months))
+                            : 'Year ' + state.yearsInvested));
+            }
+
+            // With a comparison line the solid curve hits zero partway across,
+            // so its payoff date gets its own mark at that x — otherwise the
+            // date the extra payment actually buys you is unlabeled.
+            if (axisPayoffEl) {
+                var markX = xMax > 0 ? (result.months / 12) / xMax : 0;
+                // Left edge only: overlapping "Today" reads as a glitch, and a
+                // payoff that close to now is already obvious from the headline.
+                var showMark = isDebt && debtBaseline && !result.neverPaidOff &&
+                    result.months !== null && xMax > 0 && markX > 0.12;
+                axisPayoffEl.hidden = !showMark;
+                if (showMark) {
+                    axisPayoffEl.textContent = monthLabel(result.months);
+                    axisPayoffEl.style.setProperty('--x', markX);
+                }
+                // Near the right edge the two dates collide. The payoff date is
+                // the one the user is actually shopping for, so the baseline
+                // label yields rather than the mark. Measured rather than
+                // guessed at, since label width varies ("Sep 2029" vs "May 2031")
+                // and the plot width changes with the viewport.
+                if (axisEndEl) {
+                    // Restore before measuring: a hidden-from-a-previous-render
+                    // label still has a box, but clearing first keeps the test
+                    // reading current text rather than a stale state.
+                    axisEndEl.style.visibility = '';
+                    if (showMark && labelsCollide(axisPayoffEl, axisEndEl)) {
+                        axisEndEl.style.visibility = 'hidden';
+                    }
+                }
             }
             disclaimerEl.textContent = disclaimerText(result);
         }
 
         function disclaimerText(result) {
+            if (isDebt) {
+                // Two decimals, trailing zeros trimmed: the rate can be typed to
+                // the hundredth, and rounding 7.13% to "7.1%" in the summary
+                // would contradict the field the user just filled in.
+                var rateText = parseFloat(state.loanRate.toFixed(2)) + '%';
+                var base = 'Assumes ' + money(state.debtBalance) + ' at ' +
+                    rateText + ' APR with ' +
+                    money(state.monthlyPayment + state.extraPayment) +
+                    ' paid every month' +
+                    (state.extraPayment > 0
+                        ? ' (' + money(state.monthlyPayment) + ' plus ' +
+                          money(state.extraPayment) + ' extra)'
+                        : '') +
+                    ', and no new borrowing. ';
+                if (result.neverPaidOff) {
+                    base += 'At this payment the interest outruns the payment, so the ' +
+                        'balance never falls — it takes more than ' +
+                        money(Math.ceil(result.minimumPayment)) + ' a month to make progress. ';
+                }
+                return base + 'For illustrative purposes only. ' +
+                    'Not financial, tax, or investment advice.';
+            }
             if (isPension) {
                 var startYear = new Date().getFullYear() + state.yearsUntilStart;
                 return 'Assumes ' + money(state.monthlyIncome) + '/month for ' +
@@ -648,7 +925,59 @@
             return { show: show };
         }
 
-        if (isPension) {
+        /* --- Percent field + slider --- */
+        /* Like bindCurrency, but for a rate: the slider moves in fixed steps
+           (0.25% here) while the text field accepts any decimal in range, so a
+           7.13% loan can be entered exactly even though the slider can't land
+           on it. The field is authoritative; the thumb snaps to the nearest
+           step without rewriting what was typed. */
+        function bindPercent(id, key, max) {
+            var input = $(id + '-input');
+            var slider = $(id);
+            if (!input || !slider) return null;
+
+            var paintSlider = function () {
+                var lo = parseFloat(slider.min), hi = parseFloat(slider.max);
+                var clamped = Math.max(lo, Math.min(state[key], hi));
+                slider.value = clamped;
+                var pct = hi === lo ? 0 : ((clamped - lo) / (hi - lo)) * 100;
+                slider.style.setProperty('--fill', pct + '%');
+            };
+            // Fixed to two decimals so the field's width — and everything laid
+            // out beside it — doesn't jump as the slider steps across 3 → 3.25.
+            // A typed "7." still has to survive until blur, so the input handler
+            // below writes through what was typed rather than calling this.
+            var show = function () { input.value = state[key].toFixed(2); };
+            show();
+            paintSlider();
+
+            input.addEventListener('input', function () {
+                var cleaned = input.value.replace(/[^0-9.]/g, '');
+                // Keep only the first decimal point.
+                var parts = cleaned.split('.');
+                if (parts.length > 2) cleaned = parts[0] + '.' + parts.slice(1).join('');
+                var value = cleaned === '' || cleaned === '.' ? 0 : parseFloat(cleaned);
+                if (value > max) { value = max; cleaned = String(max); }
+                input.value = cleaned;
+                update(key, value);
+                paintSlider();
+            });
+            input.addEventListener('blur', show);
+
+            slider.addEventListener('input', function () {
+                update(key, parseFloat(slider.value));
+                show();
+                paintSlider();
+            });
+            return { show: show, paintSlider: paintSlider };
+        }
+
+        if (isDebt) {
+            bindCurrency('debt-balance', 'debtBalance');
+            bindCurrency('monthly-payment', 'monthlyPayment');
+            bindCurrency('extra-payment', 'extraPayment');
+            bindPercent('loan-rate', 'loanRate', 30);
+        } else if (isPension) {
             bindCurrency('monthly-income', 'monthlyIncome');
             // The slider still stores years-from-now (that's what the PV math
             // needs), but it reads out as a calendar year — matching the app's
@@ -728,10 +1057,22 @@
 
         function scrubTo(clientX) {
             var rect = svg.getBoundingClientRect();
-            if (!rect.width || !chart.series) return;
+            if (!rect.width || !chart.series || !chart.series.length) return;
             var fraction = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
-            var index = Math.round(fraction * (chart.series.length - 1));
-            index = Math.min(Math.max(index, 0), chart.series.length - 1);
+
+            // Convert the pointer to a position on the x-axis, then pick the
+            // closest point by that value. Going through the domain (rather
+            // than treating the pointer fraction as an index fraction) is what
+            // keeps the dot under the cursor when the series doesn't span the
+            // full plot width, and it tolerates uneven spacing — the debt
+            // series ends on a partial final month.
+            var targetYear = fraction * (chart.domainX || 1);
+            var index = 0;
+            var bestGap = Infinity;
+            for (var i = 0; i < chart.series.length; i++) {
+                var gap = Math.abs(chart.series[i].year - targetYear);
+                if (gap < bestGap) { bestGap = gap; index = i; }
+            }
             if (index === scrubbedIndex) return;
             scrubbedIndex = index;
             render();
@@ -783,7 +1124,11 @@
         render();
         paintReal();
         paintStartYear();
-        headline.set(isPension ? model.pension().presentValue : model.growth().finalBalance, true);
+        // Debt's headline is a duration written directly by render(), so there's
+        // no money tween to seed.
+        if (!isDebt) {
+            headline.set(isPension ? model.pension().presentValue : model.growth().finalBalance, true);
+        }
 
         if (!reduceMotion) {
             var start = null;
