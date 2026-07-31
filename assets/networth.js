@@ -63,11 +63,10 @@
 
     var STORE_KEY = 'wtnetworth_rows';
 
-    var currencyFmt = new Intl.NumberFormat('en-US', {
-        style: 'currency', currency: 'USD', maximumFractionDigits: 0
-    });
-    var groupFmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
-    function money(v) { return currencyFmt.format(Math.abs(v) < 0.5 ? 0 : v); }
+    /* Symbol and separators follow the browser locale (WTCurrency).
+       Purely cosmetic — no conversion is applied to any amount. */
+    var groupFmt = window.WTCurrency.group;
+    function money(v) { return window.WTCurrency.format(Math.abs(v) < 0.5 ? 0 : v); }
 
     /* The parser splits rows on ',' with no quote handling, so a comma in any
        field would shift every later column. Strip them (plus newlines) rather
@@ -140,7 +139,7 @@
                             '<select class="nw-type" aria-label="Account type">' +
                             optionsFor(kind, r.type) + '</select></span>' +
                         '<span class="currency-input nw-amount-wrap">' +
-                            '<span class="prefix">$</span>' +
+                            '<span class="prefix">' + window.WTCurrency.symbol + '</span>' +
                             '<input class="nw-amount" type="text" inputmode="numeric" ' +
                             'value="' + groupFmt.format(r.amount) + '" aria-label="Amount"></span>' +
                         '<button type="button" class="nw-remove" aria-label="Remove ' +
@@ -231,12 +230,6 @@
             var lines = [
                 '# WealthTrunk account import — generated ' + today +
                     ' by hsamonster.com/../net-worth-calculator.html',
-                '# Import in the app: Settings > Import Data (CSV) > Accounts > Import',
-                '# Do not add commas to any field. The import will fail if you do.',
-                '# Percentages are decimals: 2.00% is entered as 0.02',
-                '# Liabilities carry negative CurrentBalance values.',
-                '# Owners is intentionally blank — imports land under Pending Imports for review.',
-                '#',
                 HEADER.join(',')
             ];
 

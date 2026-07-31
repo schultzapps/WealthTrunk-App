@@ -51,14 +51,13 @@
     /* ------------------------------------------------------------
        Formatting
        ------------------------------------------------------------ */
-    var currencyFmt = new Intl.NumberFormat('en-US', {
-        style: 'currency', currency: 'USD', maximumFractionDigits: 0
-    });
-    var groupFmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+    /* Symbol and separators follow the browser locale (WTCurrency).
+       Purely cosmetic — the math never converts between currencies. */
+    var groupFmt = window.WTCurrency.group;
 
     function money(value) {
         // -0 formats as "-$0"; normalize it away.
-        return currencyFmt.format(Math.abs(value) < 0.5 ? 0 : value);
+        return window.WTCurrency.format(Math.abs(value) < 0.5 ? 0 : value);
     }
     function signedMoney(value) {
         return (value > 0 ? '+' : '') + money(value);
@@ -415,6 +414,13 @@
         var model = new Model(state);
         var $ = function (id) { return document.getElementById(id); };
 
+        /* The markup ships "$" so the field reads correctly without JS;
+           swap in the locale's symbol once we're running. */
+        Array.prototype.forEach.call(
+            document.querySelectorAll('.currency-input .prefix'),
+            function (el) { el.textContent = window.WTCurrency.symbol; }
+        );
+
         var resultValueEl = $('result-value');
         var resultCaptionEl = $('result-caption');
         var statAValue = $('stat-a-value');
@@ -548,7 +554,7 @@
                 return 'Assumes ' + money(state.monthlyIncome) + '/month for ' +
                     state.termYears + ' years starting in ' + startYear +
                     ', discounted at ' + percent(state.discountRate) +
-                    '. The result is in today\'s money. For illustrative purposes only. ' +
+                    '. For illustrative purposes only. ' +
                     'Not financial, tax, or investment advice.';
             }
             var years = model.years();
