@@ -576,8 +576,8 @@
                 (state.inflationRate > 0
                     ? ', less ' + percent(state.inflationRate) +
                       ' inflation for a ' + percent(real) +
-                      ' real return — so the result is in today\'s money'
-                    : '. Inflation is set to 0%, so the result is in future dollars') +
+                      ' real return'
+                    : '') +
                 '. For illustrative purposes only. Not financial, tax, or investment advice.';
         }
 
