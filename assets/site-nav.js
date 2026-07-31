@@ -21,16 +21,13 @@
 
             navbar.classList.toggle('scrolled', scrolled);
 
-            /* Crossing the threshold swaps the desktop bar between the full
-               link row and the collapsed pill. A menu left open across that
-               swap would hang over the wrong layout, so reset it both ways. */
-            var links = navbar.querySelector('.nav-links');
-            var burger = navbar.querySelector('.mobile-menu-btn');
-            if (links) links.classList.remove('active');
-            if (burger) burger.classList.remove('active');
-
+            /* The hamburger menu is deliberately left alone here. It expands
+               the pill itself rather than floating over the page, so it stays
+               valid across the threshold — and closing it on scroll made the
+               menu impossible to scroll through on a phone, since dragging
+               inside a menu taller than the screen moved the page too. */
             var open = navbar.querySelector('.nav-dropdown.open');
-            if (open) {
+            if (open && !navbar.querySelector('.nav-links.active')) {
                 open.classList.remove('open');
                 var toggle = open.querySelector('.nav-dropdown-toggle');
                 if (toggle) toggle.setAttribute('aria-expanded', 'false');
