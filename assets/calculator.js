@@ -446,7 +446,10 @@
         var startYearEcho = document.getElementById('start-year-echo');
         function paintStartYear() {
             if (!startYearEcho) return;
-            startYearEcho.textContent = String(new Date().getFullYear() + state.yearsUntilStart);
+            // Reads "...starting in 2036" / "...starting now".
+            startYearEcho.textContent = state.yearsUntilStart === 0
+                ? 'now'
+                : 'in ' + (new Date().getFullYear() + state.yearsUntilStart);
         }
 
         /* The Fisher real rate, shown under the inflation slider so the two
@@ -639,8 +642,8 @@
             bindSlider('years-until-start', 'yearsUntilStart', {
                 parse: function (v) { return parseInt(v, 10); },
                 format: function (v) {
-                    var year = new Date().getFullYear() + v;
-                    return v === 0 ? String(year) + ' (now)' : String(year);
+                    return v === 0 ? 'Now'
+                        : String(new Date().getFullYear() + v);
                 },
                 onInput: function () { paintStartYear(); }
             });
