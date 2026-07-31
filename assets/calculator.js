@@ -28,7 +28,7 @@
         startingBalance: 10000,
         monthlyContribution: 500,
         contributionGrowthRate: 0,   // annual escalation, as a fraction
-        expectedReturn: 7,           // percent
+        expectedReturn: 10,          // percent
         inflationRate: 2.5,          // percent
         yearsInvested: 20,
         // Kids-specific
