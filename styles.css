@@ -235,8 +235,17 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
        to currentColor) makes the bar flash dark at the transition point. */
     background: rgba(10, 10, 18, 0);
     border-bottom: 1px solid transparent;
+    /* The blur is declared here at zero radius rather than being added by
+       .scrolled: iOS Safari often fails to establish the backdrop root when
+       backdrop-filter appears via a class toggle, leaving the bar unblurred.
+       Present from the start it is always composited, and the radius
+       animates up with the background so the unscrolled bar stays clear. */
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     transition: background-color var(--transition-base),
-                border-color var(--transition-base);
+                border-color var(--transition-base),
+                backdrop-filter var(--transition-base),
+                -webkit-backdrop-filter var(--transition-base);
 }
 
 .navbar.scrolled {
