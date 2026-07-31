@@ -1597,7 +1597,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 }
 
-@media (max-width: 768px) {
+/* The nav collapses earlier than the rest of the layout: six links plus the
+   Tools dropdown need roughly 950px, so below that they'd wrap into the logo
+   rather than sit on one line. */
+@media (max-width: 960px) {
     .nav-links {
         display: none;
         position: absolute;
@@ -1647,6 +1650,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     .mobile-menu-btn {
         display: flex;
     }
+}
+
+@media (max-width: 768px) {
 
     .features-grid {
         grid-template-columns: 1fr;
