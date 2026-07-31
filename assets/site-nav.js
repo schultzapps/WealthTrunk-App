@@ -16,7 +16,25 @@
         if (!navbar) return;
 
         var sync = function () {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            var scrolled = window.scrollY > 50;
+            if (scrolled === navbar.classList.contains('scrolled')) return;
+
+            navbar.classList.toggle('scrolled', scrolled);
+
+            /* Crossing the threshold swaps the desktop bar between the full
+               link row and the collapsed pill. A menu left open across that
+               swap would hang over the wrong layout, so reset it both ways. */
+            var links = navbar.querySelector('.nav-links');
+            var burger = navbar.querySelector('.mobile-menu-btn');
+            if (links) links.classList.remove('active');
+            if (burger) burger.classList.remove('active');
+
+            var open = navbar.querySelector('.nav-dropdown.open');
+            if (open) {
+                open.classList.remove('open');
+                var toggle = open.querySelector('.nav-dropdown-toggle');
+                if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            }
         };
         window.addEventListener('scroll', sync, { passive: true });
         sync();
