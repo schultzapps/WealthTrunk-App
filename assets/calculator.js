@@ -34,7 +34,6 @@
         // Kids-specific
         childAge: 4,
         targetAge: 18,
-        savingsGoal: 0,              // 0 == no goal set
         // Pension
         monthlyIncome: 3000,
         yearsUntilStart: 10,
@@ -425,8 +424,6 @@
         var resultCaptionEl = $('result-caption');
         var statAValue = $('stat-a-value');
         var statBValue = $('stat-b-value');
-        var goalRow = $('goal-row');
-        var goalValue = $('goal-value');
         var disclaimerEl = $('calc-disclaimer');
         var axisStartEl = $('axis-start');
         var axisEndEl = $('axis-end');
@@ -435,7 +432,6 @@
         var headline = new AnimatedValue(resultValueEl, money);
         var statA = new AnimatedValue(statAValue, money);
         var statB = new AnimatedValue(statBValue, money);
-        var goalStat = goalValue ? new AnimatedValue(goalValue, signedMoney) : null;
 
         var chart = new Chart(svg, 'wtCalcGradient');
         var reveal = reduceMotion ? 1 : 0;
@@ -525,14 +521,6 @@
 
                 statA.set(state.startingBalance + result.totalContributions);
                 statB.set(result.totalGrowth);
-
-                if (goalRow) {
-                    var hasGoal = state.savingsGoal > 0;
-                    goalRow.hidden = !hasGoal;
-                    if (hasGoal && goalStat) {
-                        goalStat.set(result.finalBalance - state.savingsGoal);
-                    }
-                }
             }
 
             // The kids chart is labeled by the child's age, not elapsed years.
@@ -571,7 +559,8 @@
                 percent(state.expectedReturn) + ' annual return' +
                 (state.contributionGrowthRate > 0
                     ? ', with contributions rising ' +
-                      percent(state.contributionGrowthRate * 100) + ' a year'
+                      percent(state.contributionGrowthRate * 100) +
+                      ' a year above inflation'
                     : '') +
                 (state.inflationRate > 0
                     ? ', less ' + percent(state.inflationRate) +
@@ -674,7 +663,6 @@
             });
 
             if (isKids) {
-                bindCurrency('savings-goal', 'savingsGoal');
                 // Both age sliders re-render; the horizon is targetAge - childAge,
                 // so keep them from crossing.
                 var childSlider = bindSlider('child-age', 'childAge', {
