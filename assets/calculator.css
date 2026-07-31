@@ -1268,6 +1268,11 @@
 
 .template-card .btn {
     margin-top: var(--space-sm);
+    /* .btn is nowrap by default, which makes these long labels wider than
+       a 320px screen. Let them wrap rather than push the page sideways. */
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
 }
 
 @media (max-width: 640px) {

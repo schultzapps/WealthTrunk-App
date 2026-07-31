@@ -838,7 +838,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 /* Showcase Row Layout */
 .showcase-row {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    /* minmax(0, …) so the tracks can shrink below their content's
+       min-content width. A bare `fr` refuses to, which let the phone
+       row push the whole page wider than a narrow screen. */
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     gap: var(--space-3xl);
     align-items: center;
     margin-bottom: var(--space-4xl);
@@ -849,7 +852,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .showcase-row-reverse {
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
 }
 
 .showcase-row-reverse .showcase-content {
@@ -1691,7 +1694,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     /* Showcase responsive */
     .showcase-row,
     .showcase-row-reverse {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: var(--space-2xl);
         text-align: center;
     }
