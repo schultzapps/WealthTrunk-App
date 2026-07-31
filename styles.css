@@ -747,12 +747,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     flex-shrink: 0;
 }
 
-.hero-cta-note {
-    margin-top: var(--space-md);
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-}
-
 .hero-mockup {
     position: relative;
     display: flex;
