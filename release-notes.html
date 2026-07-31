@@ -710,16 +710,6 @@
             mobileMenuBtn.classList.toggle('active');
         });
 
-        // Navbar scroll effect
-        const navbar = document.querySelector('.navbar');
-        // Run on load too: a page restored mid-scroll (back button, #anchor)
-        // would otherwise keep whatever state the markup shipped with.
-        const syncNavbar = () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        };
-        window.addEventListener('scroll', syncNavbar);
-        syncNavbar();
-
         // Email obfuscation
         document.getElementById('contact-link').addEventListener('click', function(e) {
             e.preventDefault();

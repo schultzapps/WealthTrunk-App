@@ -1,13 +1,30 @@
 /* ============================================================
    HSA Monster — shared navbar behavior
-   Drives the "Tools" dropdown on every page. Theme toggle and
-   the mobile hamburger stay in each page's inline script; this
-   only owns the dropdown so the markup can be pasted anywhere.
+   Drives the "Tools" dropdown and the scrolled state on every
+   page. Theme toggle and the mobile hamburger stay in each
+   page's inline script; this owns the parts that must behave
+   identically everywhere.
    ============================================================ */
 (function () {
     'use strict';
 
+    /* The navbar picks up its divider and backdrop once the page has
+       scrolled past the hero. Runs on load as well as on scroll, so a
+       page restored mid-scroll (back button, #anchor) starts correct. */
+    function initScrollState() {
+        var navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+
+        var sync = function () {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        };
+        window.addEventListener('scroll', sync, { passive: true });
+        sync();
+    }
+
     function init() {
+        initScrollState();
+
         var dropdowns = document.querySelectorAll('.nav-dropdown');
         if (!dropdowns.length) return;
 

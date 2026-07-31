@@ -759,16 +759,6 @@
             observer.observe(el);
         });
 
-        // Navbar scroll effect
-        const navbar = document.querySelector('.navbar');
-        // Run on load too: a page restored mid-scroll (back button, #anchor)
-        // would otherwise keep whatever state the markup shipped with.
-        const syncNavbar = () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        };
-        window.addEventListener('scroll', syncNavbar);
-        syncNavbar();
-
         // Newsletter Form (Mailchimp JSONP)
         const newsletterForm = document.getElementById('newsletter-form');
         const newsletterSuccess = document.getElementById('newsletter-success');
