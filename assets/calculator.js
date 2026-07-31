@@ -607,18 +607,44 @@
         }
 
         /* --- Currency fields --- */
+        /* A currency field may have an optional companion slider (id + '-slider')
+           for the common range, while the text field stays authoritative and can
+           hold any amount up to MAX_AMOUNT. Typing a value past the slider's max
+           pins the thumb at the end rather than clamping what you typed. */
         function bindCurrency(id, key) {
             var input = $(id);
             if (!input) return null;
+            var slider = $(id + '-slider');
+
+            var paintSlider = function () {
+                if (!slider) return;
+                var min = parseFloat(slider.min), max = parseFloat(slider.max);
+                var clamped = Math.max(min, Math.min(state[key], max));
+                slider.value = clamped;
+                var pct = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
+                slider.style.setProperty('--fill', pct + '%');
+            };
+
             var show = function () { input.value = groupFmt.format(state[key]); };
             show();
+            paintSlider();
+
             input.addEventListener('input', function () {
                 var digits = input.value.replace(/[^0-9]/g, '');
                 var value = Math.min(digits === '' ? 0 : parseInt(digits, 10), MAX_AMOUNT);
                 input.value = digits === '' ? '' : groupFmt.format(value);
                 update(key, value);
+                paintSlider();
             });
             input.addEventListener('blur', show);
+
+            if (slider) {
+                slider.addEventListener('input', function () {
+                    update(key, parseInt(slider.value, 10));
+                    show();
+                    paintSlider();
+                });
+            }
             return { show: show };
         }
 
