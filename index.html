@@ -138,7 +138,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar scrolled">
+    <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="images/appicon.png" alt="WealthTrunk" class="logo-icon">
@@ -761,13 +761,13 @@
 
         // Navbar scroll effect
         const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Run on load too: a page restored mid-scroll (back button, #anchor)
+        // would otherwise keep whatever state the markup shipped with.
+        const syncNavbar = () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        };
+        window.addEventListener('scroll', syncNavbar);
+        syncNavbar();
 
         // Newsletter Form (Mailchimp JSONP)
         const newsletterForm = document.getElementById('newsletter-form');
