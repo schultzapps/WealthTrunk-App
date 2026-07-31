@@ -863,11 +863,19 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     align-items: center;
     gap: var(--space-md);
     perspective: 1000px;
+    /* Never let the three phones push past their column: on a narrow
+       phone the fixed widths below would otherwise total ~460px and
+       give the whole page a horizontal scrollbar. */
+    max-width: 100%;
 }
 
 .showcase-phone {
+    /* Width is the flex basis and may shrink; aspect-ratio keeps the
+       phone proportions rather than a hard-coded height. */
     width: 160px;
-    height: 340px;
+    aspect-ratio: 160 / 340;
+    flex: 0 1 auto;
+    min-width: 0;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
@@ -888,7 +896,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .showcase-phone-center {
     width: 180px;
-    height: 380px;
+    aspect-ratio: 180 / 380;
     transform: scale(1) rotateY(0deg) !important;
     opacity: 1 !important;
     box-shadow: var(--shadow-lg), 0 0 30px var(--accent-glow);
@@ -1604,12 +1612,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .showcase-phone {
         width: 140px;
-        height: 300px;
     }
 
     .showcase-phone-center {
         width: 160px;
-        height: 340px;
     }
 
     .footer-grid {
@@ -1700,12 +1706,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .showcase-phone {
         width: 120px;
-        height: 260px;
     }
 
     .showcase-phone-center {
         width: 140px;
-        height: 300px;
     }
 
     .showcase-content {
