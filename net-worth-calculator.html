@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Worth Calculator: Add It Up and Export to the App | WealthTrunk</title>
+    <meta name="description" content="Free net worth calculator. Add what you own and owe to get your number, then download a CSV that imports straight into the WealthTrunk app.">
+    <meta name="keywords" content="net worth calculator, calculate net worth, assets minus liabilities, personal balance sheet, net worth tracker, net worth spreadsheet, financial net worth">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wealthtrunk.app/net-worth-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Net Worth Calculator: Add It Up and Export to the App | WealthTrunk">
+    <meta property="og:description" content="Free net worth calculator. Add what you own and owe to get your number, then download a CSV that imports straight into the WealthTrunk app.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wealthtrunk.app/net-worth-calculator.html">
+    <meta property="og:image" content="https://wealthtrunk.app/images/social-preview.png">
+    <meta property="og:site_name" content="WealthTrunk">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Net Worth Calculator: Add It Up and Export to the App | WealthTrunk">
+    <meta name="twitter:description" content="Free net worth calculator. Add what you own and owe to get your number, then download a CSV that imports straight into the WealthTrunk app.">
+    <meta name="twitter:image" content="https://wealthtrunk.app/images/social-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/appicon.png">
+    <link rel="apple-touch-icon" href="images/appicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/calculator.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Net Worth Calculator",
+      "url": "https://wealthtrunk.app/net-worth-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "browserRequirements": "Requires JavaScript",
+      "operatingSystem": "Any",
+      "description": "Free calculator that totals assets and liabilities to produce a net worth figure, and exports the accounts as a CSV file for import into the WealthTrunk app.",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "WealthTrunk",
+        "url": "https://wealthtrunk.app/"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://wealthtrunk.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://wealthtrunk.app/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Net Worth Calculator",
+          "item": "https://wealthtrunk.app/net-worth-calculator.html"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate net worth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add up everything you own \u2014 cash, investments, retirement accounts, property, vehicles \u2014 then subtract everything you owe: mortgages, loans, credit card balances. What's left is your net worth. It can be negative, which is common early on when student loans or a mortgage outweigh savings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I include as an asset?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anything with real resale or cash value: bank accounts, brokerage and retirement accounts, your home and vehicles, and valuables worth enough to matter. Use what something would realistically sell for today, not what you paid. Most people leave out furniture and everyday possessions because the values are small and hard to pin down."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I include my house and mortgage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, both \u2014 the home's market value as an asset and the outstanding mortgage as a liability. The difference between them is your equity. Leaving out either side distorts the picture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should I update it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monthly or quarterly is plenty for most people. What matters is the trend over years rather than any single figure, and checking too often mostly just tracks market noise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to the CSV file I download?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's generated in your browser and saved to your device. Nothing is uploaded \u2014 this page has no server to send it to. The file is formatted for WealthTrunk's account importer so you can load everything at once instead of adding accounts one by one."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data stored anywhere?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only in your own browser, so your entries are still there when you come back. Nothing is transmitted, and clearing your browser data removes it."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLDM112N75"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TLDM112N75');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/appicon.png" alt="WealthTrunk" class="logo-icon">
+                <span class="logo-text">WealthTrunk</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#reviews">Reviews</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+                        Tools
+                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="investment-calculator.html">Investment Calculator<span class="item-desc">What your money could become</span></a>
+                        <a href="kids-savings-calculator.html">Kids Savings Calculator<span class="item-desc">Save for college, a car, anything</span></a>
+                        <a href="pension-value-calculator.html">Pension Value Calculator<span class="item-desc">Lump-sum value of future income</span></a>
+                        <a href="net-worth-calculator.html">Net Worth Calculator<span class="item-desc">Add it up and export to the app</span></a>
+                        <a href="csv-templates.html">CSV Templates<span class="item-desc">Bulk-import your accounts</span></a>
+                    </div>
+                </div>
+                <a href="index.html#faq">FAQ</a>
+                <a href="release-notes.html">What's New?</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_networth_nav&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_networth_nav">Download</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="tool-page">
+        <div class="tool-container">
+
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <a href="tools.html">Tools</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <span aria-current="page">Net Worth Calculator</span>
+            </nav>
+
+            <!-- Hero -->
+            <header class="tool-hero">
+                <span class="section-label">Free Tool</span>
+                <h1>Net Worth Calculator</h1>
+                <p class="lead">
+                    Everything you own, minus everything you owe. Add your accounts below to get the
+                    number — then <strong>export a CSV that loads straight into the WealthTrunk app</strong>,
+                    so you don't have to type it all again.
+                </p>
+            </header>
+
+            <!-- Tool -->
+            <section class="calc" id="networth-tool" aria-label="Net worth calculator">
+
+                <div class="calc-results">
+                    <div class="result-card">
+                        <div class="result-head">
+                            <div class="result-value" id="net-worth-value">$0</div>
+                            <div class="result-caption">Your Net Worth</div>
+                        </div>
+                        <div class="nw-bar" style="padding: 0 var(--space-lg) var(--space-md);">
+                            <div class="nw-bar-track">
+                                <div class="nw-bar-fill assets" id="bar-assets" style="width: 0%"></div>
+                            </div>
+                            <div class="nw-bar-track">
+                                <div class="nw-bar-fill liabilities" id="bar-liabilities" style="width: 0%"></div>
+                            </div>
+                            <div class="nw-bar-legend">
+                                <span>Assets <strong id="total-assets">$0</strong></span>
+                                <span>Liabilities <strong id="total-liabilities">$0</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="inputs-card">
+                        <p class="inputs-sub"><span id="row-count">0 accounts</span> ready to export.</p>
+                        <div class="nw-export">
+                            <button type="button" class="btn btn-primary btn-hero" id="export-csv">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Download CSV for the app
+                            </button>
+                            <p>
+                                Formatted for WealthTrunk's account importer. Generated in your
+                                browser — nothing is uploaded.
+                            </p>
+                            <div class="nw-export-done" id="export-done" hidden>
+                                <strong>Downloaded.</strong> In the app, go to
+                                <em>Settings → Import Data (CSV) → Accounts → Import</em> and pick the
+                                file. Everything lands under <em>Pending Imports</em> for you to review
+                                before it's added. See the
+                                <a href="csv-templates.html">CSV templates page</a> for the full
+                                column reference.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-inputs-col">
+                    <div class="inputs-card">
+                        <div class="nw-section">
+                            <div class="nw-section-head">
+                                <h3>What you own</h3>
+                                <span class="nw-section-total" id="assets-total-inline"></span>
+                            </div>
+                            <div class="nw-rows" id="assets-rows"></div>
+                            <button type="button" class="nw-add" id="add-asset">+ Add an asset</button>
+                        </div>
+
+                        <div class="nw-section">
+                            <div class="nw-section-head">
+                                <h3>What you owe</h3>
+                            </div>
+                            <div class="nw-rows" id="liabilities-rows"></div>
+                            <button type="button" class="nw-add" id="add-liability">+ Add a liability</button>
+                        </div>
+
+                        <p class="field-hint" style="margin-top: var(--space-lg);">
+                            Enter debts as positive numbers — they're subtracted automatically, and
+                            exported as negative balances the way the app expects.
+                            <button type="button" id="reset-rows" style="background:none;border:none;padding:0;color:var(--accent-primary);cursor:pointer;font:inherit;text-decoration:underline;">Reset to defaults</button>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inline CTA -->
+            <div class="inline-cta">
+                <p><strong>A number once is interesting. A trend is useful.</strong> WealthTrunk keeps the history, charts it over time, and projects where it's heading — import the file you just made and you're set up in a minute.</p>
+                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_networth_inline&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_networth_inline">Get the free app</a>
+            </div>
+
+            <!-- How to -->
+            <section class="tool-section">
+                <h2>How to calculate your net worth</h2>
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>List what you own</h3>
+                            <p>
+                                Cash and checking, savings, brokerage and retirement accounts, your
+                                home, vehicles, and anything else with real resale value. Use current
+                                market value, not what you paid.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>List what you owe</h3>
+                            <p>
+                                Mortgage balance, car loans, student loans, credit cards, and any
+                                personal or medical debt. Use the current payoff balance rather than
+                                the original amount borrowed.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>Subtract</h3>
+                            <p>
+                                Assets minus liabilities. A negative result is normal for anyone
+                                early in a career with student debt or a new mortgage — the direction
+                                it moves matters far more than the starting point.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>Track it over time</h3>
+                            <p>
+                                One snapshot tells you little. The same calculation every few months
+                                shows whether the trend is going the way you want, which is the
+                                actual point of the exercise.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What counts -->
+            <section class="tool-section">
+                <h2>What counts on each side</h2>
+                <div class="table-scroll">
+                    <table class="tool-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Assets — what you own</th>
+                                <th scope="col">Liabilities — what you owe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Checking, savings, money market, cash</td><td>Credit card balances</td></tr>
+                            <tr><td>Brokerage and investment accounts</td><td>Mortgage and HELOC</td></tr>
+                            <tr><td>Retirement accounts and pensions</td><td>Vehicle loans</td></tr>
+                            <tr><td>529, Coverdell, UTMA/UGMA and custodial accounts</td><td>Student loans</td></tr>
+                            <tr><td>Home and other real estate</td><td>Personal and family loans</td></tr>
+                            <tr><td>Vehicles and valuables worth listing</td><td>Medical and tax debt</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    Have a pension or annuity? Use the
+                    <a href="pension-value-calculator.html">pension value calculator</a> to turn the
+                    monthly income into a lump sum first, then add that figure as an asset here.
+                </p>
+            </section>
+
+            <!-- Export explainer -->
+            <section class="tool-section">
+                <h2>About the CSV export</h2>
+                <p>
+                    The download button produces a file matching WealthTrunk's account import format:
+                    every column the importer expects, your accounts as rows, and liabilities written
+                    as negative balances. It's created in your browser and saved to your device —
+                    this page has no server and nothing is transmitted.
+                </p>
+                <ul class="tool-list">
+                    <li><strong>Import path:</strong> Settings → Import Data (CSV) → Accounts → Import.</li>
+                    <li><strong>Everything is reviewable.</strong> Imported accounts land under <em>Pending Imports</em> so you can check and assign them before they join your net worth.</li>
+                    <li><strong>Rates and contributions default to zero.</strong> Add those in the app where you can also set owners, currencies and projections.</li>
+                    <li><strong>Need the blank template instead?</strong> The <a href="csv-templates.html">CSV templates page</a> has both import templates with the full column reference.</li>
+                </ul>
+            </section>
+
+            <!-- FAQ -->
+            <section class="tool-section">
+                <h2>Net worth FAQ</h2>
+                <div class="tool-faq">
+                    <details open>
+                        <summary>How do you calculate net worth?</summary>
+                        <p>Add up everything you own — cash, investments, retirement accounts, property, vehicles — then subtract everything you owe: mortgages, loans, credit card balances. What's left is your net worth. It can be negative, which is common early on when student loans or a mortgage outweigh savings.</p>
+                    </details>
+                    <details>
+                        <summary>What should I include as an asset?</summary>
+                        <p>Anything with real resale or cash value: bank accounts, brokerage and retirement accounts, your home and vehicles, and valuables worth enough to matter. Use what something would realistically sell for today, not what you paid. Most people leave out furniture and everyday possessions because the values are small and hard to pin down.</p>
+                    </details>
+                    <details>
+                        <summary>Should I include my house and mortgage?</summary>
+                        <p>Yes, both — the home's market value as an asset and the outstanding mortgage as a liability. The difference between them is your equity. Leaving out either side distorts the picture.</p>
+                    </details>
+                    <details>
+                        <summary>How often should I update it?</summary>
+                        <p>Monthly or quarterly is plenty for most people. What matters is the trend over years rather than any single figure, and checking too often mostly just tracks market noise.</p>
+                    </details>
+                    <details>
+                        <summary>What happens to the CSV file I download?</summary>
+                        <p>It's generated in your browser and saved to your device. Nothing is uploaded — this page has no server to send it to. The file is formatted for WealthTrunk's account importer so you can load everything at once instead of adding accounts one by one.</p>
+                    </details>
+                    <details>
+                        <summary>Is my data stored anywhere?</summary>
+                        <p>Only in your own browser, so your entries are still there when you come back. Nothing is transmitted, and clearing your browser data removes it.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related tools -->
+            <section class="tool-section">
+                <h2>Keep going</h2>
+                <div class="related-grid">
+                    <a class="related-card" href="csv-templates.html">
+                        <span class="eyebrow">Next</span>
+                        <h3>CSV Templates</h3>
+                        <p>Blank import templates plus the full column reference for bulk-loading accounts and balance history.</p>
+                    </a>
+                    <a class="related-card" href="investment-calculator.html">
+                        <span class="eyebrow">Next tool</span>
+                        <h3>Investment Calculator</h3>
+                        <p>Project what a balance and a monthly habit turn into over time.</p>
+                    </a>
+                    <a class="related-card" href="tools.html">
+                        <span class="eyebrow">All tools</span>
+                        <h3>Free Financial Tools</h3>
+                        <p>Every calculator we've built, in one place.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- CTA — shared across every page -->
+            <section id="download" class="cta-section">
+                <div class="cta-box">
+                    <h2 class="cta-title">Become A Financial Maximizer</h2>
+                    <p class="cta-description">
+                        Start tracking your net worth today. See where you stand and where you're headed.
+                    </p>
+                    <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_networth_cta&amp;mt=8" class="btn btn-primary btn-hero" data-download-location="wt_tools_networth_cta">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        Download<span class="btn-label-full"> on the App Store</span>
+                    </a>
+                    <p class="cta-note">Free to download. No account required.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/appicon.png" alt="WealthTrunk" class="logo-icon">
+                        <span class="logo-text">WealthTrunk</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Track your net worth. See where you stand and where you're headed.
+                    </p>
+                    <p class="footer-tagline footer-made-in">
+                        Made with ❤️ in Atlanta, GA
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#reviews">Reviews</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_networth_footer&amp;mt=8" data-download-location="wt_tools_networth_footer">Download</a></li>
+                        <li><a href="release-notes.html">What's New?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Free Tools</h4>
+                    <ul>
+                        <li><a href="investment-calculator.html">Investment Calculator</a></li>
+                        <li><a href="kids-savings-calculator.html">Kids Savings Calculator</a></li>
+                        <li><a href="pension-value-calculator.html">Pension Value Calculator</a></li>
+                        <li><a href="net-worth-calculator.html">Net Worth Calculator</a></li>
+                        <li><a href="csv-templates.html">CSV Templates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://wealthtrunk.app/Privacy_Policy.html">Privacy Policy</a></li>
+                        <li><a href="https://wealthtrunk.app/Terms_of_Service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" id="contact-link">Contact Us</a></li>
+                        <li><a href="press-kit.html">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Our Other Apps</h4>
+                    <ul>
+                        <li><a href="https://hsamonster.com/">HSA Monster</a></li>
+                        <li><a href="https://apps.apple.com/us/app/silly-millys-photo-match/id6785623797?pt=127982700&amp;ct=wt_footer&amp;mt=8">Silly Milly's Photo Match</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WealthTrunk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/site-nav.js" defer></script>
+    <script src="assets/networth.js" defer></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Email obfuscation (Contact Us in footer)
+        document.getElementById('contact-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            const user = 'schultzapps';
+            const domain = 'gmail.com';
+            window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent('WealthTrunk Feedback');
+        });
+    </script>
+    <!-- App Store download click tracking (GA4) -->
+    <script>
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href*="apps.apple.com/app/id6748625363"]');
+            if (!link || typeof gtag !== 'function') return;
+            gtag('event', 'download_app_click', {
+                button_location: link.getAttribute('data-download-location') || 'unknown',
+                destination: 'appstore',
+                app: 'wealthtrunk'
+            });
+        });
+    </script>
+</body>
+</html>

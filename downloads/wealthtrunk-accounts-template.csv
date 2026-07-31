@@ -1,0 +1,23 @@
+# Updated 2026-01-07
+# READ EVERY LINE OF THIS FILE BEFORE USING IT
+# This is a template you can use to quickly upload accounts into the app data.
+# Open this file in Microsoft Excel or Google Sheets.
+# Save it again as a CSV when you are finished adding rows.
+# Do not include commas in any field including notes! The import will fail if you have commas.
+# Review the add account selections in the app to understand the options for account types and properties. Match text exactly when adding an account.
+#
+# ID is optional. Provide a valid UUID from export to preserve existing IDs. Blank or invalid IDs will be auto-generated.
+# IsClosed is optional. Leave blank to default to FALSE (open account).
+# ContributionGrowthRate is optional. Annual growth rate for contributions (e.g. 0.02 for 2%). Leave blank for 0.
+# Percentage for ReturnRate, LoanRate, or ContributionGrowthRate should be entered as 0.00 - ex. 2.00% enter 0.02
+# CurrentBalance should have NO commas or symbols. Enter as 12345.67.
+# BalanceDate is optional. Use yyyy-MM-dd format (e.g. 2025-01-15). Leave blank to use today's date.
+# AccountCurrency is optional. Use 3-letter ISO code: USD EUR GBP etc. Leave blank to use your default currency.
+# LogoDomain is optional. DO NOT manually enter values - only copy from exported data. The app will reconstruct the account logo.
+# Owners is recommended to leave blank. Matching existing names (or 'Joint') will assign directly. Failed matches will require a manual review.
+# All imports without an owner assigned will be listed under 'Pending Imports' for your review.
+#
+ID,Nickname,BankName,AccountType,TaxStatus,IsClosed,InProjection,MonthlyContribution,ContributionGrowthRate,ReturnRate,LoanRate,MonthlyPayment,Note,CurrentBalance,BalanceDate,AccountCurrency,LogoDomain,Owners
+,Sample Asset,Chase,Checking,After-Tax,FALSE,TRUE,0,0,0.07,0.045,0,I pay my bills from this account,1500,,,chase.com,Michael
+,Sample Liability,VISA,Credit Card,None,FALSE,TRUE,0,0,0,0.22,200,Only use this card for the points,-3000,,,,
+,European Savings,Bank of Europe,Savings,After-Tax,FALSE,TRUE,100,0.02,0.03,0,0,Euro-denominated account,5000,2024-12-15,EUR,,Joint

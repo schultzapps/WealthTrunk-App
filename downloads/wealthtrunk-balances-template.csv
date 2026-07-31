@@ -1,0 +1,19 @@
+# Updated 2025-01-01
+# This is a template you can use to quickly upload historical balances into the app data
+# Open this file in Microsoft Excel or Google Sheets
+# Save it again as a CSV when you are finished adding rows.
+# Export your accounts first to get the ID of each account
+# Add rows for each balance you want to import matching each column format perfectly from the sample below
+# The date format must be YYYY-MM-DD!! It won't work if the format changes.
+# Assets should have positive values (10000) liabilities should have negative values (-10000)
+Date,Balance,AccountID
+2015-12-31,7789.87,CF520325-0C87-44BB-B673-0BAC40617FCA
+2016-12-31,8031.05,CF520325-0C87-44BB-B673-0BAC40617FCA
+2017-12-31,12624.49,CF520325-0C87-44BB-B673-0BAC40617FCA
+2018-12-31,14596,CF520325-0C87-44BB-B673-0BAC40617FCA
+2019-12-31,26506,CF520325-0C87-44BB-B673-0BAC40617FCA
+2020-12-31,42796.97,CF520325-0C87-44BB-B673-0BAC40617FCA
+2021-12-31,56360,CF520325-0C87-44BB-B673-0BAC40617FCA
+2022-12-31,39366,CF520325-0C87-44BB-B673-0BAC40617FCA
+2023-12-31,49634,CF520325-0C87-44BB-B673-0BAC40617FCA
+2024-12-31,62794,CF520325-0C87-44BB-B673-0BAC40617FCA

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Savings Calculator: 529, UTMA & College Savings | WealthTrunk</title>
+    <meta name="description" content="Free kids savings calculator. Enter your child's age and when they'll need the money — college, trade school, a first car — and see what steady saving builds. Covers 529, Coverdell ESA and UTMA/UGMA.">
+    <meta name="keywords" content="kids savings calculator, child savings calculator, college savings calculator, 529 calculator, UTMA calculator, UGMA calculator, custodial account calculator, Coverdell ESA, saving for children, education savings calculator">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://wealthtrunk.app/kids-savings-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kids Savings Calculator: 529, UTMA & College Savings | WealthTrunk">
+    <meta property="og:description" content="Free kids savings calculator. Enter your child's age and when they'll need the money — college, trade school, a first car — and see what steady saving builds. Covers 529, Coverdell ESA and UTMA/UGMA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wealthtrunk.app/kids-savings-calculator.html">
+    <meta property="og:image" content="https://wealthtrunk.app/images/social-preview.png">
+    <meta property="og:site_name" content="WealthTrunk">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kids Savings Calculator: 529, UTMA & College Savings | WealthTrunk">
+    <meta name="twitter:description" content="Free kids savings calculator. Enter your child's age and when they'll need the money — college, trade school, a first car — and see what steady saving builds. Covers 529, Coverdell ESA and UTMA/UGMA.">
+    <meta name="twitter:image" content="https://wealthtrunk.app/images/social-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/appicon.png">
+    <link rel="apple-touch-icon" href="images/appicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/calculator.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Kids Savings Calculator",
+      "url": "https://wealthtrunk.app/kids-savings-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "browserRequirements": "Requires JavaScript",
+      "operatingSystem": "Any",
+      "description": "Free calculator that projects savings for a child using their current age and the age they'll need the money, with a comparison of 529, Coverdell ESA, UTMA/UGMA and custodial brokerage accounts.",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "WealthTrunk",
+        "url": "https://wealthtrunk.app/"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://wealthtrunk.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://wealthtrunk.app/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Kids Savings Calculator",
+          "item": "https://wealthtrunk.app/kids-savings-calculator.html"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much should I save for my child?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That depends entirely on what you're saving for and where. Rather than guess at a number, set a savings goal in the calculator and see what monthly amount reaches it by the age you choose. Working backwards from a target is more useful than any rule of thumb."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between a 529, a Coverdell ESA, and a UTMA/UGMA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 529 plan grows tax-free when the money is spent on qualified education costs, and many states offer a deduction for contributing. A Coverdell ESA is similar but capped at $2,000 per year with income limits, though it covers K-12 costs more broadly. A UTMA/UGMA is a custodial account with no restriction on what the money is used for \u2014 but it legally becomes the child's property when they reach the age of majority in your state, and it weighs more heavily against financial aid. WealthTrunk tracks all three."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the money have to be used for college?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depends on the account. A UTMA/UGMA or an ordinary brokerage account can be spent on anything \u2014 a car, a trade school, a house deposit, or handed over as a gift. A 529 or Coverdell is tax-advantaged specifically for education, though 529 rules have widened over time to include apprenticeships, some K-12 tuition, and limited Roth IRA rollovers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if my child is a newborn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set their age to 0. An 18-year horizon is where compounding does the most work \u2014 the difference between starting at birth and starting at age 10 is usually larger than most people expect, which you can see by dragging the age slider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should the money be invested or in savings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That's a question about your time horizon and risk tolerance, not one this calculator can answer. A long horizon leaves room to ride out market swings; a short one usually doesn't. If you'd rather model a savings account, enter a rate close to what the account actually pays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this financial advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It's arithmetic on the numbers you enter. Account rules, taxes, and financial aid treatment vary by state and change over time. Talk to a qualified professional."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLDM112N75"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TLDM112N75');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/appicon.png" alt="WealthTrunk" class="logo-icon">
+                <span class="logo-text">WealthTrunk</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#reviews">Reviews</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+                        Tools
+                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="investment-calculator.html">Investment Calculator<span class="item-desc">What your money could become</span></a>
+                        <a href="kids-savings-calculator.html">Kids Savings Calculator<span class="item-desc">Save for college, a car, anything</span></a>
+                        <a href="pension-value-calculator.html">Pension Value Calculator<span class="item-desc">Lump-sum value of future income</span></a>
+                        <a href="net-worth-calculator.html">Net Worth Calculator<span class="item-desc">Add it up and export to the app</span></a>
+                        <a href="csv-templates.html">CSV Templates<span class="item-desc">Bulk-import your accounts</span></a>
+                    </div>
+                </div>
+                <a href="index.html#faq">FAQ</a>
+                <a href="release-notes.html">What's New?</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_kids_nav&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_kids_nav">Download</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="tool-page">
+        <div class="tool-container">
+
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <a href="tools.html">Tools</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <span aria-current="page">Kids Savings Calculator</span>
+            </nav>
+
+            <!-- Hero -->
+            <header class="tool-hero">
+                <span class="section-label">Free Tool</span>
+                <h1>Kids Savings Calculator</h1>
+                <p class="lead">
+                    College, university, trade school, a first car, a deposit on a home — whatever
+                    you're building toward, <strong>enter your child's age today and the age they'll
+                    need the money</strong>, and see what steady saving turns into by then.
+                </p>
+            </header>
+
+            <!-- Calculator -->
+            <section class="calc" data-calculator="kids" aria-label="Kids savings calculator">
+
+                <div class="calc-results">
+                    <div class="result-card">
+                        <div class="result-head">
+                            <div class="result-value" id="result-value">$0</div>
+                            <div class="result-caption" id="result-caption">Saved by age 18</div>
+                        </div>
+                        <div class="chart-wrap" role="group" aria-label="Projection over time. Drag or use the arrow keys to read a single point.">
+                            <svg class="chart-svg" id="calc-chart" preserveAspectRatio="none" aria-hidden="true"></svg>
+                        </div>
+                        <div class="chart-axis">
+                            <span id="axis-start">Age 4</span>
+                            <span id="axis-end">Age 18</span>
+                        </div>
+                        <div class="chart-legend">
+                            <span class="legend-item"><span class="legend-swatch"></span>Projected balance</span>
+                            <span class="legend-item"><span class="legend-swatch dashed"></span>Contributions</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">Total Put In</div>
+                            <div class="stat-value" id="stat-a-value">$0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-title">Total Growth</div>
+                            <div class="stat-value accent" id="stat-b-value">$0</div>
+                        </div>
+                    <div class="stat-card" id="goal-row" hidden>
+                        <div class="stat-title">Versus Your Goal</div>
+                        <div class="stat-value accent" id="goal-value">$0</div>
+                    </div>
+                    </div>
+
+                    <p class="calc-disclaimer" id="calc-disclaimer">
+                        For illustrative purposes only. Not financial, tax, or investment advice.
+                    </p>
+                </div>
+
+                <div class="calc-inputs-col">
+                    <div class="inputs-card">
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="child-age">Child's age now</label>
+                                <span class="field-value" id="child-age-value">4 years old</span>
+                            </div>
+                            <input class="slider" type="range" id="child-age" min="0" max="25" step="1" value="4">
+                        </div>
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="target-age">Age they'll need it</label>
+                                <span class="field-value" id="target-age-value">Age 18</span>
+                            </div>
+                            <input class="slider" type="range" id="target-age" min="1" max="30" step="1" value="18">
+                        </div>
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="starting-balance">Already saved</label>
+                                <span class="currency-input">
+                                    <span class="prefix">$</span>
+                                    <input type="text" id="starting-balance" inputmode="numeric" autocomplete="off" value="0">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="monthly-contribution">Monthly contribution</label>
+                                <span class="currency-input">
+                                    <span class="prefix">$</span>
+                                    <input type="text" id="monthly-contribution" inputmode="numeric" autocomplete="off" value="0">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="expected-return">Annual return</label>
+                                <span class="field-value" id="expected-return-value">7.0%</span>
+                            </div>
+                            <input class="slider" type="range" id="expected-return" min="1" max="15" step="0.5" value="7">
+                        </div>
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="inflation-rate">Inflation rate</label>
+                                <span class="field-value" id="inflation-rate-value">2.5%</span>
+                            </div>
+                            <input class="slider" type="range" id="inflation-rate" min="0" max="10" step="0.5" value="2.5">
+                            <p class="field-hint">
+                                Real return after inflation: <strong id="real-rate">4.4%</strong>.
+                                Results are shown in today's money. Set inflation to 0% for future dollars.
+                            </p>
+                        </div>
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="contribution-growth">Contribution increase</label>
+                                <span class="field-value" id="contribution-growth-value">0.0%</span>
+                            </div>
+                            <input class="slider" type="range" id="contribution-growth" min="0" max="10" step="0.5" value="0">
+                            <p class="field-hint">How much you raise your monthly amount each year.</p>
+                        </div>
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="savings-goal">Savings goal</label>
+                                <span class="currency-input">
+                                    <span class="prefix">$</span>
+                                    <input type="text" id="savings-goal" inputmode="numeric" autocomplete="off" value="0">
+                                </span>
+                            </div>
+                            <p class="field-hint">Optional. Leave at 0 to hide the comparison.</p>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-hero calc-jump" id="calc-jump">
+                            Calculate
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inline CTA -->
+            <div class="inline-cta">
+                <p><strong>Track it alongside everything else.</strong> WealthTrunk handles 529s, Coverdell ESAs, UTMA/UGMA and custodial brokerage accounts, so a child's savings sits in the same net worth picture as the rest of your money.</p>
+                <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_kids_inline&amp;mt=8" class="btn btn-primary" data-download-location="wt_tools_kids_inline">Get the free app</a>
+            </div>
+
+            <!-- Where to keep it -->
+            <section class="tool-section">
+                <h2>Where to keep the money</h2>
+                <p>
+                    The calculator doesn't care which account you use — but the account you choose
+                    changes how the money is taxed, what it can be spent on, and who ends up
+                    controlling it. Here's how the common US options are treated.
+                </p>
+                <div class="table-scroll">
+                    <table class="tool-table">
+                        <caption>US account types, described in general terms. Rules change and vary by state — confirm details before opening an account.</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Account</th>
+                                <th scope="col">Tax treatment</th>
+                                <th scope="col">What it can be spent on</th>
+                                <th scope="col">Worth knowing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">529 plan</th>
+                                <td>Grows tax-free for qualified education costs</td>
+                                <td>Tuition, fees, books, room and board; some K-12 and apprenticeships</td>
+                                <td>Many states offer a deduction. Limited Roth IRA rollovers are now allowed.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Coverdell ESA</th>
+                                <td>Grows tax-free for qualified education costs</td>
+                                <td>Broader K-12 coverage than a 529</td>
+                                <td>Capped at $2,000 per year, with income limits on who can contribute.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">UTMA / UGMA</th>
+                                <td>Some earnings taxed at the child's rate</td>
+                                <td>Anything that benefits the child</td>
+                                <td>Becomes the child's property at the age of majority. Counts heavily against financial aid.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Custodial brokerage</th>
+                                <td>Taxable</td>
+                                <td>Anything</td>
+                                <td>No tax break, but no restrictions and no strings either.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">High-yield savings</th>
+                                <td>Interest taxed as income</td>
+                                <td>Anything</td>
+                                <td>No market risk, which matters when the money is needed in a few years rather than a decade.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    These are US account types. WealthTrunk supports multiple currencies and works
+                    the same way wherever you are — the calculator above is currency-agnostic.
+                </p>
+            </section>
+
+            <!-- Time -->
+            <section class="tool-section">
+                <h2>Why starting age matters so much</h2>
+                <p>
+                    Drag the "child's age now" slider and watch the growth figure move. The
+                    contributions barely change — you're putting in a similar amount either way —
+                    but the growth changes dramatically, because each dollar has that many more
+                    years to compound.
+                </p>
+                <ul class="tool-list">
+                    <li><strong>Starting at birth</strong> gives an 18-year runway, long enough that growth often rivals contributions.</li>
+                    <li><strong>Starting at 10</strong> roughly halves the runway, and growth becomes a much smaller share of the total.</li>
+                    <li><strong>A short horizon</strong> shifts the question from "how do I grow this?" to "how do I not lose it?"</li>
+                    <li><strong>Inflation works against you too.</strong> College costs and car prices climb over the same years you're saving, which is why the projection is shown in today's money rather than a larger future number.</li>
+                </ul>
+                <p>These tools are illustrations, not advice. Projected returns are assumptions you choose, not predictions — real markets do not deliver a steady annual percentage. Nothing here is financial, tax, or investment advice.</p>
+            </section>
+
+            <!-- FAQ -->
+            <section class="tool-section">
+                <h2>Saving for kids: common questions</h2>
+                <div class="tool-faq">
+                    <details open>
+                        <summary>How much should I save for my child?</summary>
+                        <p>That depends entirely on what you're saving for and where. Rather than guess at a number, set a savings goal in the calculator and see what monthly amount reaches it by the age you choose. Working backwards from a target is more useful than any rule of thumb.</p>
+                    </details>
+                    <details>
+                        <summary>What's the difference between a 529, a Coverdell ESA, and a UTMA/UGMA?</summary>
+                        <p>A 529 plan grows tax-free when the money is spent on qualified education costs, and many states offer a deduction for contributing. A Coverdell ESA is similar but capped at $2,000 per year with income limits, though it covers K-12 costs more broadly. A UTMA/UGMA is a custodial account with no restriction on what the money is used for — but it legally becomes the child's property when they reach the age of majority in your state, and it weighs more heavily against financial aid. WealthTrunk tracks all three.</p>
+                    </details>
+                    <details>
+                        <summary>Does the money have to be used for college?</summary>
+                        <p>Depends on the account. A UTMA/UGMA or an ordinary brokerage account can be spent on anything — a car, a trade school, a house deposit, or handed over as a gift. A 529 or Coverdell is tax-advantaged specifically for education, though 529 rules have widened over time to include apprenticeships, some K-12 tuition, and limited Roth IRA rollovers.</p>
+                    </details>
+                    <details>
+                        <summary>What if my child is a newborn?</summary>
+                        <p>Set their age to 0. An 18-year horizon is where compounding does the most work — the difference between starting at birth and starting at age 10 is usually larger than most people expect, which you can see by dragging the age slider.</p>
+                    </details>
+                    <details>
+                        <summary>Should the money be invested or in savings?</summary>
+                        <p>That's a question about your time horizon and risk tolerance, not one this calculator can answer. A long horizon leaves room to ride out market swings; a short one usually doesn't. If you'd rather model a savings account, enter a rate close to what the account actually pays.</p>
+                    </details>
+                    <details>
+                        <summary>Is this financial advice?</summary>
+                        <p>No. It's arithmetic on the numbers you enter. Account rules, taxes, and financial aid treatment vary by state and change over time. Talk to a qualified professional.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related tools -->
+            <section class="tool-section">
+                <h2>Keep going</h2>
+                <div class="related-grid">
+                    <a class="related-card" href="investment-calculator.html">
+                        <span class="eyebrow">Next tool</span>
+                        <h3>Investment Calculator</h3>
+                        <p>The same growth engine without the age framing — for your own savings.</p>
+                    </a>
+                    <a class="related-card" href="net-worth-calculator.html">
+                        <span class="eyebrow">Next tool</span>
+                        <h3>Net Worth Calculator</h3>
+                        <p>Add up everything you own and owe — then export it straight into the app.</p>
+                    </a>
+                    <a class="related-card" href="tools.html">
+                        <span class="eyebrow">All tools</span>
+                        <h3>Free Financial Tools</h3>
+                        <p>Every calculator we've built, in one place.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- CTA — shared across every page -->
+            <section id="download" class="cta-section">
+                <div class="cta-box">
+                    <h2 class="cta-title">Become A Financial Maximizer</h2>
+                    <p class="cta-description">
+                        Start tracking your net worth today. See where you stand and where you're headed.
+                    </p>
+                    <a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_kids_cta&amp;mt=8" class="btn btn-primary btn-hero" data-download-location="wt_tools_kids_cta">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        Download<span class="btn-label-full"> on the App Store</span>
+                    </a>
+                    <p class="cta-note">Free to download. No account required.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/appicon.png" alt="WealthTrunk" class="logo-icon">
+                        <span class="logo-text">WealthTrunk</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Track your net worth. See where you stand and where you're headed.
+                    </p>
+                    <p class="footer-tagline footer-made-in">
+                        Made with ❤️ in Atlanta, GA
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#reviews">Reviews</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="https://apps.apple.com/app/id6748625363?pt=127982700&amp;ct=wt_tools_kids_footer&amp;mt=8" data-download-location="wt_tools_kids_footer">Download</a></li>
+                        <li><a href="release-notes.html">What's New?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Free Tools</h4>
+                    <ul>
+                        <li><a href="investment-calculator.html">Investment Calculator</a></li>
+                        <li><a href="kids-savings-calculator.html">Kids Savings Calculator</a></li>
+                        <li><a href="pension-value-calculator.html">Pension Value Calculator</a></li>
+                        <li><a href="net-worth-calculator.html">Net Worth Calculator</a></li>
+                        <li><a href="csv-templates.html">CSV Templates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://wealthtrunk.app/Privacy_Policy.html">Privacy Policy</a></li>
+                        <li><a href="https://wealthtrunk.app/Terms_of_Service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" id="contact-link">Contact Us</a></li>
+                        <li><a href="press-kit.html">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Our Other Apps</h4>
+                    <ul>
+                        <li><a href="https://hsamonster.com/">HSA Monster</a></li>
+                        <li><a href="https://apps.apple.com/us/app/silly-millys-photo-match/id6785623797?pt=127982700&amp;ct=wt_footer&amp;mt=8">Silly Milly's Photo Match</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WealthTrunk. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/site-nav.js" defer></script>
+    <script src="assets/calculator.js" defer></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Email obfuscation (Contact Us in footer)
+        document.getElementById('contact-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            const user = 'schultzapps';
+            const domain = 'gmail.com';
+            window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent('WealthTrunk Feedback');
+        });
+    </script>
+    <!-- App Store download click tracking (GA4) -->
+    <script>
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href*="apps.apple.com/app/id6748625363"]');
+            if (!link || typeof gtag !== 'function') return;
+            gtag('event', 'download_app_click', {
+                button_location: link.getAttribute('data-download-location') || 'unknown',
+                destination: 'appstore',
+                app: 'wealthtrunk'
+            });
+        });
+    </script>
+</body>
+</html>
