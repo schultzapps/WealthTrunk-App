@@ -165,7 +165,10 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+/* The lower bound has to survive the narrowest phone: at a 2.5rem floor a long
+   headline word overflows 393px and widens the whole page. 8vw lets it keep
+   scaling down below that. */
+h1 { font-size: clamp(2rem, 8vw, 4rem); }
 h2 { font-size: clamp(2rem, 4vw, 3rem); }
 h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
@@ -650,7 +653,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: var(--space-4xl) 0;
+    /* Extra top padding so the headline breathes below the fixed navbar
+       rather than sitting right under it. */
+    padding: calc(var(--space-4xl) + var(--space-xl)) 0 var(--space-3xl);
     overflow: hidden;
 }
 
@@ -695,24 +700,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 }
 
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-xs) var(--space-md);
-    background: var(--bg-card);
-    border: 1px solid var(--border-color-strong);
-    border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-lg);
-}
-
-.badge-icon {
-    font-size: 1rem;
-}
-
 .hero-title {
     margin-bottom: var(--space-lg);
 }
@@ -727,7 +714,56 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .hero-ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-md);
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+/* Social proof sitting beside the CTA: no pill or border, so it reads as a
+   credential next to the button rather than a second thing to click. */
+.hero-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: var(--text-secondary);
+}
+
+/* Laurel wreath flanking the rating, in the manner of a classic award badge.
+   The source art is solid white, which would disappear against the light
+   theme's pale background, so light mode inverts it to a dark equivalent. */
+.laurel {
+    flex-shrink: 0;
+    height: 44px;
+    width: auto;
+    opacity: 0.75;
+}
+
+[data-theme="light"] .laurel {
+    filter: invert(1);
+    opacity: 1;
+}
+
+.hero-rating-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    /* The wreath's leaves sit higher than its open base, so the stars and
+       label need a nudge upward to look centred between the branches. */
+    transform: translateY(-3px);
+}
+
+.hero-rating .stars {
+    display: flex;
+    gap: 2px;
+    color: #FFB800;
+}
+
+.hero-rating-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    color: var(--text-primary);
 }
 
 .hero-title .gradient-text {
@@ -735,7 +771,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .btn-hero {
-    padding: 1.125rem 2rem;
+    padding: 0.8125rem 2rem;
     font-size: 1.125rem;
     border-radius: var(--radius-full);
     box-shadow: var(--shadow-md), var(--shadow-glow);
@@ -816,7 +852,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Trust Section
    ============================================ */
 .trust-section {
-    padding: var(--space-2xl) 0;
+    /* A bordered divider band rather than a section in its own right, so it
+       stays tight: the hero above and the features section below already
+       contribute their own padding on either side of it. */
+    padding: var(--space-lg) 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
@@ -1014,7 +1053,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     gap: var(--space-3xl);
     align-items: center;
-    margin-bottom: var(--space-4xl);
+    /* The text column runs ~130px taller than the phones, and centring splits
+       that slack above and below the images. That padding already reads as
+       separation, so the row margin stays tight to avoid a double gap. */
+    margin-bottom: var(--space-xl);
 }
 
 .showcase-row:last-child {
@@ -1090,7 +1132,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 /* Showcase Content */
 .showcase-content {
-    padding: var(--space-xl);
+    /* Horizontal padding only: vertical padding here just deepens the gap
+       between rows, since the grid already centres this column. */
+    padding: 0 var(--space-xl);
 }
 
 .showcase-title {
@@ -1727,6 +1771,18 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Responsive Design
    ============================================ */
 @media (max-width: 1024px) {
+    /* Once the mockup stacks under the copy it starts below the fold. Keeping the
+       hero shorter than the viewport and trimming its padding lets the top of the
+       phone peek up, which is what pulls people into scrolling. */
+    .hero {
+        min-height: 88vh;
+        /* The fixed navbar overlaps the hero, so the top padding has to clear it.
+           This used to come for free from the badge that sat above the headline;
+           without it the title runs under the bar. Bottom padding stays tight so
+           the mockup still peeks above the fold. */
+        padding: calc(var(--space-4xl) + var(--space-lg)) 0 var(--space-2xl);
+    }
+
     .hero-container {
         /* minmax(0, 1fr) so wide children can't blow the column out past the viewport */
         grid-template-columns: minmax(0, 1fr);
