@@ -2075,11 +2075,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 }
 
-@media (max-width: 768px) {
-
+/* The feature cards hold up fine in two columns well below the 768px stacking
+   point the rest of the page uses, so they get their own narrower breakpoint. */
+@media (max-width: 560px) {
     .features-grid {
         grid-template-columns: 1fr;
     }
+}
+
+@media (max-width: 768px) {
 
     .steps-grid {
         grid-template-columns: 1fr;
