@@ -800,16 +800,18 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     border-radius: 50%;
 }
 
+/* The bezel is a transparent-cutout PNG of a real iPhone laid over the
+   screenshot, so every phone on the page shares one set of proportions.
+   The frame art is 496x1012, with an orange rail, then a ~10px black
+   bezel, then the screen cutout at x 27-466 / y 26-984. .phone-screen is
+   inset slightly LESS than the cutout so the screenshot tucks ~4px under
+   the black band, thinning the visible bezel. Don't reduce these further:
+   past x 17 / y 15 the screenshot would cover the orange rail. */
 .phone-frame {
     position: relative;
     width: 274px;
-    height: 574px;
-    background: linear-gradient(145deg, #2A2A3C, #1A1A28);
-    border-radius: 40px;
-    /* The padding is the phone's bezel; the screen radius below is kept at
-       (this radius - this padding) so the two curves stay concentric. */
-    padding: 5px;
-    box-shadow: var(--shadow-lg), 0 0 60px var(--accent-glow);
+    aspect-ratio: 496 / 1012;
+    filter: drop-shadow(0 0 60px var(--accent-glow));
     transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
     transition: transform var(--transition-slow);
 }
@@ -818,15 +820,37 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
 }
 
-.phone-screen {
+.phone-bezel {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    /* Sits above the screenshot so the bezel and Dynamic Island read as
+       part of the device rather than being covered by the screenshot. */
+    z-index: 2;
+}
+
+.phone-screen {
+    position: absolute;
+    top: 2.2%;
+    bottom: 2.4%;
+    left: 4.6%;
+    right: 4.6%;
     background: var(--bg-secondary);
-    border-radius: 35px;
+    /* Follows the cutout's corner curve; the art's corner radius scales
+       with the frame, so a percentage radius keeps them aligned. */
+    border-radius: 8% / 3.9%;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .placeholder-screen {
@@ -987,7 +1011,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .how-it-works-section {
     padding: var(--space-3xl) 0;
-    background: var(--bg-secondary);
 }
 
 .steps-grid {
@@ -1063,6 +1086,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .screenshots-section {
     padding: var(--space-3xl) 0;
+    background: var(--bg-secondary);
 }
 
 /* Showcase Row Layout */
@@ -1106,18 +1130,17 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .showcase-phone {
-    /* Width is the flex basis and may shrink; aspect-ratio keeps the
-       phone proportions rather than a hard-coded height. */
+    /* Width is the flex basis and may shrink; aspect-ratio matches the
+       bezel art so the frame never stretches. */
+    position: relative;
     width: 160px;
-    aspect-ratio: 160 / 340;
+    aspect-ratio: 496 / 1012;
     flex: 0 1 auto;
     min-width: 0;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
     transition: all var(--transition-slow);
-    box-shadow: var(--shadow-md);
+    /* drop-shadow rather than box-shadow: the phone's real silhouette is
+       the PNG's alpha, not the element's rectangle. */
+    filter: drop-shadow(var(--shadow-md));
 }
 
 .showcase-phone:first-child {
@@ -1132,23 +1155,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .showcase-phone-center {
     width: 180px;
-    aspect-ratio: 180 / 380;
     transform: scale(1) rotateY(0deg) !important;
     opacity: 1 !important;
-    box-shadow: var(--shadow-lg), 0 0 30px var(--accent-glow);
+    filter: drop-shadow(var(--shadow-lg)) drop-shadow(0 0 12px var(--accent-glow));
     z-index: 2;
-}
-
-.showcase-phone img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .showcase-phone:hover {
     transform: scale(1.02) rotateY(0deg) !important;
     opacity: 1 !important;
-    border-color: var(--accent-secondary);
 }
 
 /* Showcase Content */
@@ -2175,6 +2190,5 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .phone-frame {
         width: 240px;
-        height: 500px;
     }
 }
