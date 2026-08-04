@@ -656,7 +656,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     /* Extra top padding so the headline breathes below the fixed navbar
        rather than sitting right under it. */
     padding: calc(var(--space-4xl) + var(--space-xl)) 0 var(--space-3xl);
-    overflow: hidden;
+    /* clip rather than hidden: both contain the drifting .hero-bg, but
+       `hidden` makes this a scroll container, which would capture the
+       phone frame's scroll-driven timeline (see .phone-frame below). */
+    overflow: clip;
 }
 
 .hero-bg {
@@ -812,12 +815,61 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     width: 274px;
     aspect-ratio: 496 / 1012;
     filter: drop-shadow(0 0 60px var(--accent-glow));
-    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transform: perspective(700px) rotateY(-16deg) rotateX(9deg);
     transition: transform var(--transition-slow);
 }
 
 .phone-frame:hover {
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+}
+
+/* Scroll-driven version of the same tilt, so the effect isn't limited to
+   hover (which no touch device ever fires). The phone starts at its resting
+   angle and rotates upright as it travels up the viewport.
+
+   The range is `cover`, i.e. the whole time the frame intersects the
+   viewport. `exit` is tempting — the hero is already on screen at load, so
+   an entry range would start part-way through — but the frame is ~560px in
+   a ~810px viewport, so its exit range is short and mostly off-screen; the
+   motion would happen where nobody can see it.
+
+   Browsers without scroll-driven animations (Firefox at time of writing)
+   simply keep the static tilt above, which is the pre-existing behaviour. */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        /* Requires .hero to use overflow: clip rather than hidden — a scroll
+           container ancestor would capture this timeline and freeze it at a
+           constant progress value. */
+        .phone-frame {
+            animation: phoneTilt linear both;
+            animation-timeline: view();
+            animation-range: cover 0% cover 100%;
+        }
+
+        /* Hover still wins on pointer devices: without this the animation's
+           computed transform would override the :hover rule. */
+        .phone-frame:hover {
+            animation-play-state: paused;
+        }
+    }
+}
+
+/* The frame is already part-way through its `cover` range on page load, so
+   the tilt is held at its resting angle across the first quarter and the
+   travel is packed into the portion the visitor actually scrolls through.
+
+   A shorter perspective than the static rule's 1000px exaggerates the
+   foreshortening, so the same rotation reads as a much stronger turn.
+
+   The motion settles at flat and stays there — it never rotates past square
+   into an opposite tilt. */
+@keyframes phoneTilt {
+    0%, 22% {
+        transform: perspective(700px) rotateY(-16deg) rotateX(9deg);
+    }
+    60%, 100% {
+        transform: perspective(700px) rotateY(0deg) rotateX(0deg);
+    }
 }
 
 .phone-bezel {
