@@ -729,9 +729,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 /* Laurel wreath flanking the rating, in the manner of a classic award badge.
    The source art is solid white, which would disappear against the light
-   theme's pale background. Rather than invert it to a near-black, light mode
-   uses the art as a mask over a solid fill, so the leaves land on exactly
-   --text-secondary and stay matched to the hero paragraph beside them. */
+   theme's pale background, so light mode inverts it to a dark equivalent. */
 .laurel {
     flex-shrink: 0;
     height: 44px;
@@ -740,15 +738,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 [data-theme="light"] .laurel {
+    filter: invert(1);
     opacity: 1;
-    background-color: var(--text-secondary);
-    -webkit-mask: url("images/laurel-left.png") center / contain no-repeat;
-    mask: url("images/laurel-left.png") center / contain no-repeat;
-}
-
-[data-theme="light"] .laurel[src*="laurel-right"] {
-    -webkit-mask-image: url("images/laurel-right.png");
-    mask-image: url("images/laurel-right.png");
 }
 
 .hero-rating-text {
@@ -773,12 +764,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     line-height: 1.2;
     white-space: nowrap;
     color: var(--text-primary);
-}
-
-/* Softened to sit with the hero paragraph rather than out-weigh it:
-   --text-primary is near enough to pure black to read as heavier. */
-[data-theme="light"] .hero-rating-label {
-    color: var(--text-secondary);
 }
 
 .hero-title .gradient-text {
@@ -1394,10 +1379,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     font-size: 0.9375rem;
     font-weight: 600;
     color: var(--text-primary);
-}
-
-[data-theme="light"] .rating-text {
-    color: var(--text-secondary);
 }
 
 .reviews-grid {
