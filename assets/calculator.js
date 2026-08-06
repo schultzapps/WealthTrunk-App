@@ -1054,8 +1054,12 @@
             input.addEventListener('input', function () {
                 var value = parse(input.value);
                 paint();
-                if (opts && opts.onInput) opts.onInput(value);
+                // update() must run first: onInput callbacks (paintReal, and the
+                // start-year echo) derive their text from `state`, so running them
+                // beforehand would paint from the previous slider position and
+                // leave them one input event behind the chart's own footer.
                 update(key, value);
+                if (opts && opts.onInput) opts.onInput(value);
             });
             return { input: input, paint: paint };
         }
