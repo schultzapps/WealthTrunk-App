@@ -30,6 +30,14 @@
         // Growth (investment + kids)
         startingBalance: 10000,
         monthlyContribution: 500,
+        // Contribution change over time. The mode decides how the rate is read:
+        //   'none'               — flat forever, rate ignored
+        //   'matchInflation'     — tracks inflation exactly, rate ignored
+        //   'relativeToInflation'— inflation ± rate (rate is a SIGNED offset)
+        //   'fixed'              — rate is a literal annual rate
+        // Defaulting to matchInflation gives new users contributions that hold
+        // their buying power, matching the iOS app's new-account default.
+        contributionGrowthMode: 'matchInflation',
         contributionGrowthRate: 0,   // annual escalation, as a fraction
         expectedReturn: 10,          // percent
         inflationRate: 2.5,          // percent
@@ -52,6 +60,11 @@
     /* Upper bound for entered amounts, guarding against layout/chart
        breakage from an unrealistically large entry. */
     var MAX_AMOUNT = 100000000;
+
+    /* Valid contribution-change modes, used to sanitize persisted state.
+       'matchInflation' is mathematically identical to 'relativeToInflation' at a
+       0 offset; it exists so the common case can present without a slider. */
+    var CONTRIBUTION_GROWTH_MODES = ['none', 'matchInflation', 'relativeToInflation', 'fixed'];
 
     var STORE_PREFIX = 'wtcalc_';
 
@@ -140,26 +153,67 @@
     };
 
     /**
+     * The effective annual contribution escalation, resolved from the mode
+     * against the current inflation assumption. Mirrors
+     * Account.effectiveContributionGrowth(inflation:) in the iOS app.
+     *
+     * The ± offset composes multiplicatively (Fisher), never additively —
+     * matching InflationDeflator's stated convention. Over a 30–40 year
+     * horizon the two differ materially.
+     */
+    Model.prototype.effectiveContributionGrowth = function () {
+        var s = this.state;
+        var inflation = s.inflationRate / 100;
+        switch (s.contributionGrowthMode) {
+            case 'none': return 0;
+            case 'matchInflation': return inflation;
+            case 'relativeToInflation':
+                // At a 0 offset this collapses to exactly `inflation`, i.e. the
+                // matchInflation case above — the two modes differ only in that
+                // one presents a slider and the other doesn't.
+                return ((1 + inflation) * (1 + s.contributionGrowthRate)) - 1;
+            default: return s.contributionGrowthRate; // 'fixed'
+        }
+    };
+
+    /**
      * Month-by-month projection, mirroring calculateAssetWithPhaseDTO.
      *
      * Per month: the balance grows first, then the contribution is added —
-     * and the contribution itself escalates annually by contributionGrowthRate.
-     * Balances are floored at 0, as in the app.
+     * and the contribution itself escalates annually by the *resolved* growth
+     * rate. Balances are floored at 0, as in the app.
      *
-     * Compounds at the *real* return so balances land in today's purchasing
-     * power. The app projects in nominal terms; setting inflation to 0 here
-     * reproduces its numbers exactly.
+     * Compounds at the NOMINAL return and deflates the output series, exactly
+     * as the app does (see InflationDeflator: "forecast math always runs in
+     * nominal terms"). This is what makes the contribution modes behave here
+     * the way they do on iOS — under the previous real-rate compounding,
+     * 'none' and a 0 inflation-offset collapsed to nearly the same curve.
+     *
+     * Setting inflation to 0 makes the deflator a no-op, so the projection
+     * still reduces to plain future dollars.
      *
      * Returns yearly samples for the chart plus the contribution/growth split.
+     * `points` are deflated (today's money); the contribution/growth totals are
+     * likewise deflated so the stat cards reconcile against the final balance.
      */
     Model.prototype.growth = function () {
         var s = this.state;
         var years = this.years();
         var months = Math.round(years * 12);
 
-        var periodReturn = Math.pow(1 + this.realReturn() / 100, 1 / 12) - 1;
+        var periodReturn = Math.pow(1 + s.expectedReturn / 100, 1 / 12) - 1;
+        var growthRate = this.effectiveContributionGrowth();
+        var inflation = s.inflationRate / 100;
         var balance = s.startingBalance;
         var totalContributions = 0;
+
+        /* Deflate a nominal value at `year` into today's money. Indexed by
+           elapsed years so the exponent lines up with the monthly compounding
+           above, matching InflationDeflator's positional factor. */
+        function deflate(value, year) {
+            if (!inflation) return value;
+            return value / Math.pow(1 + inflation, year);
+        }
 
         var points = [{ year: 0, value: balance }];
 
@@ -168,27 +222,35 @@
 
             var yearsElapsed = month / 12;
             var adjusted = s.monthlyContribution *
-                Math.pow(1 + s.contributionGrowthRate, yearsElapsed);
+                Math.pow(1 + growthRate, yearsElapsed);
             balance += adjusted;
             totalContributions += adjusted;
 
             balance = Math.max(balance, 0);
 
             if (month % 12 === 0) {
-                points.push({ year: month / 12, value: balance });
+                points.push({ year: yearsElapsed, value: deflate(balance, yearsElapsed) });
             }
         }
 
         // A fractional final year still deserves an endpoint on the chart.
         if (months % 12 !== 0 && months > 0) {
-            points.push({ year: years, value: balance });
+            points.push({ year: years, value: deflate(balance, years) });
         }
+
+        var finalBalance = deflate(balance, years);
+        // Deflating the contribution total at the horizon is an approximation —
+        // the deposits land throughout, not all at the end — but it keeps
+        // starting + contributions + growth === finalBalance, which is what the
+        // stat cards assert. The split is indicative; the balance is exact.
+        var realContributions = deflate(totalContributions, years);
+        var realStart = deflate(s.startingBalance, years);
 
         return {
             points: points,
-            finalBalance: balance,
-            totalContributions: totalContributions,
-            totalGrowth: balance - (s.startingBalance + totalContributions)
+            finalBalance: finalBalance,
+            totalContributions: realContributions,
+            totalGrowth: finalBalance - (realStart + realContributions)
         };
     };
 
@@ -544,6 +606,13 @@
             state[k] = readStore(k, DEFAULTS[k]);
         });
 
+        /* localStorage is untrusted input — an unknown mode would otherwise
+           fall through the resolver's switch to the 'fixed' branch and read the
+           stored rate as an absolute rate, which is wrong for every other mode. */
+        if (CONTRIBUTION_GROWTH_MODES.indexOf(state.contributionGrowthMode) === -1) {
+            state.contributionGrowthMode = DEFAULTS.contributionGrowthMode;
+        }
+
         var model = new Model(state);
         var $ = function (id) { return document.getElementById(id); };
 
@@ -596,6 +665,80 @@
             realRateEl.classList.toggle('is-negative', real < 0);
         }
 
+        /* --- Contribution change over time --- */
+
+        /* The rate slider is meaningless under 'none', which ignores it
+           entirely. Hiding it keeps a dead control off the screen. */
+        var growthRateField = document.getElementById('contribution-growth-field');
+        var growthResolvedEl = document.getElementById('contribution-growth-resolved');
+        var growthLabelEl = document.getElementById('contribution-growth-label');
+        var growthHintEl = document.getElementById('contribution-growth-hint');
+
+        /* Footers describe the effect in *today's money* — the terms the chart is
+           actually drawn in — rather than the nominal escalation. Under an offset
+           the two differ: a +1% offset against 3% inflation compounds nominally at
+           4.03% (Fisher), but what the user sees on the chart is a contribution
+           growing 1% a year in real terms. Quoting 4.03% here would be accurate and
+           useless; the offset they typed IS the real growth rate. */
+        function paintGrowth() {
+            var mode = state.contributionGrowthMode;
+            var isNone = mode === 'none';
+            var isMatch = mode === 'matchInflation';
+            var isRelative = mode === 'relativeToInflation';
+            var offset = state.contributionGrowthRate;
+            /* The two rate-free modes present identically: no slider, one footer
+               under the menu. */
+            var isSliderless = isNone || isMatch;
+
+            if (growthRateField) growthRateField.hidden = isSliderless;
+
+            /* Exactly one footer is visible at a time. The sliderless modes explain
+               themselves under the menu; the others explain themselves under the
+               slider, where the number they describe actually lives. Two footers
+               stacked would restate the same fact twice. */
+            if (growthResolvedEl) {
+                growthResolvedEl.hidden = !isSliderless;
+                if (isNone) {
+                    growthResolvedEl.textContent = 'Contributions stay at ' +
+                        money(state.monthlyContribution) + '/month for the whole period, ' +
+                        'so when considering inflation, they buy less each year.';
+                } else if (isMatch) {
+                    growthResolvedEl.textContent = 'Contributions will match inflation ' +
+                        'and appear constant in today\'s money.';
+                }
+            }
+
+            if (growthLabelEl) {
+                growthLabelEl.textContent = isRelative
+                    ? 'Adjustment vs. inflation'
+                    : 'Annual increase';
+            }
+
+            if (!growthHintEl || isSliderless) return;
+
+            var abs = percent(Math.abs(offset) * 100);
+            if (isRelative) {
+                growthHintEl.textContent = offset === 0
+                    ? 'Contributions will match inflation and appear constant in today\'s money.'
+                    : offset > 0
+                        ? 'Added on top of inflation. Increases at ' + abs +
+                          ' per year in today\'s money.'
+                        : 'Below inflation. Decreases at ' + abs +
+                          ' per year in today\'s money.';
+            } else {
+                // A literal nominal rate, so the real effect depends on inflation —
+                // state the resolved real rate rather than leaving the user to
+                // subtract. Fisher, matching realReturn().
+                var real = (((1 + offset) / (1 + state.inflationRate / 100)) - 1) * 100;
+                growthHintEl.textContent = Math.abs(real) < 0.05
+                    ? 'A flat annual increase. At ' + percent(offset * 100) +
+                      ' it roughly matches inflation — near constant in today\'s money.'
+                    : 'A flat annual increase. ' +
+                      (real > 0 ? 'Increases' : 'Decreases') + ' at ' +
+                      percent(Math.abs(real)) + ' per year in today\'s money.';
+            }
+        }
+
         /* Savings line under a stat card. `amount` is the signed change against
            the no-extra baseline; null (no extra payment entered, or a baseline
            that never pays off) hides the line entirely rather than showing a
@@ -626,6 +769,12 @@
         }
 
         function render() {
+            // The growth footer depends on the contribution amount and the
+            // inflation rate as well as the mode, so repaint it here rather than
+            // from individual onInput hooks — bindCurrency has none, which would
+            // otherwise leave a stale amount in the 'none' copy.
+            if (!isPension && !isDebt) paintGrowth();
+
             var result = isPension ? model.pension()
                 : (isDebt ? model.debt() : model.growth());
             var series = result.points;
@@ -646,13 +795,14 @@
                 if (debtBaseline) compare = debtBaseline.points;
             } else if (!isPension) {
                 var infl = state.inflationRate / 100;
+                var compareGrowth = model.effectiveContributionGrowth();
                 compare = [{ year: 0, value: state.startingBalance }];
                 for (var i = 1; i < series.length; i++) {
                     var months = Math.round(series[i].year * 12);
                     var contrib = 0;
                     for (var m = 1; m <= months; m++) {
                         contrib += state.monthlyContribution *
-                            Math.pow(1 + state.contributionGrowthRate, m / 12);
+                            Math.pow(1 + compareGrowth, m / 12);
                     }
                     var deflator = Math.pow(1 + infl, series[i].year);
                     compare.push({
@@ -834,17 +984,35 @@
             return 'Assumes ' + money(state.startingBalance) + ' to start plus ' +
                 money(state.monthlyContribution) + '/month ' + horizon + ' at a ' +
                 percent(state.expectedReturn) + ' annual return' +
-                (state.contributionGrowthRate > 0
-                    ? ', with contributions rising ' +
-                      percent(state.contributionGrowthRate * 100) +
-                      ' a year above inflation'
-                    : '') +
+                contributionGrowthClause() +
                 (state.inflationRate > 0
                     ? ', less ' + percent(state.inflationRate) +
                       ' inflation for a ' + percent(real) +
                       ' real return'
                     : '') +
                 '. For illustrative purposes only. Not financial, tax, or investment advice.';
+        }
+
+        /* Disclosure clause describing the contribution escalation, phrased per
+           mode. Reports the resolved rate, not the stored offset. */
+        function contributionGrowthClause() {
+            /* Unlike the field footer, this documents the assumption itself, so it
+               quotes the nominal rate the projection actually compounds. */
+            var resolved = model.effectiveContributionGrowth();
+            if (!resolved) return '';
+            var offset = state.contributionGrowthRate;
+            if (state.contributionGrowthMode === 'matchInflation') {
+                return ', with contributions rising ' + percent(resolved * 100) +
+                       ' a year to match inflation';
+            }
+            if (state.contributionGrowthMode === 'relativeToInflation') {
+                return ', with contributions rising ' + percent(resolved * 100) + ' a year ' +
+                       (offset === 0
+                           ? 'to match inflation'
+                           : '(' + percent(Math.abs(offset) * 100) +
+                             (offset < 0 ? ' below' : ' above') + ' inflation)');
+            }
+            return ', with contributions rising ' + percent(resolved * 100) + ' a year';
         }
 
         function update(key, value) {
@@ -873,6 +1041,15 @@
             };
             // Likewise, seed the slider from the display form of the stored value.
             input.value = (opts && opts.toSlider) ? opts.toSlider(state[key]) : state[key];
+            // The browser silently clamps an out-of-range value to min/max, which
+            // would leave the thumb and the projection disagreeing — persisted
+            // state can predate a narrowed range. Pull state back to what the
+            // control actually shows.
+            var seeded = parse(input.value);
+            if (seeded !== state[key]) {
+                state[key] = seeded;
+                writeStore(key, seeded);
+            }
             paint();
             input.addEventListener('input', function () {
                 var value = parse(input.value);
@@ -1011,11 +1188,22 @@
             });
             // Stored as a fraction (0.03) because the projection math multiplies
             // by it, but the slider and label work in whole percents (3.0%).
+            // Under 'relativeToInflation' this is a SIGNED offset, so the input's
+            // min is negative in the markup.
             bindSlider('contribution-growth', 'contributionGrowthRate', {
                 parse: function (v) { return parseFloat(v) / 100; },
                 toSlider: function (stored) { return stored * 100; },
                 format: function (v) { return percent(v); }
             });
+
+            /* Mode picker. update() re-renders, and render() repaints the footer. */
+            var modeSelect = $('contribution-growth-mode');
+            if (modeSelect) {
+                modeSelect.value = state.contributionGrowthMode;
+                modeSelect.addEventListener('change', function () {
+                    update('contributionGrowthMode', modeSelect.value);
+                });
+            }
 
             if (isKids) {
                 // Both age sliders re-render; the horizon is targetAge - childAge,
