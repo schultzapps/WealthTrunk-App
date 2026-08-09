@@ -31,13 +31,13 @@
         startingBalance: 10000,
         monthlyContribution: 500,
         // Contribution change over time. The mode decides how the rate is read:
-        //   'none'               — flat forever, rate ignored
-        //   'matchInflation'     — tracks inflation exactly, rate ignored
         //   'relativeToInflation'— inflation ± rate (rate is a SIGNED offset)
         //   'fixed'              — rate is a literal annual rate
-        // Defaulting to matchInflation gives new users contributions that hold
-        // their buying power, matching the iOS app's new-account default.
-        contributionGrowthMode: 'matchInflation',
+        // Just two: "matches inflation" and "never changes" are the zero points
+        // of these rather than modes of their own. Defaulting to a 0 offset
+        // gives new users contributions that hold their buying power, matching
+        // the iOS app's new-account default.
+        contributionGrowthMode: 'relativeToInflation',
         contributionGrowthRate: 0,   // annual escalation, as a fraction
         expectedReturn: 10,          // percent
         inflationRate: 2.5,          // percent
@@ -61,10 +61,11 @@
        breakage from an unrealistically large entry. */
     var MAX_AMOUNT = 100000000;
 
-    /* Valid contribution-change modes, used to sanitize persisted state.
-       'matchInflation' is mathematically identical to 'relativeToInflation' at a
-       0 offset; it exists so the common case can present without a slider. */
-    var CONTRIBUTION_GROWTH_MODES = ['none', 'matchInflation', 'relativeToInflation', 'fixed'];
+    /* Valid contribution-change modes, used to sanitize persisted state. A
+       value stored by an earlier build ('none' / 'matchInflation') falls back to
+       the default, which is the same projection either way: both were the zero
+       point of a mode that survives. */
+    var CONTRIBUTION_GROWTH_MODES = ['relativeToInflation', 'fixed'];
 
     var STORE_PREFIX = 'wtcalc_';
 
@@ -164,16 +165,11 @@
     Model.prototype.effectiveContributionGrowth = function () {
         var s = this.state;
         var inflation = s.inflationRate / 100;
-        switch (s.contributionGrowthMode) {
-            case 'none': return 0;
-            case 'matchInflation': return inflation;
-            case 'relativeToInflation':
-                // At a 0 offset this collapses to exactly `inflation`, i.e. the
-                // matchInflation case above — the two modes differ only in that
-                // one presents a slider and the other doesn't.
-                return ((1 + inflation) * (1 + s.contributionGrowthRate)) - 1;
-            default: return s.contributionGrowthRate; // 'fixed'
-        }
+        if (s.contributionGrowthMode === 'fixed') return s.contributionGrowthRate;
+        // At a 0 offset this collapses to exactly `inflation` — contributions
+        // track it, which is why that needs no mode of its own. A 0 under
+        // 'fixed' likewise means "never changes".
+        return ((1 + inflation) * (1 + s.contributionGrowthRate)) - 1;
     };
 
     /**
@@ -186,8 +182,8 @@
      * Compounds at the NOMINAL return and deflates the output series, exactly
      * as the app does (see InflationDeflator: "forecast math always runs in
      * nominal terms"). This is what makes the contribution modes behave here
-     * the way they do on iOS — under the previous real-rate compounding,
-     * 'none' and a 0 inflation-offset collapsed to nearly the same curve.
+     * the way they do on iOS — under the previous real-rate compounding, a flat
+     * 0% and a 0 inflation-offset collapsed to nearly the same curve.
      *
      * Setting inflation to 0 makes the deflator a no-op, so the projection
      * still reduces to plain future dollars.
@@ -667,10 +663,8 @@
 
         /* --- Contribution change over time --- */
 
-        /* The rate slider is meaningless under 'none', which ignores it
-           entirely. Hiding it keeps a dead control off the screen. */
-        var growthRateField = document.getElementById('contribution-growth-field');
-        var growthResolvedEl = document.getElementById('contribution-growth-resolved');
+        /* Both modes carry a rate, so the slider is always present — the label
+           and footer are what change. */
         var growthLabelEl = document.getElementById('contribution-growth-label');
         var growthHintEl = document.getElementById('contribution-growth-hint');
 
@@ -681,62 +675,63 @@
            growing 1% a year in real terms. Quoting 4.03% here would be accurate and
            useless; the offset they typed IS the real growth rate. */
         function paintGrowth() {
-            var mode = state.contributionGrowthMode;
-            var isNone = mode === 'none';
-            var isMatch = mode === 'matchInflation';
-            var isRelative = mode === 'relativeToInflation';
-            var offset = state.contributionGrowthRate;
-            /* The two rate-free modes present identically: no slider, one footer
-               under the menu. */
-            var isSliderless = isNone || isMatch;
-
-            if (growthRateField) growthRateField.hidden = isSliderless;
-
-            /* Exactly one footer is visible at a time. The sliderless modes explain
-               themselves under the menu; the others explain themselves under the
-               slider, where the number they describe actually lives. Two footers
-               stacked would restate the same fact twice. */
-            if (growthResolvedEl) {
-                growthResolvedEl.hidden = !isSliderless;
-                if (isNone) {
-                    growthResolvedEl.textContent = 'Contributions stay at ' +
-                        money(state.monthlyContribution) + '/month for the whole period, ' +
-                        'so when considering inflation, they buy less each year.';
-                } else if (isMatch) {
-                    growthResolvedEl.textContent = 'Contributions will match inflation ' +
-                        'and appear constant in today\'s money.';
-                }
-            }
+            var isFixed = state.contributionGrowthMode === 'fixed';
+            var rate = state.contributionGrowthRate;
+            var inflation = state.inflationRate / 100;
 
             if (growthLabelEl) {
-                growthLabelEl.textContent = isRelative
-                    ? 'Adjustment vs. inflation'
-                    : 'Annual increase';
+                growthLabelEl.textContent = isFixed
+                    ? 'Annual increase'
+                    : 'Adjustment vs. inflation';
+            }
+            if (!growthHintEl) return;
+
+            /* With inflation at zero the two modes resolve to exactly the same
+               number, so they must read the same too — and nothing
+               inflation-relative applies. */
+            if (inflation === 0) {
+                growthHintEl.textContent = rate === 0
+                    ? 'Contributions stay the same each year.'
+                    : (rate > 0 ? 'An increase of ' : 'A decrease of ') +
+                      percent(Math.abs(rate) * 100) + ' per year.';
+                return;
             }
 
-            if (!growthHintEl || isSliderless) return;
-
-            var abs = percent(Math.abs(offset) * 100);
-            if (isRelative) {
-                growthHintEl.textContent = offset === 0
-                    ? 'Contributions will match inflation and appear constant in today\'s money.'
-                    : offset > 0
-                        ? 'Added on top of inflation. Increases at ' + abs +
-                          ' per year in today\'s money.'
-                        : 'Below inflation. Decreases at ' + abs +
-                          ' per year in today\'s money.';
-            } else {
-                // A literal nominal rate, so the real effect depends on inflation —
-                // state the resolved real rate rather than leaving the user to
-                // subtract. Fisher, matching realReturn().
-                var real = (((1 + offset) / (1 + state.inflationRate / 100)) - 1) * 100;
-                growthHintEl.textContent = Math.abs(real) < 0.05
-                    ? 'A flat annual increase. At ' + percent(offset * 100) +
-                      ' it roughly matches inflation — near constant in today\'s money.'
-                    : 'A flat annual increase. ' +
-                      (real > 0 ? 'Increases' : 'Decreases') + ' at ' +
-                      percent(Math.abs(real)) + ' per year in today\'s money.';
+            if (isFixed) {
+                /* A nominal rate landing exactly on inflation is the same outcome
+                   the offset mode calls "match inflation" at a zero offset, so it
+                   reads the same here. Both sides of the comparison are a slider
+                   value over 100 on a 0.5 step, so they meet exactly — no epsilon.
+                   Saying "an increase of 0.0%" would be true but reads as a
+                   rounding artifact rather than the intended result. */
+                if (rate === inflation) {
+                    growthHintEl.textContent = 'Contributions will match inflation.';
+                    return;
+                }
+                /* Otherwise a literal nominal rate, so the real effect depends on
+                   inflation — state what it resolves to rather than leaving the
+                   user to subtract. Fisher, matching realReturn(). */
+                var real = ((1 + rate) / (1 + inflation)) - 1;
+                growthHintEl.textContent = 'Contributions ' +
+                    (real >= 0 ? 'increase' : 'decrease') + ' at ' +
+                    percent(Math.abs(real) * 100) + ' per year in today\'s money.';
+                return;
             }
+
+            /* A zero offset *is* tracking inflation — the reason this mode needs
+               no separate "match inflation" option. */
+            if (rate === 0) {
+                growthHintEl.textContent = 'Contributions will match inflation.';
+                return;
+            }
+            /* Phrased as buying power, never as the contribution rising or
+               falling: the offset is a real rate, and the dollar amount it
+               produces can move either way. A -5% offset against 2% inflation
+               resolves to -3.1%, so "decreases 5% per year" would be wrong in
+               both the verb and the number. */
+            growthHintEl.textContent = 'Contributions ' +
+                (rate > 0 ? 'gain ' : 'lose ') +
+                percent(Math.abs(rate) * 100) + ' buying power each year.';
         }
 
         /* Savings line under a stat card. `amount` is the signed change against
@@ -769,10 +764,10 @@
         }
 
         function render() {
-            // The growth footer depends on the contribution amount and the
-            // inflation rate as well as the mode, so repaint it here rather than
-            // from individual onInput hooks — bindCurrency has none, which would
-            // otherwise leave a stale amount in the 'none' copy.
+            // The growth footer depends on the inflation rate as well as the
+            // mode and the rate, so repaint it here rather than from individual
+            // onInput hooks — otherwise moving the inflation slider would leave
+            // a stale real-terms figure in the Fixed copy.
             if (!isPension && !isDebt) paintGrowth();
 
             var result = isPension ? model.pension()
@@ -1001,18 +996,16 @@
             var resolved = model.effectiveContributionGrowth();
             if (!resolved) return '';
             var offset = state.contributionGrowthRate;
-            if (state.contributionGrowthMode === 'matchInflation') {
-                return ', with contributions rising ' + percent(resolved * 100) +
-                       ' a year to match inflation';
+            var motion = resolved > 0 ? ' rising ' : ' falling ';
+            var amount = percent(Math.abs(resolved) * 100) + ' a year';
+            if (state.contributionGrowthMode === 'fixed') {
+                return ', with contributions' + motion + amount;
             }
-            if (state.contributionGrowthMode === 'relativeToInflation') {
-                return ', with contributions rising ' + percent(resolved * 100) + ' a year ' +
-                       (offset === 0
-                           ? 'to match inflation'
-                           : '(' + percent(Math.abs(offset) * 100) +
-                             (offset < 0 ? ' below' : ' above') + ' inflation)');
-            }
-            return ', with contributions rising ' + percent(resolved * 100) + ' a year';
+            return ', with contributions' + motion + amount + ' ' +
+                   (offset === 0
+                       ? 'to match inflation'
+                       : '(' + percent(Math.abs(offset) * 100) +
+                         (offset < 0 ? ' below' : ' above') + ' inflation)');
         }
 
         function update(key, value) {

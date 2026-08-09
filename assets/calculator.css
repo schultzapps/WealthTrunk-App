@@ -18,7 +18,8 @@
 
 .tool-container {
     width: 100%;
-    max-width: 1160px;
+    /* Matches .container in styles.css so every page shares one content width */
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 var(--space-lg);
 }

@@ -112,7 +112,7 @@
           "name": "What does the contribution growth setting do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It sets how your monthly contribution changes each year. Match Inflation — the default — raises it in line with the inflation rate so its buying power stays constant. That's the usual case, and it's what a fixed percentage of a salary that rises with inflation looks like, such as a 401(k) deferral. +/- Inflation adds or subtracts from that: pick +2% if you expect real raises beyond inflation, or a negative value to grow slower than prices. Fixed sets a literal annual increase, ignoring inflation entirely. None keeps the amount flat in future dollars, so it buys less every year."
+            "text": "It sets how your monthly contribution changes each year, using two options and a rate. vs. Inflation — the default — reads the rate relative to inflation: leave it at 0% and the contribution rises in line with prices so its buying power stays constant, which is the usual case and what a fixed percentage of a salary looks like, such as a 401(k) deferral. Set +2% if you expect real raises beyond inflation, or a negative value to grow slower than prices. Fixed reads the rate as a literal annual increase and ignores inflation, so 0% keeps the amount flat in future dollars and it buys less every year. Whenever inflation is 0% the two behave identically."
           }
         },
         {
@@ -299,22 +299,19 @@
                                 <label class="field-label" for="contribution-growth-mode">Contribution change over time</label>
                                 <span class="select-wrap">
                                     <select id="contribution-growth-mode">
-                                        <option value="matchInflation" selected>Match Inflation</option>
-                                        <option value="relativeToInflation">+/- Inflation</option>
+                                        <option value="relativeToInflation" selected>vs. Inflation</option>
                                         <option value="fixed">Fixed</option>
-                                        <option value="none">None</option>
                                     </select>
                                 </span>
                             </div>
-                            <p class="field-hint" id="contribution-growth-resolved">Contributions will match inflation and appear constant in today's money.</p>
                         </div>
-                        <div class="field" id="contribution-growth-field" hidden>
+                        <div class="field" id="contribution-growth-field">
                             <div class="field-row">
                                 <label class="field-label" for="contribution-growth" id="contribution-growth-label">Adjustment vs. inflation</label>
                                 <span class="field-value" id="contribution-growth-value">0.0%</span>
                             </div>
-                            <input class="slider" type="range" id="contribution-growth" min="-5" max="5" step="0.5" value="0">
-                            <p class="field-hint" id="contribution-growth-hint">Contributions will match inflation and appear constant in today's money.</p>
+                            <input class="slider" type="range" id="contribution-growth" min="-5" max="10" step="0.5" value="0">
+                            <p class="field-hint" id="contribution-growth-hint">Contributions will match inflation.</p>
                         </div>
 
                         <button type="button" class="btn btn-primary btn-hero calc-jump" id="calc-jump">
@@ -398,7 +395,7 @@
                     </details>
                     <details>
                         <summary>What does the contribution growth setting do?</summary>
-                        <p>It sets how your monthly contribution changes each year. <strong>Match Inflation</strong> — the default — raises it in line with the inflation rate so its buying power stays constant. That's the usual case, and it's what a fixed percentage of a salary that rises with inflation looks like, such as a 401(k) deferral. <strong>+/- Inflation</strong> adds or subtracts from that: pick +2% if you expect real raises beyond inflation, or a negative value to grow slower than prices. <strong>Fixed</strong> sets a literal annual increase, ignoring inflation entirely. <strong>None</strong> keeps the amount flat in future dollars, so it buys less every year.</p>
+                        <p>It sets how your monthly contribution changes each year, using two options and a rate. <strong>vs. Inflation</strong> — the default — reads the rate relative to inflation: leave it at 0% and the contribution rises in line with prices so its buying power stays constant, which is the usual case and what a fixed percentage of a salary looks like, such as a 401(k) deferral. Set +2% if you expect real raises beyond inflation, or a negative value to grow slower than prices. <strong>Fixed</strong> reads the rate as a literal annual increase and ignores inflation, so 0% keeps the amount flat in future dollars and it buys less every year. Whenever inflation is 0% the two behave identically.</p>
                     </details>
                     <details>
                         <summary>What return should I use?</summary>
