@@ -36,8 +36,12 @@
         { group: 'Other Liabilities', types: ['Tax Liability', 'Medical Debt', 'Family Loan', 'Other Liability'] }
     ];
 
-    /* Tax statuses the importer accepts; anything else becomes "None". */
-    var TAX_STATUSES = ['After-Tax', 'Tax-Deferred', 'Roth', 'Tax-Advantaged', 'None'];
+    /* No tax-status control on this page: it is a two-column net worth tally, and
+       tax treatment is per-account detail the app asks for properly. Every row
+       exports as "None", which the importer accepts as-is, so the user sets the
+       real status once the accounts are in the app. Deliberately no local copy of
+       the app's status list — an unused list here would drift from
+       AccountTaxStatus without anything catching it. */
 
     /* The app's accounts template header, in order. Position doesn't matter to
        the parser, but matching the template keeps the file recognizable. */
@@ -229,7 +233,7 @@
             var today = new Date().toISOString().slice(0, 10);
             var lines = [
                 '# WealthTrunk account import — generated ' + today +
-                    ' by hsamonster.com/../net-worth-calculator.html',
+                    ' by wealthtrunk.app/net-worth-calculator.html',
                 HEADER.join(',')
             ];
 
