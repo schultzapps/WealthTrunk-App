@@ -253,23 +253,13 @@
                                 Results are shown in today's money. Set inflation to 0% for future dollars.
                             </p>
                         </div>
-                        <div class="field">
-                            <div class="field-row">
-                                <label class="field-label" for="contribution-growth-mode">Contribution change over time</label>
-                                <span class="select-wrap">
-                                    <select id="contribution-growth-mode">
-                                        <option value="relativeToInflation" selected>vs. Inflation</option>
-                                        <option value="fixed">Fixed</option>
-                                    </select>
-                                </span>
-                            </div>
-                        </div>
                         <div class="field" id="contribution-growth-field">
                             <div class="field-row">
-                                <label class="field-label" for="contribution-growth" id="contribution-growth-label">Adjustment vs. inflation</label>
+                                <label class="field-label" for="contribution-growth" id="contribution-growth-label">± vs. Inflation</label>
                                 <span class="field-value" id="contribution-growth-value">0.0%</span>
                             </div>
-                            <input class="slider" type="range" id="contribution-growth" min="-5" max="10" step="0.5" value="0">
+                            <input class="slider" type="range" id="contribution-growth" min="-5" max="10" step="0.5" value="0"
+                                   aria-label="Adjustment vs. inflation">
                             <p class="field-hint" id="contribution-growth-hint">Contributions will match inflation.</p>
                         </div>
 
