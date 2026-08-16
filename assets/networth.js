@@ -96,6 +96,11 @@
 
     var STORE_KEY = 'wtnetworth_rows';
 
+    /* This page doesn't load calculator.js, which defines its own copy for the
+       other tools' animated values. */
+    var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     /* Symbol and separators follow the browser locale (WTCurrency).
        Purely cosmetic — no conversion is applied to any amount. */
     var groupFmt = window.WTCurrency.group;
@@ -346,6 +351,33 @@
                 rows = SEED_ASSETS.map(function (r) { return mk(r, 'asset'); })
                     .concat(SEED_LIABILITIES.map(function (r) { return mk(r, 'liability'); }));
                 save(); renderRows(); recalc();
+            });
+        }
+
+        /* Mobile "Calculate" button: scrolls the results into view. The totals
+           are already live on every keystroke, so there's nothing to compute —
+           this just delivers the payoff the button implies once the inputs
+           stack above the result card. Mirrors the other calculators. */
+        var jumpBtn = document.getElementById('calc-jump');
+        if (jumpBtn) {
+            jumpBtn.addEventListener('click', function () {
+                var card = document.querySelector('.result-card');
+                if (!card) return;
+                // scrollIntoView ignores the fixed navbar, which would cover the
+                // headline figure. Measure the bar and scroll manually so the
+                // card clears it, with a little breathing room.
+                var nav = document.querySelector('.navbar');
+                var offset = (nav ? nav.getBoundingClientRect().height : 0) + 12;
+                var top = card.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: Math.max(top, 0),
+                    behavior: reduceMotion ? 'auto' : 'smooth'
+                });
+                if (typeof gtag === 'function') {
+                    gtag('event', 'calculator_calculate', {
+                        calculator: 'networth', app: 'wealthtrunk'
+                    });
+                }
             });
         }
 
