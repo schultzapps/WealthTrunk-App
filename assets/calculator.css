@@ -1268,11 +1268,10 @@
 
    Each ramp is validated as an ordinal scale against the card it
    renders on — monotone lightness, adjacent step gap >= 0.06 L,
-   single hue, and a light end that still clears the surface. The
-   ramps invert between modes: on the light card they run
-   dark->light, on the dark card light->dark, so the end nearest
-   the surface never washes out. Segment identity never rests on
-   color alone — the legend, tooltips, and table view all name it.
+   single hue, and an end step that still clears the surface. Both
+   modes run heaviest-first; the dark steps are lifted off the card
+   so the deep end doesn't sink into it. Segment identity never rests
+   on color alone — the legend, tooltips, and table view all name it.
    ============================================ */
 .nw-breakdown {
     margin-top: var(--space-lg);
@@ -1298,20 +1297,23 @@
     --stack-surface: var(--bg-card);
 }
 
-/* The same two ramps re-stepped for the dark card, running the
-   other way so the lightest steps lead. */
+/* The same two ramps re-stepped for the dark card. Both themes run
+   heaviest-first: segments are ordered largest-first, so the dominant
+   group must read as the strongest color, never the palest. The dark
+   steps are lifted off the card so the deep end still separates from
+   the surface. */
 [data-theme="dark"] .nw-breakdown {
-    --series-1: #CDF5F5;
-    --series-2: #A2E6E8;
-    --series-3: #74D3D6;
+    --series-1: #0E6265;
+    --series-2: #1F8286;
+    --series-3: #2AA0A5;
     --series-4: #48BEC2;
-    --series-5: #2AA0A5;
-    --series-6: #1F8286;
-    --series-7: #186669;
-    --series-8: #F0B48C;
-    --series-9: #E3925F;
-    --series-10: #D4703B;
-    --series-11: #B85528;
+    --series-5: #74D3D6;
+    --series-6: #A2E6E8;
+    --series-7: #CDF5F5;
+    --series-8: #B85528;
+    --series-9: #D4703B;
+    --series-10: #E8955F;
+    --series-11: #F5BC96;
 }
 
 .nw-stacks {

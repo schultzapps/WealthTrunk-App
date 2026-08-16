@@ -225,7 +225,13 @@
                 var g = groupFor(r);
                 sums[g] = (sums[g] || 0) + Math.abs(r.amount);
             });
-            var present = order.filter(function (g) { return sums[g] > 0; });
+            /* Largest first, as the app's chart does. Sorting by size also puts
+               the ramp to work: step 0 (darkest, or lightest on the dark card)
+               always lands on the biggest group, so weight reads left-to-right
+               in both length and shade. Ties fall back to the app's group order,
+               which `order` already establishes. */
+            var present = order.filter(function (g) { return sums[g] > 0; })
+                .sort(function (a, b) { return sums[b] - sums[a]; });
             return present.map(function (g, i) {
                 var step = present.length === 1
                     ? Math.floor(ramp.length / 2)
