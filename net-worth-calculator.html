@@ -224,17 +224,44 @@
                             <div class="result-value" id="net-worth-value">$0</div>
                             <div class="result-caption">Your Net Worth</div>
                         </div>
-                        <div class="nw-bar" style="padding: 0 var(--space-lg) var(--space-md);">
-                            <div class="nw-bar-track">
-                                <div class="nw-bar-fill assets" id="bar-assets" style="width: 0%"></div>
+                        <div class="nw-breakdown" style="padding: 0 var(--space-lg) var(--space-md);">
+                            <div class="nw-stacks" id="nw-stacks">
+                                <div class="nw-stack-row">
+                                    <div class="nw-stack-label">
+                                        <span>Assets</span>
+                                        <strong id="total-assets">$0</strong>
+                                    </div>
+                                    <div class="nw-stack-track">
+                                        <div class="nw-stack" id="stack-assets"></div>
+                                    </div>
+                                </div>
+                                <div class="nw-stack-row">
+                                    <div class="nw-stack-label">
+                                        <span>Liabilities</span>
+                                        <strong id="total-liabilities">$0</strong>
+                                    </div>
+                                    <div class="nw-stack-track">
+                                        <div class="nw-stack" id="stack-liabilities"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="nw-bar-track">
-                                <div class="nw-bar-fill liabilities" id="bar-liabilities" style="width: 0%"></div>
-                            </div>
-                            <div class="nw-bar-legend">
-                                <span>Assets <strong id="total-assets">$0</strong></span>
-                                <span>Liabilities <strong id="total-liabilities">$0</strong></span>
-                            </div>
+
+                            <div class="chart-legend nw-stack-legend" id="nw-stack-legend"></div>
+
+                            <details class="nw-table-toggle">
+                                <summary>View as table</summary>
+                                <table class="nw-table" id="nw-breakdown-table">
+                                    <caption class="sr-only">Assets and liabilities by account type</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Share</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </details>
                         </div>
                     </div>
 

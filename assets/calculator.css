@@ -1253,40 +1253,192 @@
     background: var(--bg-secondary);
 }
 
-/* Assets-vs-liabilities proportional bar */
-.nw-bar {
-    display: grid;
-    gap: var(--space-sm);
+/* ============================================
+   Net worth breakdown — stacked bars by account group.
+   Mirrors the app's Account Kind chart: one bar per kind
+   (assets, liabilities), segmented by the account group the
+   type belongs to, sized in % of that kind's own total.
+
+   Color runs as two tonal ramps rather than a scatter of hues:
+   assets step through the brand teal, liabilities through a warm
+   orange. The family says which side a segment belongs to before
+   you read a label, and position within the ramp is ordered, so
+   the largest group is always the darkest step of its side.
+
+   Each ramp is validated as an ordinal scale against the card it
+   renders on — monotone lightness, adjacent step gap >= 0.06 L,
+   single hue, and a light end that still clears the surface. The
+   ramps invert between modes: on the light card they run
+   dark->light, on the dark card light->dark, so the end nearest
+   the surface never washes out. Segment identity never rests on
+   color alone — the legend, tooltips, and table view all name it.
+   ============================================ */
+.nw-breakdown {
     margin-top: var(--space-lg);
 }
 
-.nw-bar-track {
-    height: 10px;
-    border-radius: var(--radius-full);
+/* Light mode. Slots 1-7 are the asset ramp (teal), 8-11 the
+   liability ramp (warm). Every group holds its own slot, so no two
+   legend entries ever share a color. */
+.nw-breakdown {
+    --series-1: #06393C;
+    --series-2: #07504F;
+    --series-3: #096763;
+    --series-4: #0B7E7C;
+    --series-5: #0D9599;
+    --series-6: #1EAEB2;
+    --series-7: #4EC3C6;
+    --series-8: #7A2E14;
+    --series-9: #A8451F;
+    --series-10: #C9622F;
+    --series-11: #DE8A4E;
+    /* Fills read against the card, so the 2px separators are painted
+       in the card color rather than being gaps in a track. */
+    --stack-surface: var(--bg-card);
+}
+
+/* The same two ramps re-stepped for the dark card, running the
+   other way so the lightest steps lead. */
+[data-theme="dark"] .nw-breakdown {
+    --series-1: #CDF5F5;
+    --series-2: #A2E6E8;
+    --series-3: #74D3D6;
+    --series-4: #48BEC2;
+    --series-5: #2AA0A5;
+    --series-6: #1F8286;
+    --series-7: #186669;
+    --series-8: #F0B48C;
+    --series-9: #E3925F;
+    --series-10: #D4703B;
+    --series-11: #B85528;
+}
+
+.nw-stacks {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.nw-stack-row {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.nw-stack-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-sm);
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+}
+
+.nw-stack-label strong {
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* The track runs the full width and marks the larger side's total, so a
+   shorter bar reads as "less than the other side" rather than as a bar that
+   just stops. On dark the tertiary fill is close to the card, so a hairline
+   keeps the remaining length visible. */
+.nw-stack-track {
+    height: 22px;
+    border-radius: var(--radius-sm);
     background: var(--bg-tertiary);
+    box-shadow: inset 0 0 0 1px var(--border-color);
     overflow: hidden;
 }
 
-.nw-bar-fill {
+/* An empty side keeps its track visible, so the row still reads as
+   "nothing here" rather than vanishing. */
+.nw-stack {
+    display: flex;
     height: 100%;
-    border-radius: var(--radius-full);
+    width: 100%;
+}
+
+.nw-stack-seg {
+    position: relative;
+    height: 100%;
+    min-width: 0;
+    background: var(--seg-color);
+    /* The 2px separator between touching segments is the card color,
+       not a border — a stroke would add ink that isn't data. */
+    box-shadow: 2px 0 0 0 var(--stack-surface);
     transition: width var(--transition-slow);
 }
 
-.nw-bar-fill.assets {
-    background: var(--accent-primary);
+.nw-stack-seg:last-child {
+    box-shadow: none;
 }
 
-.nw-bar-fill.liabilities {
-    background: #CE5F41;
+.nw-stack-legend {
+    padding: var(--space-md) 0 0;
+    gap: var(--space-md);
+    justify-content: flex-start;
 }
 
-.nw-bar-legend {
-    display: flex;
-    justify-content: space-between;
+.nw-stack-legend .legend-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--seg-color);
+}
+
+/* Table view — the same numbers without relying on color at all. */
+.nw-table-toggle {
+    margin-top: var(--space-md);
     font-size: 0.8125rem;
-    color: var(--text-secondary);
+}
+
+.nw-table-toggle summary {
+    cursor: pointer;
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+.nw-table {
+    width: 100%;
+    margin-top: var(--space-sm);
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.nw-table th,
+.nw-table td {
+    padding: 0.35rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nw-table td:nth-child(2),
+.nw-table td:nth-child(3),
+.nw-table th:nth-child(2),
+.nw-table th:nth-child(3) {
+    text-align: right;
     font-variant-numeric: tabular-nums;
+}
+
+.nw-table th {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.nw-table .nw-table-kind th {
+    padding-top: 0.6rem;
+    color: var(--text-primary);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .result-value.is-negative {

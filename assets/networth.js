@@ -39,6 +39,35 @@
     /* Tax statuses the importer accepts; anything else becomes "None". */
     var TAX_STATUSES = ['After-Tax', 'Tax-Deferred', 'Roth', 'Tax-Advantaged', 'None'];
 
+    /* Reverse of the two tables above: account type -> its group. Derived rather
+       than written out again so the breakdown chart can never drift from the
+       <optgroup> labels the picker shows. */
+    var TYPE_GROUP = (function () {
+        var map = {};
+        ASSET_TYPES.concat(LIABILITY_TYPES).forEach(function (g) {
+            g.types.forEach(function (t) { map[t] = g.group; });
+        });
+        return map;
+    })();
+
+    /* Group display order per kind, matching the app's AccountGroup enum so the
+       web breakdown stacks in the same sequence the app's chart does. */
+    var ASSET_GROUP_ORDER = ASSET_TYPES.map(function (g) { return g.group; });
+    var LIABILITY_GROUP_ORDER = LIABILITY_TYPES.map(function (g) { return g.group; });
+
+    /* Each side gets its own tonal ramp — assets teal, liabilities warm — so
+       the family alone says which bar a swatch belongs to. These are CSS custom
+       property numbers; the hexes (and their per-theme steps) live in
+       calculator.css. Slots 1-7 are the teal ramp, 8-11 the warm one, dark to
+       light, so no asset group can ever share a color with a liability group. */
+    var ASSET_RAMP = [1, 2, 3, 4, 5, 6, 7];
+    var LIABILITY_RAMP = [8, 9, 10, 11];
+
+    function groupFor(row) {
+        return TYPE_GROUP[row.type] ||
+            (row.kind === 'asset' ? 'Other Assets' : 'Other Liabilities');
+    }
+
     /* The app's accounts template header, in order. Position doesn't matter to
        the parser, but matching the template keeps the file recognizable. */
     var HEADER = [
@@ -87,8 +116,10 @@
         var totalAssetsEl = document.getElementById('total-assets');
         var totalLiabilitiesEl = document.getElementById('total-liabilities');
         var netWorthEl = document.getElementById('net-worth-value');
-        var barAssets = document.getElementById('bar-assets');
-        var barLiabilities = document.getElementById('bar-liabilities');
+        var stackAssets = document.getElementById('stack-assets');
+        var stackLiabilities = document.getElementById('stack-liabilities');
+        var stackLegend = document.getElementById('nw-stack-legend');
+        var breakdownTable = document.getElementById('nw-breakdown-table');
         var rowCountEl = document.getElementById('row-count');
 
         var rows = load();
@@ -174,6 +205,85 @@
             });
         }
 
+        /* Totals per group for one kind, in the app's group order, each carrying
+           the ramp step it should be painted with. Zero-value groups are dropped.
+
+           Steps are spread evenly across the side's ramp rather than taken
+           consecutively: three asset groups become the darkest, middle, and
+           lightest teal instead of three neighbouring shades that look alike.
+           Mirrors spacedIndices() in the app's ChartLegend. */
+        function groupTotals(kind) {
+            var order = kind === 'asset' ? ASSET_GROUP_ORDER : LIABILITY_GROUP_ORDER;
+            var ramp = kind === 'asset' ? ASSET_RAMP : LIABILITY_RAMP;
+            var sums = {};
+            rows.forEach(function (r) {
+                if (r.kind !== kind) return;
+                var g = groupFor(r);
+                sums[g] = (sums[g] || 0) + Math.abs(r.amount);
+            });
+            var present = order.filter(function (g) { return sums[g] > 0; });
+            return present.map(function (g, i) {
+                var step = present.length === 1
+                    ? Math.floor(ramp.length / 2)
+                    : Math.round(i * (ramp.length - 1) / (present.length - 1));
+                return { group: g, value: sums[g], slot: ramp[step] };
+            });
+        }
+
+        function renderStack(el, data, kindTotal, scale) {
+            el.innerHTML = '';
+            if (!data.length || kindTotal <= 0) return;
+
+            /* Both bars share one currency scale set by the larger side, so the
+               assets and liabilities bars are directly comparable by length. */
+            el.style.width = (scale > 0 ? kindTotal / scale * 100 : 0) + '%';
+
+            data.forEach(function (d) {
+                var share = d.value / kindTotal;              // within its own side
+                var seg = document.createElement('div');
+                seg.className = 'nw-stack-seg';
+                seg.style.width = (share * 100) + '%';
+                seg.style.setProperty('--seg-color', 'var(--series-' + d.slot + ')');
+
+                // The bars carry shape only; every number lives in the row
+                // total, the hover tooltip, and the table view.
+                seg.title = d.group + ' — ' + money(d.value) +
+                    ' (' + Math.round(share * 100) + '%)';
+
+                el.appendChild(seg);
+            });
+        }
+
+        function renderLegend(assetData, liabilityData) {
+            var seen = {};
+            var items = assetData.concat(liabilityData).filter(function (d) {
+                if (seen[d.group]) return false;
+                seen[d.group] = true;
+                return true;
+            });
+            stackLegend.innerHTML = items.map(function (d) {
+                return '<span class="legend-item">' +
+                    '<span class="legend-swatch" style="--seg-color: var(--series-' +
+                    d.slot + ')"></span>' + d.group + '</span>';
+            }).join('');
+        }
+
+        function renderTable(assetData, liabilityData, assets, liabilities) {
+            var body = breakdownTable.querySelector('tbody');
+            var out = '';
+            [['Assets', assetData, assets], ['Liabilities', liabilityData, liabilities]]
+                .forEach(function (pair) {
+                    var name = pair[0], data = pair[1], total = pair[2];
+                    out += '<tr class="nw-table-kind"><th scope="rowgroup">' + name +
+                        '</th><th scope="col">' + money(total) + '</th><th></th></tr>';
+                    data.forEach(function (d) {
+                        out += '<tr><td>' + d.group + '</td><td>' + money(d.value) +
+                            '</td><td>' + Math.round(d.value / total * 100) + '%</td></tr>';
+                    });
+                });
+            body.innerHTML = out;
+        }
+
         function recalc() {
             var assets = 0, liabilities = 0;
             rows.forEach(function (r) {
@@ -186,10 +296,14 @@
             netWorthEl.textContent = money(net);
             netWorthEl.classList.toggle('is-negative', net < 0);
 
-            // Proportional bar: assets vs liabilities against the larger side.
+            var assetData = groupTotals('asset');
+            var liabilityData = groupTotals('liability');
             var scale = Math.max(assets, liabilities, 1);
-            barAssets.style.width = (assets / scale * 100) + '%';
-            barLiabilities.style.width = (liabilities / scale * 100) + '%';
+
+            renderStack(stackAssets, assetData, assets, scale);
+            renderStack(stackLiabilities, liabilityData, liabilities, scale);
+            renderLegend(assetData, liabilityData);
+            renderTable(assetData, liabilityData, assets, liabilities);
 
             if (rowCountEl) {
                 var n = rows.length;
@@ -209,6 +323,9 @@
             var inputs = body.querySelectorAll('.nw-name');
             if (inputs.length) inputs[inputs.length - 1].focus();
         }
+
+        /* Segment widths are percentages and colors are custom properties, so
+           resizing and theme flips are handled by CSS without a re-render. */
 
         document.getElementById('add-asset').addEventListener('click', function () { addRow('asset'); });
         document.getElementById('add-liability').addEventListener('click', function () { addRow('liability'); });
