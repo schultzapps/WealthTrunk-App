@@ -1,4 +1,4 @@
-# Updated 2026-01-07
+# Updated 2026-08-10
 # READ EVERY LINE OF THIS FILE BEFORE USING IT
 # This is a template you can use to quickly upload accounts into the app data.
 # Open this file in Microsoft Excel or Google Sheets.
@@ -6,10 +6,21 @@
 # Do not include commas in any field including notes! The import will fail if you have commas.
 # Review the add account selections in the app to understand the options for account types and properties. Match text exactly when adding an account.
 #
-# ID is optional. Provide a valid UUID from export to preserve existing IDs. Blank or invalid IDs will be auto-generated.
+# KEEP EVERY COLUMN. The import needs the full header row exactly as written below.
+#   Delete a column and nothing imports. Leave a CELL blank to take its default.
+#   Always start from this template or from an export made by this version of the app.
+# The import is all-or-nothing. If any row cannot be read the whole file is rejected
+#   and nothing is added, so you can fix the file and import again without duplicates.
+#
+# ID is optional. Provide a valid UUID from export to preserve existing IDs. Leave blank to generate one.
 # IsClosed is optional. Leave blank to default to FALSE (open account).
-# ContributionGrowthRate is optional. Annual growth rate for contributions (e.g. 0.02 for 2%). Leave blank for 0.
-# Percentage for ReturnRate, LoanRate, or ContributionGrowthRate should be entered as 0.00 - ex. 2.00% enter 0.02
+# ContributionGrowthRate is optional. It sets how the monthly contribution changes each year.
+#   It is a SIGNED adjustment against your inflation setting - not a flat rate on its own.
+#   Use 0 to have contributions track inflation. Use -0.01 to fall 1% behind it each year.
+#   With the inflation setting turned off in the app it acts as a plain annual increase.
+#   Leave blank for 0.
+# Percentage for ReturnRate LoanRate or ContributionGrowthRate should be entered as 0.00 - ex. 2.00% enter 0.02
+#   ContributionGrowthRate accepts a NEGATIVE value. Valid range is -0.05 to 0.10.
 # CurrentBalance should have NO commas or symbols. Enter as 12345.67.
 # BalanceDate is optional. Use yyyy-MM-dd format (e.g. 2025-01-15). Leave blank to use today's date.
 # AccountCurrency is optional. Use 3-letter ISO code: USD EUR GBP etc. Leave blank to use your default currency.
