@@ -18,8 +18,8 @@
 
     /* Account types, matched exactly against the app's
        Resources/Account Metadata JSON/account_metadata.json.
-       A value the app doesn't recognize silently falls back to
-       "Checking" on import, so these strings must stay in sync. */
+       A value the app doesn't recognize falls back to "Cash" on import,
+       so these strings must stay in sync. */
     var ASSET_TYPES = [
         { group: 'Cash', types: ['Checking', 'Savings', 'High Yield Savings', 'Money Market', 'Cash'] },
         { group: 'Investments', types: ['Brokerage', 'Retirement', 'HSA', 'Crypto', 'Trust Account', 'ESPP', 'Private Equity'] },
