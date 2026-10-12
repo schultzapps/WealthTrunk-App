@@ -4,15 +4,19 @@ description: How WealthTrunk projects each account and your net worth, and how t
 ---
 Each account is projected from its balance, rate, and contributions to the latest **Retirement Age** among primary profiles.
 
+For example, if you're 40 with a Retirement Age of 65, and your spouse is 35 with a Retirement Age of 62, you retire in 25 years and your spouse in 27. Projections run 27 years, to the end of the year your spouse turns 62.
+
 ## Inputs
 
 - **Assets:** **Expected Return** and **Monthly Contribution**
 - **Liabilities:** **Loan Rate (APR)** and **Monthly Payment**
 - **Include In Projections:** off to exclude an account
 
-## Projection Simulator
+## Growth and Payoff Calculator
 
-Every account has one. Try different contributions or payments without changing your data.
+Open an account, tap its projection chart, then tap **Calculator** (top right). Assets open the **Growth Calculator** and liabilities the **Payoff Calculator**.
+
+Try a different return, contribution, payment, or retirement age and compare it to your current projection. Tap **Close** to discard, or **Save** to apply the changes. A new retirement age applies to all accounts.
 
 ## Growing contributions
 
