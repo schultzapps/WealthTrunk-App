@@ -1500,49 +1500,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 /* ============================================
-   FAQ Section
-   ============================================ */
-.faq-section {
-    padding: var(--space-3xl) 0;
-}
-
-.faq-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
-}
-
-.faq-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-xl);
-    padding: var(--space-lg);
-    transition: all var(--transition-base);
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.faq-item.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.faq-item:hover {
-    border-color: var(--accent-primary);
-}
-
-.faq-question {
-    font-size: 1.125rem;
-    margin-bottom: var(--space-md);
-}
-
-.faq-answer {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-}
-
-/* ============================================
    CTA Section
    ============================================ */
 .cta-section {
@@ -1918,10 +1875,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .pricing-card.featured.animate-in {
         transform: none;
-    }
-
-    .faq-grid {
-        grid-template-columns: 1fr;
     }
 
     /* Showcase tablet responsive */
