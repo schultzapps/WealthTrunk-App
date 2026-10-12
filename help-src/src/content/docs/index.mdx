@@ -5,13 +5,6 @@ template: splash
 pagefind: false
 hero:
   tagline: Guides for WealthTrunk on iPhone, iPad, and Mac.
-  actions:
-    - text: Start here
-      link: /help/getting-started/welcome/
-      icon: right-arrow
-    - text: Contact support
-      link: /help/contact/
-      variant: minimal
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
@@ -26,4 +19,5 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 	<LinkCard title="Sync, Backup & Export" description="iCloud, backups, PDFs, CSVs, and privacy." href="/help/data/icloud-sync/" />
 	<LinkCard title="Subscription" description="Plans, Family Sharing, and billing." href="/help/subscription/free-vs-pro/" />
 	<LinkCard title="What's New?" description="Release notes." href="https://wealthtrunk.app/release-notes.html" />
+	<LinkCard title="Contact Us" description="Get help from the developer." href="/help/contact/" />
 </CardGrid>
