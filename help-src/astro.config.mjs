@@ -9,6 +9,7 @@ export default defineConfig({
 	base: '/help',
 	// Keeps links to renamed articles working.
 	redirects: {
+		'/subscription/free-vs-pro/': '/help/subscription/wealthtrunk-pro/',
 		'/goals/wealth-goals/': '/help/goals/',
 		'/accounts/holdings/': '/help/holdings/',
 		'/getting-started/add-first-account/': '/help/accounts/adding-an-account/',
@@ -50,7 +51,7 @@ export default defineConfig({
 				{ label: 'Goals', items: [{ autogenerate: { directory: 'goals' } }] },
 				{ label: 'Family & Records', items: [{ autogenerate: { directory: 'family' } }] },
 				{ label: 'Sync, Backup & Export', items: [{ autogenerate: { directory: 'data' } }] },
-				{ label: 'Subscription', items: [{ autogenerate: { directory: 'subscription' } }] },
+				{ label: 'WealthTrunk Pro', items: [{ autogenerate: { directory: 'subscription' } }] },
 				{ label: 'Contact Support', link: '/contact/' },
 			],
 		}),
