@@ -8,6 +8,7 @@ hero:
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import ContactLink from '../../components/ContactLink.astro';
 
 <CardGrid>
 	<LinkCard title="Getting Started" description="The basics and updating balances." href="/help/getting-started/welcome/" />
@@ -18,5 +19,6 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 	<LinkCard title="Family & Records" description="Profiles, insurance, contacts, and notes." href="/help/family/family-profiles/" />
 	<LinkCard title="Sync, Backup & Export" description="iCloud, backups, PDFs, CSVs, and privacy." href="/help/data/icloud-sync/" />
 	<LinkCard title="WealthTrunk Pro" description="What Pro adds, Family Sharing, and billing." href="/help/subscription/wealthtrunk-pro/" />
-	<LinkCard title="Contact Us" description="Get help from the developer." href="/help/contact/" />
 </CardGrid>
+
+<p class="wt-help-footer">Can’t find what you’re looking for? <ContactLink label="Contact us" /></p>

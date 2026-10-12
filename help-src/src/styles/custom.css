@@ -55,3 +55,10 @@
 	--sl-color-asides-border: var(--sl-color-accent);
 	background-color: var(--sl-color-accent-low);
 }
+
+/* "Can't find what you're looking for?" line under the home page cards. */
+.wt-help-footer {
+	margin-top: 3rem;
+	text-align: center;
+	color: var(--sl-color-gray-2);
+}
