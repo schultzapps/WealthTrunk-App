@@ -11,6 +11,14 @@ sidebar:
 | **Goals** | Net worth, savings, and debt goals |
 | **Records** | Insurance, contacts, and notes |
 
+## Profile selection
+
+With more than one family member, tap the **profile picture** (top right) to choose whose data you see. Pick one person or up to four together. The selection applies across the whole app: Dashboard, Accounts, Goals, and Records.
+
+- **You and your spouse:** your combined household net worth, including joint accounts
+- **Just you:** your own accounts. Joint accounts show only when both owners are selected.
+- **A child:** their 529, custodial, and savings accounts on their own
+
 ## Settings
 
 - **iPhone:** tap your **profile picture** (top right), then **Settings**.
