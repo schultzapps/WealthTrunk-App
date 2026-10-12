@@ -15,7 +15,9 @@ Track the stocks, ETFs, funds, and crypto inside an account with live prices. Op
 
 To add more later, tap the **Allocation** card on the account's page, then **+**.
 
-Uninvested money goes in the account's **Cash** field.
+### Cash
+
+Enter uninvested money, like a brokerage's settlement or sweep balance, in the **Cash** field at the top of the same screen. It's counted in the account's market value and shows as **Cash** on the allocation map. Clear it to remove it.
 
 ## What you can search
 
