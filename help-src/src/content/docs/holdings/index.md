@@ -9,10 +9,28 @@ Track the stocks, ETFs, funds, and crypto inside an account with live prices. Op
 ## Adding a holding
 
 1. Open the account → **Edit** → turn on **Track Holdings** → **Save**.
-2. Tap **Add Holding** and search by ticker or name (e.g. `VTSAX`, `BTC-USD`).
-3. Enter the **Quantity** and **Save**.
+2. Tap **Add Holding** and search by ticker or name (e.g. `AAPL`, `VTSAX`, `BTC-USD`).
+3. Enter the **Quantity**, or type the **Market Value** to fill it in, then **Add Holding**.
 
-Prices come from Yahoo Finance and refresh automatically.
+Uninvested money goes in the account's **Cash** field.
+
+## What you can search
+
+Prices and search come from Yahoo Finance.
+
+- **Stocks**, including many international exchanges
+- **ETFs** and **mutual funds**
+- **Money market funds**
+- **Crypto**, like `BTC-USD` or `ETH-USD`
+
+Bonds, options, futures, and indexes can't be added. For those, track the account's balance instead.
+
+## When prices update
+
+- When you open the Dashboard or an account's holdings, if prices are more than 30 minutes old
+- When you tap **↻** on the Portfolio Allocation card, or **Updated…** at the bottom of the holdings list (once every 5 minutes)
+
+The last prices are saved on your device, so values still show offline. Mutual funds price once a day after the market closes, so their day change shows **–** during trading hours.
 
 ## Sync to Account
 
@@ -20,4 +38,12 @@ Holdings don't change the account balance on their own. Tap **Sync to Account** 
 
 ## Portfolio Allocation
 
-A Dashboard card showing all your holdings as a tree map. Add it from [Customize](/help/dashboard/customize-dashboard/).
+A [Dashboard card](/help/dashboard/customize-dashboard/) that shows all your holdings as a **tree map**: one rectangle per group, sized by how much money is in it. Bigger rectangles are bigger parts of your portfolio.
+
+- **Color** is today's move: green for up, red for down, and stronger the bigger the move. Cash and money market funds are blue.
+- **Groups** start by sector, like Technology or Crypto. ETFs and funds group by their category.
+- **% or $:** tap the day change at the top to switch every rectangle between percent and amount.
+- **Drill down:** tap a sector to see the individual holdings inside it. Tap **‹** to go back.
+- **Preview:** tap a holding to see its price, quantity, market value, and day change.
+
+The card includes accounts for the [people you've selected](/help/getting-started/finding-your-way/#profile-selection). Each account with holdings also has its own **Allocation** map on its page, grouped by holding.
