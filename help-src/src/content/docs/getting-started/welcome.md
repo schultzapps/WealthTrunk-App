@@ -40,4 +40,4 @@ See [iCloud sync](/help/data/icloud-sync/) if something doesn't show up.
 
 - [Find your way around](/help/getting-started/finding-your-way/)
 - [Adding an account](/help/accounts/adding-an-account/)
-- [Record balances](/help/getting-started/record-balances/)
+- [Recording balances](/help/accounts/recording-balances/)

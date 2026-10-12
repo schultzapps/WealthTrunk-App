@@ -1,18 +1,28 @@
 ---
-title: Record balances
-description: Keep your net worth current by updating balances on a schedule that suits you.
+title: Recording balances
+description: Update your balances regularly to build your net worth history and see your progress over time.
 sidebar:
-  order: 3
+  order: 6
 ---
+Once your accounts are set up, recording balances is the main thing you'll do in WealthTrunk. Every update adds a dated balance to each account's history, and together they build your net worth history.
+
+## How often to update
+
+Whatever you'll stick with. Most people update once a month, often after payday or when statements arrive. Weekly works if you like watching closely; quarterly is fine if you'd rather check in less often. Consistency matters more than frequency.
+
+Set up [reminders](#reminders) so you don't have to remember.
+
+## Your progress over time
+
+One update is a snapshot. A year of updates is a story. Over time, your [Balance History](/help/dashboard/customize-dashboard/) and **Monthly Net Worth** charts show how your wealth is growing, how fast debts are shrinking, and what changed month to month.
+
+Update every account on the same day when you can. Your charts will be more accurate.
+
 ## Update all accounts
 
 1. **Accounts** tab → **Update All** (Mac: **⌘ B**).
 2. Enter each new balance. If one hasn't changed, tap its previous balance above the keyboard.
 3. Tap **Done**.
-
-:::tip
-Charts are most accurate when every account is updated on the same date.
-:::
 
 ## Update one account
 
