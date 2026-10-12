@@ -353,3 +353,8 @@ footer .meta:empty {
 .sl-container > footer {
 	margin-top: 2.5rem;
 }
+
+/* Help home: search lives in the page content, not the header. */
+[data-has-hero] header button[data-open-modal] {
+	display: none;
+}
