@@ -3,25 +3,30 @@ title: Records
 description: Keep insurance policies, contacts, and notes alongside your accounts.
 sidebar:
   order: 2
-  badge:
-    text: Draft
-    variant: caution
 ---
 
-The **Records** tab holds the financial information that isn't a balance: **insurance** policies, important **contacts** (such as your advisor, attorney, or accountant), and **notes**.
+The **Records** tab holds the financial information that isn't a balance:
+
+- **Insurance:** policies with optional coverage amounts in any currency
+- **Contacts:** your advisor, attorney, accountant, and other key people
+- **Notes:** anything else your family should know, such as where your will is kept
+
+Tap **+** (**Add a Record**) to create one. On Mac, press **⇧ ⌘ R**.
 
 ## Attachments
 
-Add up to five photos, PDFs, or scanned documents to any contact, insurance record, or note. Attachments sync through iCloud with the rest of the record.
+Add up to five photos, PDFs, or scanned documents to any record. You can scan a paper document with your camera directly in the app. Attachments sync through iCloud with the rest of the record.
+
+:::caution
+[Backups](/help/data/backup-restore/) keep attachment file names but not the files themselves, so you can re-attach them after restoring.
+:::
 
 ## Reminders
 
-Set a reminder on a record for a date you choose, either once or repeating anywhere from weekly to yearly. For example, get a reminder to review your insurance policy or update your will.
+Add a **Reminder** to any record and choose whether it **Repeat**s, from weekly to yearly. For example, set a yearly reminder to review your insurance or update your will.
+
+Reminders need notifications turned on. If they're off, go to **Settings → Notifications** and tap **Allow Reminders**. You can tap **Send Test Notification** there to check that they work.
 
 ## On your PDF statement
 
-You can choose which record types appear on your [PDF Net Worth Statement](/help/data/export/).
-
-:::note[Coming soon]
-Step-by-step instructions for creating each record type.
-:::
+When you create a [PDF Net Worth Statement](/help/data/export/), choose whether to include your **Contacts**, **Insurance**, and **Notes**.

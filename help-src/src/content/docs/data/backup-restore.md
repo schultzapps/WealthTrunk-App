@@ -5,18 +5,39 @@ sidebar:
   order: 2
 ---
 
-iCloud sync keeps your own devices up to date. A **backup** is a single file holding a snapshot of your data that you can store or share.
+iCloud sync keeps your own devices up to date. A **backup** is a single file holding a snapshot of your data that you can keep somewhere safe or send to someone.
 
 ## Create a backup
 
-Choose **Create a Backup**. The app shows exactly what the backup includes and what it leaves out, then opens the share sheet. You can save the file, AirDrop it, or send it. On Mac, you can save it straight to a folder.
+1. Go to **Settings → Import/Export Data → Create A Backup**.
+2. Check the lists of what's **Included** and **Not Included**.
+3. Tap **Create A Backup**, then save the file or share it. On Mac, you can save it straight to a folder.
 
-Backups include your profile photos and custom logos.
+| Included | Not included |
+| --- | --- |
+| Accounts, balance history, and holdings | **Attachment files.** Their file names are kept, so you can re-attach them. |
+| Profiles and family details, including photos and custom logos | **App settings**, such as currency, appearance, and inflation settings |
+| Goals | |
+| Insurance, contacts, and notes | |
+| Custom account types and tax types | |
+
+:::caution
+A backup contains your financial records. Keep it as safe as you would any other sensitive document.
+:::
 
 ## Restore a backup
 
-Open the backup file on the device you want to restore to, for example by tapping it in Files or Messages, and import it into WealthTrunk.
+Restoring is a **Pro** feature.
+
+:::danger
+Restoring **erases all existing data** in WealthTrunk and replaces it with the backup. This can't be undone, so create a fresh backup first.
+:::
+
+Either:
+
+- Go to **Settings → Import/Export Data → Restore From Backup** and select the file, or
+- Tap a backup file in Files, Mail, or Messages and choose to import it into WealthTrunk.
 
 ## Copy your data to a partner
 
-Backups are currently how you share data with a partner: create a backup, send it to them, and they restore it on their device. Changes after that don't sync between you.
+WealthTrunk can't currently sync between two people's Apple Accounts. To give a partner a copy, create a backup, send it to them, and have them restore it on their device. Changes made after that aren't shared between you.

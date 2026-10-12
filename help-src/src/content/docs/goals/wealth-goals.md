@@ -1,30 +1,40 @@
 ---
 title: Wealth Goals
-description: Set net worth, savings, and debt payoff goals that track themselves.
+description: Set net worth, savings, and debt goals that track themselves.
 sidebar:
   order: 1
 ---
 
-Goals have their own **Goals** tab. There are three kinds:
+Create goals on the **Goals** tab by tapping **+** (**Add a Goal**). There are three kinds:
 
-| Goal | Tracks |
-| --- | --- |
-| **Net Worth** | Reaching a total net worth target |
-| **Savings** | Building one or more accounts up to a target |
-| **Debt Payoff** | Paying a loan or card down to zero. Shows how much is left to pay. |
+| Goal | Use it to | Examples |
+| --- | --- | --- |
+| **Net Worth** | Track total wealth toward a milestone | Reach $1,000,000 |
+| **Savings** | Save toward a purchase or a financial cushion | Down Payment, Emergency Fund, College Fund, Holiday |
+| **Debt** | Pay down a loan or credit card | Credit Card, Student Loan, Car Loan |
 
-## Link accounts
+## Linked or Manual
 
-Link accounts to a goal and its progress updates whenever you record a balance. Each goal shows a balance chart and a projected completion date.
+Every goal has a **Tracking Type**:
 
-### Split an account between goals
+- **Linked** goals are tied to your accounts, and progress updates whenever you record a balance. Link asset accounts to Savings goals and liability accounts to Debt goals.
+- **Manual** goals have a target that you update yourself.
 
-A savings goal can count only **part** of an account. Set a percentage, and the goal's progress, charts, and projected date all use that share. This is useful when one savings account is funding more than one goal.
+### Count only part of an account
+
+Each account linked to a Savings goal counts at 100% by default. Tap a linked account to reveal a slider and choose a smaller share. This is useful when one account is saving for more than one thing, such as a brokerage account that holds both a down payment fund and an emergency fund. The percentage applies to the account's balance and its monthly contribution, so progress, charts, and the projected date all use only that share.
+
+Debt and Net Worth goals always use the full balance.
 
 Closed accounts stay linked to their goals, so their history still counts.
 
+## Target dates
+
+Give a goal a **Target Date** and WealthTrunk shows a **Projected Date**. It also tells you roughly how much more you'd need to save or pay each month to hit your target. This is an estimate based on each linked account's rates and contributions.
+
 ## Keep goals in view
 
-- Add the **Goals** card to your Dashboard to see your favorite goals.
-- Add a Goals **widget** to your Home Screen. Tap a goal in the widget to open it.
+- Turn on the **Goals** card in the Dashboard's **Customize** screen.
+- Add a **Goal Card** or **Goal List** [widget](/help/dashboard/widgets/).
 - Group goals by owner, or by status with the furthest-behind first.
+- **Archive** goals you've finished. You can **Unarchive** them later.
