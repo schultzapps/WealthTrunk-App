@@ -26,5 +26,5 @@ Every row in the balance history file needs an account ID, and only an export fr
 4. **Review before confirming.** Imported accounts wait under **Import Pending** until you assign their owners. Nothing is added to your net worth until you do.
 
 :::tip[Skip the spreadsheet]
-The free [Net Worth Calculator](https://wealthtrunk.app/net-worth-calculator.html) builds an accounts import file for you from a few simple fields.
+The [Net Worth Calculator](https://wealthtrunk.app/net-worth-calculator.html) builds an accounts import file for you from a few simple fields.
 :::

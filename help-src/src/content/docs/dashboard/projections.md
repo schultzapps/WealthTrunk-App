@@ -47,7 +47,7 @@ Keep each account's **Expected Return** as a normal (nominal) rate, like 7% or 1
 
 ## Financial independence (FIRE)
 
-The **FIRE** card (Pro) estimates when your investments could cover your spending.
+The **FIRE** card estimates when your investments could cover your spending.
 
 - **FIRE number** = (monthly spending × 12) ÷ withdrawal rate. For example, $5,000 a month at a 4% withdrawal rate is $1,500,000.
 - **Coast FIRE** is the amount you'd need invested today for growth alone to reach your FIRE number by retirement. Tap the card's title to switch between FIRE and Coast FIRE.

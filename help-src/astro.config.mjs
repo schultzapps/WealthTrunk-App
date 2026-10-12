@@ -10,6 +10,7 @@ export default defineConfig({
 	// Keeps links to renamed articles working.
 	redirects: {
 		'/goals/wealth-goals/': '/help/goals/',
+		'/accounts/holdings/': '/help/holdings/',
 		'/getting-started/add-first-account/': '/help/accounts/adding-an-account/',
 	},
 	integrations: [
@@ -45,6 +46,7 @@ export default defineConfig({
 			sidebar: [
 				{ label: 'Getting Started', items: [{ autogenerate: { directory: 'getting-started' } }] },
 				{ label: 'Accounts & Balances', items: [{ autogenerate: { directory: 'accounts' } }] },
+				{ label: 'Holdings & Asset Allocation', items: [{ autogenerate: { directory: 'holdings' } }] },
 				{ label: 'Dashboard & Projections', items: [{ autogenerate: { directory: 'dashboard' } }] },
 				{ label: 'Goals', items: [{ autogenerate: { directory: 'goals' } }] },
 				{ label: 'Family & Records', items: [{ autogenerate: { directory: 'family' } }] },

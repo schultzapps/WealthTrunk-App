@@ -17,7 +17,7 @@ Create a polished statement to share with an advisor, a lender, or your partner.
    - **Chart Layout** and **Chart Colors** (full or muted)
    - Whether to show **Account Values** and **Account Logos**
    - The **Header Date**
-   - **Footer Text** (Pro)
+   - **Footer Text**
 4. Tap **Create PDF Statement**, then save or share it.
 
 The statement includes the charts you have on your Dashboard, so [customize your Dashboard](/help/dashboard/customize-dashboard/) first to change which charts appear.

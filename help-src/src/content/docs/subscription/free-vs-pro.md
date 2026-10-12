@@ -9,7 +9,7 @@ WealthTrunk is free to download, with no account required.
 
 ## Free
 
-- Up to **10 accounts**
+- Up to **10 accounts**. The Accounts tab shows how many you've used, for example **Free Plan 3/10**.
 - Family profiles
 - Custom account and tax types
 - Net worth charts and projections
@@ -22,7 +22,7 @@ WealthTrunk is free to download, with no account required.
 Everything in Free, plus:
 
 - **Unlimited** accounts, with no upgrade banners
-- [**Track Holdings**](/help/accounts/holdings/) with live market prices
+- [**Track Holdings**](/help/holdings/) with live market prices. On the free plan you can search tickers and preview their value, but saving a holding requires Pro.
 - Optional Dashboard cards: **Goals**, **Monthly Net Worth**, **Portfolio Allocation**, and **FIRE**
 - **Restore From Backup**
 - Custom **Footer Text** on PDF statements

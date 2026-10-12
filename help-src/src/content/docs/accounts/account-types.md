@@ -34,7 +34,7 @@ Each account also has a **Tax Status**: After-Tax, Tax-Deferred, Roth, Tax-Advan
 
 ## Custom types
 
-If nothing fits, create your own account type or tax type right from the picker, or manage them in **Settings → Custom Accounts**. Custom types are free for everyone.
+If nothing fits, create your own account type or tax type right from the picker, or manage them in **Settings → Custom Accounts**.
 
 ## Future Income: pensions and annuities
 

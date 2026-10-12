@@ -19,15 +19,15 @@ These cards are on the Dashboard to start with:
 | **Net Worth Breakdown** | Assets vs. liabilities by group (bar or donut) |
 | **Tax Categories** | Wealth by tax treatment (bar or donut) |
 
-### Pro cards
+### Optional cards
 
-These optional cards can be added with a [Pro subscription](/help/subscription/free-vs-pro/):
+Add these from **Customize**:
 
 | Card | Shows |
 | --- | --- |
 | **Goals** | Progress on your [goals](/help/goals/) |
 | **Monthly Net Worth** | Assets and liabilities side by side each month |
-| **Portfolio Allocation** | Your [holdings](/help/accounts/holdings/) as a tree map |
+| **Portfolio Allocation** | Your [holdings](/help/holdings/) as a tree map |
 | **FIRE** | Progress toward [financial independence](/help/dashboard/projections/#financial-independence-fire) |
 
 ## Customize

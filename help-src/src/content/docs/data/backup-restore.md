@@ -27,8 +27,6 @@ A backup contains your financial records. Keep it as safe as you would any other
 
 ## Restore a backup
 
-Restoring is a **Pro** feature.
-
 :::danger
 Restoring **erases all existing data** in WealthTrunk and replaces it with the backup. This can't be undone, so create a fresh backup first.
 :::

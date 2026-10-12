@@ -31,7 +31,3 @@ These are worth filling in, because they drive your projections:
 ## Adding a lot of accounts?
 
 You don't have to add them one at a time. Fill in a spreadsheet and [import it from CSV](/help/accounts/import-csv/) instead.
-
-## How many accounts can I add?
-
-The free plan includes up to **10 accounts**. The Accounts tab shows your count as **Free Plan 3/10**, for example. [WealthTrunk Pro](/help/subscription/free-vs-pro/) removes the limit.
