@@ -209,9 +209,7 @@ button[data-open-modal] {
 		color: var(--sl-color-gray-2);
 	}
 	button[data-open-modal] > kbd {
-		border-radius: 999px;
-		background-color: var(--sl-color-black);
-		border: 1px solid var(--sl-color-gray-5);
+		display: none;
 	}
 }
 dialog[aria-label] {

@@ -1,19 +1,16 @@
 ---
 // Large search box for the help home page. Opens Starlight's search dialog,
-// which stays in the header markup (hidden on this page) for ⌘K / Ctrl K.
+// which stays in the header markup (hidden on this page).
 import { Icon } from '@astrojs/starlight/components';
 ---
 
 <button type="button" class="wt-home-search" aria-label="Search help articles">
 	<Icon name="magnifier" size="1.25rem" />
 	<span>Search help articles</span>
-	<kbd class="wt-home-search-kbd">⌘K</kbd>
 </button>
 
 <script>
 	const button = document.querySelector<HTMLButtonElement>('.wt-home-search');
-	const kbd = document.querySelector('.wt-home-search-kbd');
-	if (kbd && !/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) kbd.textContent = 'Ctrl K';
 	button?.addEventListener('click', (event) => {
 		// Starlight closes the dialog on any click outside it; keep this one from reaching window.
 		event.stopPropagation();
@@ -30,7 +27,7 @@ import { Icon } from '@astrojs/starlight/components';
 		max-width: 36rem;
 		height: 3.25rem;
 		margin: 0 0 2.5rem;
-		padding: 0 0.75rem 0 1.25rem;
+		padding: 0 1.25rem;
 		border: 1px solid var(--sl-color-gray-5);
 		border-radius: 999px;
 		background-color: var(--sl-color-gray-7);
@@ -50,20 +47,5 @@ import { Icon } from '@astrojs/starlight/components';
 	.wt-home-search svg {
 		color: var(--sl-color-accent);
 		flex-shrink: 0;
-	}
-	.wt-home-search kbd {
-		margin-inline-start: auto;
-		padding: 0.125rem 0.5rem;
-		border: 1px solid var(--sl-color-gray-5);
-		border-radius: 999px;
-		background-color: var(--sl-color-black);
-		color: var(--sl-color-gray-3);
-		font-family: inherit;
-		font-size: var(--sl-text-xs);
-	}
-	@media (max-width: 50rem) {
-		.wt-home-search kbd {
-			display: none;
-		}
 	}
 </style>
