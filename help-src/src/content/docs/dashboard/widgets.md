@@ -2,7 +2,7 @@
 title: Widgets
 description: See your net worth, accounts, and goals on your Home Screen and Lock Screen.
 sidebar:
-  order: 2
+  order: 3
 ---
 Add from your Home Screen: touch and hold → **Edit → Add Widget** → **WealthTrunk**.
 

@@ -1,17 +1,9 @@
 ---
-title: PDF statements & CSV export
-description: Create a net worth statement or export your data to a spreadsheet.
+title: CSV export
+description: Export your accounts, balances, holdings, and goals to a spreadsheet.
 sidebar:
   order: 3
 ---
-## PDF Net Worth Statement
-
-1. **Dashboard** → **Share** (Mac: **⌘ P**).
-2. Choose **Content** and **Formatting**.
-3. **Create PDF Statement**.
-
-The PDF uses the charts on your Dashboard.
-
-## CSV export
-
 **Settings → Import/Export Data → Export Data (CSV)** → choose accounts, balance history, holdings, or goals → **Export**.
+
+Open the file in Numbers, Excel, or Google Sheets. To bring accounts in, see [Import accounts from CSV](/help/accounts/import-csv/).
