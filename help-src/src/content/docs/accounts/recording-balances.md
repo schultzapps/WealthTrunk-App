@@ -34,14 +34,14 @@ Open the account and tap the **pencil** next to **Account Balance**.
 - **Spotlight:** search **Update Balance**.
 - **Shortcuts:** use the **Update Account Balance** action.
 
-## Back Tap
+## Quick Action or Back Tap
 
-Double- or triple-tap the back of your iPhone to record a balance from anywhere.
+Record a balance from anywhere with the **Action button** or by tapping the back of your iPhone.
 
 1. In **Shortcuts**, create a shortcut with WealthTrunk's **Update Account Balance** action. Leave **Account** and **Amount** empty to be asked each time.
-2. In iPhone **Settings → Accessibility → Touch → Back Tap**, choose **Double Tap** or **Triple Tap** and select your shortcut.
-
-The same shortcut works with the **Action button**: **Settings → Action Button → Shortcut**.
+2. Assign it:
+   - **Action button:** iPhone **Settings → Action Button → Shortcut**, then select your shortcut.
+   - **Back Tap:** iPhone **Settings → Accessibility → Touch → Back Tap**, choose **Double Tap** or **Triple Tap**, then select your shortcut.
 
 ## Reminders
 
