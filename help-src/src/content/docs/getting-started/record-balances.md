@@ -2,7 +2,7 @@
 title: Record balances
 description: Keep your net worth current by updating balances on a schedule that suits you.
 sidebar:
-  order: 4
+  order: 3
 ---
 
 Recording balances is the core habit in WealthTrunk. Each new balance is saved with its date and becomes part of that account's history.

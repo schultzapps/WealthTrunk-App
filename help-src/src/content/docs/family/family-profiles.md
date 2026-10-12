@@ -7,20 +7,25 @@ sidebar:
 
 WealthTrunk is built for a whole household. Create a profile for each person, then assign accounts, goals, and records to their owners. Choose two owners for a joint account.
 
+## Adding a family member
+
+1. Go to **Settings → Family Members** and tap **+** (**Add a Profile**).
+2. Enter their **First Name** and **Birthday**.
+3. Turn on **Dependent / Child** for children and other dependents (see below).
+4. Optionally add a photo, an **Annual Income**, and a **Pop of Color**, then tap **Save**.
+
+Once you've set a family name, the Settings row shows "Smith Family", for example. On Mac, press **⇧ ⌘ N** to add a profile. You can also create one from the profile filter.
+
+To edit someone, tap their profile in **Settings → Family Members**.
+
+To delete a profile, first remove or reassign any accounts that only that person owns. Joint accounts are kept.
+
 ## Primary profiles and dependents
 
 - Up to **2 primary profiles**, such as you and your partner. Each has a **Retirement Age**, which tells projections when contributions stop.
 - Everyone else is a **Dependent / Child**. Dependents have a **Savings Age** instead and don't affect the household's retirement timeline.
 
 You can have up to 15 profiles in total.
-
-## Add or edit a profile
-
-Go to **Settings → Family Members**. Once you've set a family name, this row shows "Smith Family", for example. On Mac, press **⇧ ⌘ N** to add a profile. You can also create a profile from the profile filter (below).
-
-Each profile can have a photo, a **Birthday**, an **Annual Income**, and a **Pop of Color**.
-
-To delete a profile, first remove or reassign any accounts that only that person owns. Joint accounts are kept.
 
 ## Filter by person
 

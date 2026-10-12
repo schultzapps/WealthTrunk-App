@@ -1,13 +1,13 @@
 ---
-title: Add your first account
+title: Adding an account
 description: Create an account in WealthTrunk and give it a starting balance.
 sidebar:
-  order: 3
+  order: 1
 ---
 
 Every account you add is either an **asset** (something you own) or a **liability** (something you owe). Your net worth is your assets minus your liabilities.
 
-## Add an account
+## Adding an account
 
 1. Open the **Accounts** tab and tap **+** (**Add an Account**). On Mac, press **⌘ N**.
 2. Under **Find or add an institution**, search for your bank. WealthTrunk fills in the institution's name and logo for you.

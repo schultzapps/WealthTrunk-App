@@ -2,7 +2,7 @@
 title: Account types
 description: The built-in account types, tax statuses, and how to make your own.
 sidebar:
-  order: 2
+  order: 3
 ---
 
 Pick an **Account Type** whenever you add an account. The type decides which group the account appears in and how it's charted and projected.

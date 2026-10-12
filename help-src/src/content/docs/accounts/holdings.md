@@ -2,7 +2,7 @@
 title: Track holdings
 description: Track the stocks, ETFs, funds, and crypto inside an investment account.
 sidebar:
-  order: 3
+  order: 4
   badge:
     text: Pro
     variant: tip

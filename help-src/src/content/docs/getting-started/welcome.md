@@ -28,5 +28,5 @@ Your data is stored in your own iCloud account using Apple's CloudKit. It syncs 
 ## Next steps
 
 - [Find your way around](/help/getting-started/finding-your-way/)
-- [Add your first account](/help/getting-started/add-first-account/)
+- [Adding an account](/help/accounts/adding-an-account/)
 - [Record balances](/help/getting-started/record-balances/)

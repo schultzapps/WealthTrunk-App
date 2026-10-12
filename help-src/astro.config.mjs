@@ -10,6 +10,7 @@ export default defineConfig({
 	// Keeps links to renamed articles working.
 	redirects: {
 		'/goals/wealth-goals/': '/help/goals/',
+		'/getting-started/add-first-account/': '/help/accounts/adding-an-account/',
 	},
 	integrations: [
 		starlight({

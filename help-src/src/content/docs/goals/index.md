@@ -5,13 +5,22 @@ sidebar:
   order: 1
 ---
 
-Create goals on the **Goals** tab by tapping **+** (**Add a Goal**). There are three kinds:
+Goals track your progress toward a target, such as a net worth milestone, a savings fund, or paying off a debt.
 
-| Goal | Use it to | Examples |
-| --- | --- | --- |
-| **Net Worth** | Track total wealth toward a milestone | Reach $1,000,000 |
-| **Savings** | Save toward a purchase or a financial cushion | Down Payment, Emergency Fund, College Fund, Holiday |
-| **Debt** | Pay down a loan or credit card | Credit Card, Student Loan, Car Loan |
+## Adding a goal
+
+1. Open the **Goals** tab and tap **+** (**Add a Goal**).
+2. Choose a kind of goal, or start from one of the **Examples**:
+
+   | Goal | Use it to | Examples |
+   | --- | --- | --- |
+   | **Net Worth** | Track total wealth toward a milestone | Reach $1,000,000 |
+   | **Savings** | Save toward a purchase or a financial cushion | Down Payment, Emergency Fund, College Fund, Holiday |
+   | **Debt** | Pay down a loan or credit card | Credit Card, Student Loan, Car Loan |
+
+3. Enter a **Goal Name** and **Target Amount**.
+4. Choose a **Tracking Type** (see below) and, for a linked goal, pick its accounts.
+5. Optionally set a **Target Date**, then tap **Save**.
 
 ## Linked or Manual
 

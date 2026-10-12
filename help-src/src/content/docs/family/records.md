@@ -11,7 +11,12 @@ The **Records** tab holds the financial information that isn't a balance:
 - **Contacts:** your advisor, attorney, accountant, and other key people
 - **Notes:** anything else your family should know, such as where your will is kept
 
-Tap **+** (**Add a Record**) to create one. On Mac, press **⇧ ⌘ R**.
+## Adding a record
+
+1. Open the **Records** tab and tap **+** (**Add a Record**). On Mac, press **⇧ ⌘ R**.
+2. Choose **Insurance**, **Contact**, or **Note**.
+3. Fill in the details, such as a contact's phone number and email, or an insurance policy's coverage. Choose who the record belongs to.
+4. Tap **Save**.
 
 ## Attachments
 
