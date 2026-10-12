@@ -344,19 +344,6 @@ site-search dialog {
 	}
 }
 
-/* Article counts on sidebar groups. */
-.sidebar-content .wt-count-badge {
-	border: none;
-	border-radius: 999px;
-	background-color: var(--sl-color-gray-6);
-	color: var(--sl-color-gray-3);
-	font-size: 0.6875rem;
-	font-weight: 600;
-	letter-spacing: 0;
-	padding: 0 0.4375rem;
-	line-height: 1.6;
-	text-transform: none;
-}
 
 /* Starlight's footer keeps an empty "last updated" row with a 3rem margin.
    Drop it so Previous / Next sit closer to the article. */
