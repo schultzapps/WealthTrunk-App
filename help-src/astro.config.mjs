@@ -1,6 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { readdirSync } from 'node:fs';
+
+// Number of articles in a docs folder, shown as a badge on its sidebar group.
+const docsDir = new URL('./src/content/docs/', import.meta.url);
+const countBadge = (dir) => ({
+	text: String(readdirSync(new URL(`${dir}/`, docsDir)).filter((f) => /\.mdx?$/.test(f)).length),
+	class: 'wt-count-badge',
+});
 
 // The help center is built into /help/ and deployed alongside the hand-written
 // site at the repo root (see .github/workflows/deploy-pages.yml).
@@ -50,15 +58,15 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
-				{ label: 'Getting Started', items: [{ autogenerate: { directory: 'getting-started' } }] },
-				{ label: 'Dashboard', items: [{ autogenerate: { directory: 'dashboard' } }] },
-				{ label: 'Accounts & Balances', items: [{ autogenerate: { directory: 'accounts' } }] },
-				{ label: 'Account Projections', items: [{ autogenerate: { directory: 'projections' } }] },
-				{ label: 'Account Holdings', items: [{ autogenerate: { directory: 'holdings' } }] },
-				{ label: 'Goals', items: [{ autogenerate: { directory: 'goals' } }] },
-				{ label: 'Family & Records', items: [{ autogenerate: { directory: 'family' } }] },
-				{ label: 'Sync, Backup & Export', items: [{ autogenerate: { directory: 'data' } }] },
-				{ label: 'WealthTrunk Pro', items: [{ autogenerate: { directory: 'subscription' } }] },
+				{ label: 'Getting Started', badge: countBadge('getting-started'), items: [{ autogenerate: { directory: 'getting-started' } }] },
+				{ label: 'Dashboard', badge: countBadge('dashboard'), items: [{ autogenerate: { directory: 'dashboard' } }] },
+				{ label: 'Accounts & Balances', badge: countBadge('accounts'), items: [{ autogenerate: { directory: 'accounts' } }] },
+				{ label: 'Account Projections', badge: countBadge('projections'), items: [{ autogenerate: { directory: 'projections' } }] },
+				{ label: 'Account Holdings', badge: countBadge('holdings'), items: [{ autogenerate: { directory: 'holdings' } }] },
+				{ label: 'Goals', badge: countBadge('goals'), items: [{ autogenerate: { directory: 'goals' } }] },
+				{ label: 'Family & Records', badge: countBadge('family'), items: [{ autogenerate: { directory: 'family' } }] },
+				{ label: 'Sync, Backup & Export', badge: countBadge('data'), items: [{ autogenerate: { directory: 'data' } }] },
+				{ label: 'WealthTrunk Pro', badge: countBadge('subscription'), items: [{ autogenerate: { directory: 'subscription' } }] },
 			],
 		}),
 	],

@@ -7,11 +7,22 @@ sidebar:
 ## Adding an account
 
 1. **Accounts** tab → **+** (Mac: **⌘ N**).
-2. Search for your bank under **Find or add an institution**.
+2. Search for your bank under **Find or add an institution**. Picking one adds its logo for you.
 3. Enter a nickname, like "Primary". For property, enter a name instead, like "Our Home".
 4. Choose the [**Account Type**](/help/accounts/account-types/) and set the [**Tax Status**](/help/accounts/tax-types/).
 5. Choose the owner. Pick two for a joint account.
 6. Enter the balance and **Balance Date**, then **Save**.
+
+## Account logo
+
+Tap the logo next to the institution name to choose a different one:
+
+- **Search:** find a logo by company name or website
+- **Emoji:** use an emoji instead, like 🏠 for your home or 🚗 for a car
+- **Upload:** choose a photo from your library
+- **Saved:** reuse a logo from one of your other accounts
+
+To remove it, tap the logo → **Delete**.
 
 ## Projection details
 

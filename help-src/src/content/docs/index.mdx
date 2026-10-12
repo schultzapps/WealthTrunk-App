@@ -7,19 +7,20 @@ hero:
   tagline: Guides for WealthTrunk on iPhone, iPad, and Mac.
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { CardGrid } from '@astrojs/starlight/components';
+import TopicCard from '../../components/TopicCard.astro';
 import ContactLink from '../../components/ContactLink.astro';
 
 <CardGrid>
-	<LinkCard title="Getting Started" description="Setup, finding your way, and the basics." href="/help/getting-started/welcome/" />
-	<LinkCard title="Dashboard" description="Cards, chart settings, PDF statements, and widgets." href="/help/dashboard/customize-dashboard/" />
-	<LinkCard title="Accounts & Balances" description="Adding accounts, types, currency, and recording balances." href="/help/accounts/adding-an-account/" />
-	<LinkCard title="Account Projections" description="Future balances, inflation, and FIRE." href="/help/projections/" />
-	<LinkCard title="Account Holdings" description="Stocks, funds, and crypto inside your accounts." href="/help/holdings/" />
-	<LinkCard title="Goals" description="Net worth, savings, and debt goals." href="/help/goals/" />
-	<LinkCard title="Family & Records" description="Profiles, insurance, contacts, and notes." href="/help/family/family-profiles/" />
-	<LinkCard title="Sync, Backup & Export" description="iCloud, backups, CSV export, and privacy." href="/help/data/icloud-sync/" />
-	<LinkCard title="WealthTrunk Pro" description="What Pro adds, Family Sharing, and billing." href="/help/subscription/wealthtrunk-pro/" />
+	<TopicCard title="Getting Started" description="Setup, finding your way, and the basics." href="/help/getting-started/welcome/" topic="getting-started" />
+	<TopicCard title="Dashboard" description="Cards, chart settings, PDF statements, and widgets." href="/help/dashboard/customize-dashboard/" topic="dashboard" />
+	<TopicCard title="Accounts & Balances" description="Adding accounts, types, currency, and recording balances." href="/help/accounts/adding-an-account/" topic="accounts" />
+	<TopicCard title="Account Projections" description="Future balances, inflation, and FIRE." href="/help/projections/" topic="projections" />
+	<TopicCard title="Account Holdings" description="Stocks, funds, and crypto inside your accounts." href="/help/holdings/" topic="holdings" />
+	<TopicCard title="Goals" description="Net worth, savings, and debt goals." href="/help/goals/" topic="goals" />
+	<TopicCard title="Family & Records" description="Profiles, insurance, contacts, and notes." href="/help/family/family-profiles/" topic="family" />
+	<TopicCard title="Sync, Backup & Export" description="iCloud, backups, CSV export, and privacy." href="/help/data/icloud-sync/" topic="data" />
+	<TopicCard title="WealthTrunk Pro" description="What Pro adds, Family Sharing, and billing." href="/help/subscription/wealthtrunk-pro/" topic="subscription" />
 </CardGrid>
 
 <p class="wt-help-footer">Can’t find what you’re looking for? <ContactLink label="Contact us" /></p>

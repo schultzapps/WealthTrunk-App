@@ -1,0 +1,78 @@
+---
+// Home page topic card with a count of the articles in that topic.
+import { getCollection } from 'astro:content';
+import { Icon } from '@astrojs/starlight/components';
+
+interface Props {
+	title: string;
+	description: string;
+	href: string;
+	/** Docs folder whose pages are counted, e.g. "accounts". */
+	topic: string;
+}
+
+const { title, description, href, topic } = Astro.props;
+const docs = await getCollection('docs');
+const count = docs.filter((entry) => entry.id.startsWith(`${topic}/`) || entry.id === topic).length;
+---
+
+<a class="wt-topic-card" href={href}>
+	<span class="wt-topic-title">
+		{title}
+		<span class="wt-topic-count" aria-label={`${count} ${count === 1 ? 'article' : 'articles'}`}>{count}</span>
+	</span>
+	<span class="wt-topic-description">{description}</span>
+	<Icon name="right-arrow" size="1.25rem" class="wt-topic-arrow" />
+</a>
+
+<style>
+	.wt-topic-card {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.25rem 0.5rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 0.75rem;
+		padding: 0.875rem 1rem;
+		text-decoration: none;
+		transition: border-color 0.15s, background-color 0.15s;
+	}
+	.wt-topic-card:hover {
+		border-color: var(--sl-color-accent);
+		background-color: var(--sl-color-gray-7);
+	}
+	.wt-topic-title {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--sl-color-white);
+		font-size: var(--sl-text-lg);
+		font-weight: 600;
+		line-height: var(--sl-line-height-headings);
+	}
+	.wt-topic-count {
+		min-width: 1.5rem;
+		padding: 0.0625rem 0.4375rem;
+		border-radius: 999px;
+		background-color: var(--sl-color-accent-low);
+		color: var(--sl-color-accent);
+		font-size: var(--sl-text-xs);
+		font-weight: 600;
+		text-align: center;
+		line-height: 1.5;
+	}
+	.wt-topic-description {
+		grid-column: 1;
+		color: var(--sl-color-gray-3);
+		font-size: var(--sl-text-base);
+		line-height: 1.5;
+	}
+	.wt-topic-arrow {
+		grid-column: 2;
+		grid-row: 1;
+		align-self: center;
+		color: var(--sl-color-gray-3);
+	}
+	.wt-topic-card:hover .wt-topic-arrow {
+		color: var(--sl-color-accent);
+	}
+</style>

@@ -336,3 +336,24 @@ site-search dialog {
 	border-radius: 0.75rem;
 	overflow: hidden;
 }
+
+/* Search popup only as tall as its content (Starlight reserves 15rem). */
+@media (min-width: 50rem) {
+	site-search dialog {
+		min-height: 0;
+	}
+}
+
+/* Article counts on sidebar groups. */
+.sidebar-content .wt-count-badge {
+	border: none;
+	border-radius: 999px;
+	background-color: var(--sl-color-gray-6);
+	color: var(--sl-color-gray-3);
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0;
+	padding: 0 0.4375rem;
+	line-height: 1.6;
+	text-transform: none;
+}
