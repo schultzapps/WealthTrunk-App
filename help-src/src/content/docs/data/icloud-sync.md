@@ -4,23 +4,16 @@ description: How your data syncs across iPhone, iPad, and Mac, and how to check 
 sidebar:
   order: 1
 ---
+WealthTrunk syncs automatically through your iCloud account across iPhone, iPad, and Mac. Settings sync too.
 
-When you're signed in to iCloud, WealthTrunk syncs your data automatically across your iPhone, iPad, and Mac. Changes on one device show up on the others within moments. Core app settings sync too, and they come back if you reinstall the app.
+## Sync status
 
-Your data is stored in the private database of **your own** iCloud account using Apple's CloudKit. Only you can access it.
+**Settings → iCloud Sync** shows your iCloud login, storage, item counts, and anything **Pending sync**.
 
-## Check sync status
+## Not syncing?
 
-Go to **Settings → iCloud Sync**. This page shows:
-
-- Whether you're **Logged in to iCloud**, and how much **iCloud Storage** you have available
-- **Items in iCloud** compared with **Items on Device**, broken down by data type
-- Any changes still **Pending sync**
-
-## If something isn't syncing
-
-1. On every device, check that you're signed in to the **same Apple Account** and that iCloud is turned on for WealthTrunk.
-2. Make sure you have iCloud storage available. If your iCloud storage is full, new changes can't upload.
-3. Connect to the internet, open WealthTrunk, and give it a moment. Watch **Pending sync** in **Settings → iCloud Sync**; it should count down to zero.
+1. Use the same Apple Account on every device, with iCloud on for WealthTrunk.
+2. Check you have iCloud storage available.
+3. Open the app online and wait for **Pending sync** to reach zero.
 
 Still stuck? [Contact support](/help/contact/).

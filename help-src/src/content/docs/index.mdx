@@ -4,7 +4,7 @@ description: Guides and answers for WealthTrunk, the manual net worth tracker fo
 template: splash
 pagefind: false
 hero:
-  tagline: Guides for tracking your accounts, your household, and your net worth in WealthTrunk on iPhone, iPad, and Mac.
+  tagline: Guides for WealthTrunk on iPhone, iPad, and Mac.
   actions:
     - text: Start here
       link: /help/getting-started/welcome/
@@ -16,52 +16,14 @@ hero:
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-Use the **Search** box at the top of any page, or browse by topic:
-
 <CardGrid>
-	<LinkCard
-		title="Getting Started"
-		description="Find your way around, add your first account, and build an updating habit."
-		href="/help/getting-started/welcome/"
-	/>
-	<LinkCard
-		title="Accounts & Balances"
-		description="Adding accounts, account types, and importing from CSV."
-		href="/help/accounts/adding-an-account/"
-	/>
-	<LinkCard
-		title="Holdings & Asset Allocation"
-		description="Track individual investments and see how your portfolio is spread."
-		href="/help/holdings/"
-	/>
-	<LinkCard
-		title="Dashboard & Projections"
-		description="Customize your charts, widgets, and projections."
-		href="/help/dashboard/customize-dashboard/"
-	/>
-	<LinkCard
-		title="Goals"
-		description="Net worth, savings, and debt payoff goals linked to your accounts."
-		href="/help/goals/"
-	/>
-	<LinkCard
-		title="Family & Records"
-		description="Profiles for everyone in your household, plus insurance, contacts, and notes."
-		href="/help/family/family-profiles/"
-	/>
-	<LinkCard
-		title="Sync, Backup & Export"
-		description="iCloud sync, backups, PDF statements, CSV exports, and privacy."
-		href="/help/data/icloud-sync/"
-	/>
-	<LinkCard
-		title="Subscription"
-		description="What's free, what Pro adds, and Family Sharing."
-		href="/help/subscription/free-vs-pro/"
-	/>
-	<LinkCard
-		title="What's New?"
-		description="Release notes for every version of WealthTrunk."
-		href="https://wealthtrunk.app/release-notes.html"
-	/>
+	<LinkCard title="Getting Started" description="The basics and updating balances." href="/help/getting-started/welcome/" />
+	<LinkCard title="Accounts & Balances" description="Adding accounts, types, and CSV import." href="/help/accounts/adding-an-account/" />
+	<LinkCard title="Holdings & Asset Allocation" description="Stocks, funds, and crypto inside your accounts." href="/help/holdings/" />
+	<LinkCard title="Dashboard & Projections" description="Cards, settings, projections, and widgets." href="/help/dashboard/customize-dashboard/" />
+	<LinkCard title="Goals" description="Net worth, savings, and debt goals." href="/help/goals/" />
+	<LinkCard title="Family & Records" description="Profiles, insurance, contacts, and notes." href="/help/family/family-profiles/" />
+	<LinkCard title="Sync, Backup & Export" description="iCloud, backups, PDFs, CSVs, and privacy." href="/help/data/icloud-sync/" />
+	<LinkCard title="Subscription" description="Free vs. Pro and Family Sharing." href="/help/subscription/free-vs-pro/" />
+	<LinkCard title="What's New?" description="Release notes." href="https://wealthtrunk.app/release-notes.html" />
 </CardGrid>

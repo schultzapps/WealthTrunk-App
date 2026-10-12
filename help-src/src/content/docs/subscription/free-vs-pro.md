@@ -4,45 +4,37 @@ description: What you can do for free, what WealthTrunk Pro adds, and managing y
 sidebar:
   order: 1
 ---
-
-WealthTrunk is free to download, with no account required.
-
 ## Free
 
-- Up to **10 accounts**. The Accounts tab shows how many you've used, for example **Free Plan 3/10**.
+- Up to **10 accounts**
 - Family profiles
 - Custom account and tax types
-- Net worth charts and projections
-- Balance history
-- PDF Net Worth Statements
-- iCloud sync, CSV import and export, and creating backups
+- Charts, projections, and balance history
+- PDF statements
+- iCloud sync, CSV import/export, and backups
 
 ## Pro
 
 Everything in Free, plus:
 
-- **Unlimited** accounts, with no upgrade banners
-- [**Track Holdings**](/help/holdings/) with live market prices. On the free plan you can search tickers and preview their value, but saving a holding requires Pro.
-- Optional Dashboard cards: **Goals**, **Monthly Net Worth**, **Portfolio Allocation**, and **FIRE**
+- Unlimited accounts, no upgrade banners
+- [Holdings](/help/holdings/) with live prices (free users can search and preview)
+- **Goals**, **Monthly Net Worth**, **Portfolio Allocation**, and **FIRE** Dashboard cards
 - **Restore From Backup**
-- Custom **Footer Text** on PDF statements
-
-Pro also supports an independent developer.
+- Custom PDF **Footer Text**
 
 ## Family Sharing
 
-If you subscribe through Apple and have Family Sharing turned on, up to **5 family members** get WealthTrunk Pro at no extra cost. Each person keeps their own separate data. The subscription is shared, but your financial information isn't.
+Pro is shared with up to 5 family members through Apple Family Sharing. Data isn't shared.
 
-## Restore a purchase
+## Restore purchases
 
-On a new device, go to **Settings → Restore Purchases**.
+**Settings → Restore Purchases**.
 
 ## Cancel
 
-Subscriptions are managed by Apple. On your iPhone, open the **Settings** app, tap your name, then **Subscriptions → WealthTrunk → Cancel Subscription**. Pro stays active until the end of your current billing period.
+iPhone **Settings** → your name → **Subscriptions** → **WealthTrunk**. Pro lasts until the billing period ends. Billing questions go to Apple.
 
-For billing or refund questions, contact Apple Support.
+## After canceling
 
-## What happens to my data if I cancel?
-
-Nothing is deleted. Your accounts, balances, and history stay on your devices and in iCloud. If you have more than 10 accounts, you can't add accounts or record balances until you're back under the limit or subscribe again. You can always export your data.
+Nothing is deleted. With more than 10 accounts, you can't add accounts or record balances until you're under the limit.

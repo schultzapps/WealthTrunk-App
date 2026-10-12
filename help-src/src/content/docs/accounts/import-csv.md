@@ -4,27 +4,24 @@ description: Bulk-create accounts or backfill balance history from a spreadsheet
 sidebar:
   order: 4
 ---
-
-If you're starting with a lot of accounts or years of history, a CSV import is faster than typing everything in. There are two templates:
-
-| Template | Use it to |
+| Template | Use |
 | --- | --- |
-| [Accounts template](https://wealthtrunk.app/downloads/wealthtrunk-accounts-template.csv) | Create accounts in bulk: name, institution, type, balance, contributions, and rates. If you're starting from scratch, this is the only one you need. |
-| [Balance history template](https://wealthtrunk.app/downloads/wealthtrunk-balances-template.csv) | Backfill past balances for accounts that **already exist**, so your charts show years of history. |
+| [Accounts](https://wealthtrunk.app/downloads/wealthtrunk-accounts-template.csv) | Create accounts in bulk |
+| [Balance history](https://wealthtrunk.app/downloads/wealthtrunk-balances-template.csv) | Add past balances to existing accounts |
 
-You can also download the templates inside the app from the **Import Data (CSV)** screen.
+Templates are also in the app's **Import Data (CSV)** screen.
 
-:::caution[Balance history needs account IDs]
-Every row in the balance history file needs an account ID, and only an export from the app gives you those. Export your accounts first from **Settings → Import/Export Data → Export Data (CSV)**, then fill in the template.
+:::caution
+Balance history rows need account IDs. Get them by exporting your accounts first: **Settings → Import/Export Data → Export Data (CSV)**.
 :::
 
-## How to import
+## Importing
 
-1. **Fill in the template.** Open it in Excel, Numbers, or Google Sheets. Keep the header row exactly as it is, add one row per account, and save as CSV. Lines starting with `#` at the top are ignored on import, so you can leave them.
-2. **Get the file onto your device.** Use iCloud Drive, AirDrop, or email it to yourself. Anywhere the Files app can reach works.
-3. **Import it.** Go to **Settings → Import/Export Data → Import Data (CSV)**, choose **Accounts** or **Balances**, tap **Import**, and select your file.
-4. **Review before confirming.** Imported accounts wait under **Import Pending** until you assign their owners. Nothing is added to your net worth until you do.
+1. Fill in the template. Keep the header row; `#` lines are ignored. Save as CSV.
+2. Put the file somewhere Files can reach (iCloud Drive, AirDrop, email).
+3. **Settings → Import/Export Data → Import Data (CSV)** → **Accounts** or **Balances** → **Import**.
+4. Assign owners to the accounts under **Import Pending**. They aren't counted until you do.
 
-:::tip[Skip the spreadsheet]
-The [Net Worth Calculator](https://wealthtrunk.app/net-worth-calculator.html) builds an accounts import file for you from a few simple fields.
+:::tip
+The [Net Worth Calculator](https://wealthtrunk.app/net-worth-calculator.html) can build an accounts file for you.
 :::

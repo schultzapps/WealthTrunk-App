@@ -4,29 +4,20 @@ description: Track the stocks, ETFs, funds, and crypto inside your accounts, and
 sidebar:
   order: 1
 ---
-
-**Track Holdings** is optional. It lets you track the individual investments inside an account, such as stocks, ETFs, mutual funds, money market funds, and crypto, using live prices. Many people just record each account's total balance instead.
+Track the stocks, ETFs, funds, and crypto inside an account with live prices. Optional.
 
 ## Adding a holding
 
-1. Open the account and tap **Edit**, or start while adding a new account.
-2. Turn on **Track Holdings** and tap **Save**.
-3. In the account's holdings list, tap **Add Holding**.
-4. Search by ticker or name, for example `AAPL`, `VTSAX`, or `BTC-USD`.
-5. Enter the **Quantity** and tap **Save**.
+1. Open the account → **Edit** → turn on **Track Holdings** → **Save**.
+2. Tap **Add Holding** and search by ticker or name (e.g. `VTSAX`, `BTC-USD`).
+3. Enter the **Quantity** and **Save**.
 
-Prices come from Yahoo Finance and refresh automatically once they're more than a few minutes old. Each holding shows its price, day change, and market value. Tap a holding to see its details, or to edit or delete it.
+Prices come from Yahoo Finance and refresh automatically.
 
 ## Sync to Account
 
-Holdings don't change your account balance automatically. Tap **Sync to Account** to record a balance for today equal to the current market value of the account's holdings.
-
-This is deliberately manual. Your data stays private and on your devices, and you decide when a balance is recorded.
+Holdings don't change the account balance on their own. Tap **Sync to Account** to record today's market value as a balance.
 
 ## Portfolio Allocation
 
-The **Portfolio Allocation** card shows your holdings across every account as a tree map, so you can see at a glance how your money is spread. Add it from the Dashboard's [Customize](/help/dashboard/customize-dashboard/) screen.
-
-## Export
-
-Holdings are included in [CSV exports](/help/data/export/) and [backups](/help/data/backup-restore/).
+A Dashboard card showing all your holdings as a tree map. Add it from [Customize](/help/dashboard/customize-dashboard/).
