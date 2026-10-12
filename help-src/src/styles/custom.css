@@ -54,3 +54,35 @@
 .social-icons::after {
 	display: none;
 }
+
+/* Compact Previous / Next links at the bottom of each page. */
+.pagination-links {
+	grid-template-columns: 1fr 1fr;
+	gap: 0.75rem;
+}
+.pagination-links [rel='next'] {
+	grid-column: 2;
+}
+.pagination-links a {
+	gap: 0.5rem;
+	padding: 0.625rem 0.875rem;
+	border-radius: 0.75rem;
+	box-shadow: none;
+	font-size: var(--sl-text-xs);
+	line-height: 1.4;
+	color: var(--sl-color-gray-3);
+	transition: border-color 0.15s, background-color 0.15s;
+}
+.pagination-links a:hover {
+	border-color: var(--sl-color-accent);
+	background-color: var(--sl-color-gray-7);
+}
+.pagination-links .link-title {
+	font-size: var(--sl-text-base);
+	font-weight: 600;
+}
+.pagination-links svg {
+	width: 1rem;
+	height: 1rem;
+	color: var(--sl-color-accent);
+}
