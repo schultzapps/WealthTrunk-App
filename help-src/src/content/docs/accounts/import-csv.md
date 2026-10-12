@@ -2,7 +2,7 @@
 title: Import accounts from CSV
 description: Bulk-create accounts or backfill balance history from a spreadsheet.
 sidebar:
-  order: 2
+  order: 4
 ---
 
 If you're starting with a lot of accounts or years of history, a CSV import is faster than typing everything in. There are two templates:

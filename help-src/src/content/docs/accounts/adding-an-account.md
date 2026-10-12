@@ -11,7 +11,7 @@ Every account you add is either an **asset** (something you own) or a **liabilit
 
 1. Open the **Accounts** tab and tap **+** (**Add an Account**). On Mac, press **⌘ N**.
 2. Under **Find or add an institution**, search for your bank. WealthTrunk fills in the institution's name and logo for you.
-3. Choose an **Account Type**, such as Checking, Brokerage, or Mortgage. The account's **Tax Status** is filled in for you, and you can change it.
+3. Choose an [**Account Type**](/help/accounts/account-types/), such as Checking, Brokerage, or Mortgage. Set its [**Tax Status**](/help/accounts/tax-types/) if it isn't After-Tax, for example Tax-Deferred for a 401(k).
 4. Choose the account's owner. Pick both people for a joint account.
 5. Enter the current balance and the **Balance Date**, then tap **Save**.
 
@@ -31,3 +31,7 @@ These are worth filling in, because they drive your projections:
 ## Adding a lot of accounts?
 
 You don't have to add them one at a time. Fill in a spreadsheet and [import it from CSV](/help/accounts/import-csv/) instead.
+
+## Closing an account
+
+To stop tracking an account without losing its history, open it, tap **Edit**, tap **Close**, and confirm with **Close Account**. Its balance becomes 0 and it's left out of future projections. To find it again, choose **Show Closed Accounts** from the **•••** menu on the Accounts tab; you can **Reopen** it from its Edit screen.
