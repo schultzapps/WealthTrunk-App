@@ -11,7 +11,7 @@ sidebar:
 | **Net Worth Cards** | Your totals |
 | **Balance History** | Net worth over time |
 | **Balance Projection** | Projected net worth |
-| **Net Worth Breakdown** | Assets and liabilities by group |
+| **Net Worth Breakdown** | Assets and liabilities by [account group](/help/accounts/account-types/) |
 | **Tax Categories** | Wealth by [tax type](/help/accounts/tax-types/) |
 | **Goals** | [Goal](/help/goals/) progress |
 | **Monthly Net Worth** | Assets vs. liabilities each month |
