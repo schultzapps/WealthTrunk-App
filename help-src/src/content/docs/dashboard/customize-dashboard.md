@@ -36,6 +36,6 @@ In **Settings → Charts & Lists**:
 | **Safe Withdrawal** | Rate (default 4%) used to estimate income from your projected balance. |
 | **Withdrawal Per Year** | Shows that income yearly instead of monthly. |
 | **Months Displayed** | Months on the Monthly Net Worth chart (1–12). Pinch to zoom. |
-| **Estimate Month-End Value** | Each column shows your net worth on the last day of the month, but manual updates rarely land on that day. If you updated on the 20th and again on the 5th, this estimates the 31st from the trend between the two. Off uses your last update before month-end, so a month can look flat or lumpy depending on when you updated. |
+| **Estimate Month-End Value** | Each column shows your net worth on the last day of the month, but manual updates rarely land on that day. If you updated on the 20th and again on the 5th of the next month, this estimates the 31st from the trend between the two. Off uses your last update before month-end, so a month can look flat or lumpy depending on when you updated. |
 | **Highlight Stale Accounts** | Colors accounts not updated within a set period. See [Keep balances fresh](/help/getting-started/record-balances/#keep-balances-fresh). |
 | **Show One Currency** | Shows foreign accounts in your app currency. |
