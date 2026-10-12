@@ -26,7 +26,30 @@ Open the account and tap the **pencil** button next to **Account Balance** to ad
 
 - **Siri:** say *"Update my balance in WealthTrunk"*. Siri asks which account and what the new balance is. You can also name the account: *"Update Chase Checking balance in WealthTrunk"*.
 - **Spotlight:** swipe down on your Home Screen, search **Update Balance**, and tap the result. On newer devices, individual accounts may appear for even faster entry.
-- **Shortcuts:** add the **Update Balance** action to a shortcut, for example one you run right after checking your banking app.
+- **Shortcuts:** add WealthTrunk's **Update Account Balance** action to a shortcut, for example one you run right after checking your banking app.
+
+## Update with a tap on the back of your iPhone
+
+With **Back Tap**, you can double- or triple-tap the back of your iPhone to record a balance from any screen, including your banking app.
+
+**1. Create the shortcut**
+
+1. Open the **Shortcuts** app and tap **+** to create a new shortcut.
+2. Search for **WealthTrunk** and choose **Update Account Balance**.
+3. Leave **Account** and **Amount** empty, and WealthTrunk will ask for both each time it runs. Or pick an **Account** if you always update the same one.
+4. Rename the shortcut, for example to "Update Balance", and tap **Done**.
+
+**2. Assign it to Back Tap**
+
+1. Open the iPhone **Settings** app and go to **Accessibility → Touch → Back Tap**.
+2. Choose **Double Tap** or **Triple Tap**.
+3. Scroll down to **Shortcuts** and select the shortcut you just made.
+
+Now double- or triple-tap the back of your iPhone, choose the account, and enter the new balance. WealthTrunk confirms the update without leaving the app you're in.
+
+:::tip
+The same shortcut works from the **Action button** on iPhone models that have one: go to **Settings → Action Button**, choose **Shortcut**, and select it.
+:::
 
 ## Get a reminder
 
