@@ -27,10 +27,16 @@ Each primary profile has a **Retirement Age**, and each dependent has a **Saving
 
 Tap the **profile picture** (top right) to choose whose accounts, charts, and lists you see.
 
+## Family name
+
+1. **Settings → Family Members → •••** (top right) **→ Family Name**.
+2. Enter your last name, like "Smith", and tap **Save**.
+
+Settings and the family page then show **Smith Family** instead of **Family Members**. When you set up a new device with **Returning User**, you're welcomed back by name. It's optional; leave it blank to remove it.
+
 ## Personalize
 
 - **Pop of Color:** each person's theme color. While their profile is selected, it tints buttons, highlights, and other accents across the app. With several people selected, the first one in your family member order sets the color.
-- **Family name:** shown in the app
 - **Group By → Owner:** in the **•••** menu on Accounts, Goals, and Records
 
 :::note
