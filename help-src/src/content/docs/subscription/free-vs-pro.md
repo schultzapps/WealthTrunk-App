@@ -10,7 +10,7 @@ sidebar:
 - Family profiles
 - Custom account and tax types
 - Charts, projections, and balance history
-- PDF statements
+- PDF statements with the default settings
 - iCloud sync, CSV import/export, and backups
 
 ## Pro
@@ -21,7 +21,7 @@ Everything in Free, plus:
 - [Holdings](/help/holdings/) with live prices (free users can search and preview)
 - **Goals**, **Monthly Net Worth**, **Portfolio Allocation**, and **FIRE** Dashboard cards
 - **Restore From Backup**
-- Custom PDF **Footer Text**
+- Customize PDF statements: content, formatting, and footer text
 
 ## Family Sharing
 
