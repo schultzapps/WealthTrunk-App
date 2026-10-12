@@ -1,24 +1,11 @@
-/* WealthTrunk brand colors for Starlight, matching ../../styles.css
-   (teal #289FA7 on dark, #097276 on light). */
+/* WealthTrunk brand colors for Starlight, matching the main site's light
+   theme (teal #097276). The help center is light-only. */
 
-:root {
-	--sl-font: 'Outfit';
-
-	--sl-color-accent-low: #0c3a3e;
-	--sl-color-accent: #289fa7;
-	--sl-color-accent-high: #a6e6e9;
-
-	--sl-color-white: #f0f0f8;
-	--sl-color-gray-1: #dcdcea;
-	--sl-color-gray-2: #a8a8c0;
-	--sl-color-gray-3: #7d7d9c;
-	--sl-color-gray-4: #4a4a66;
-	--sl-color-gray-5: #2a2a3e;
-	--sl-color-gray-6: #12121c;
-	--sl-color-black: #0a0a12;
-}
-
+:root,
 :root[data-theme='light'] {
+	--sl-font: 'Outfit';
+	color-scheme: light;
+
 	--sl-color-accent-low: #c8eef0;
 	--sl-color-accent: #097276;
 	--sl-color-accent-high: #064c4f;
@@ -61,4 +48,9 @@
 	margin-top: 3rem;
 	text-align: center;
 	color: var(--sl-color-gray-2);
+}
+
+/* No theme picker, so drop the divider Starlight draws before it. */
+.social-icons::after {
+	display: none;
 }

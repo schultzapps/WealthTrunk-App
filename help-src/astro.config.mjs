@@ -25,6 +25,8 @@ export default defineConfig({
 			customCss: ['./src/styles/custom.css'],
 			components: {
 				SocialIcons: './src/components/SocialIcons.astro',
+				ThemeProvider: './src/components/ThemeProvider.astro',
+				ThemeSelect: './src/components/ThemeSelect.astro',
 			},
 			head: [
 				{ tag: 'link', attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' } },
