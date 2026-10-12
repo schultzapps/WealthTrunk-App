@@ -1,0 +1,5 @@
+# Only read by GitHub Pages' legacy "Deploy from a branch" builder. Keeps the
+# help center's source out of that build; the Actions workflow ignores this file.
+exclude:
+  - help-src
+  - .github

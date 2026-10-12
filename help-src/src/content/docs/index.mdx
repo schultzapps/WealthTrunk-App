@@ -1,0 +1,62 @@
+---
+title: How can we help?
+description: Guides and answers for WealthTrunk, the manual net worth tracker for the whole household.
+template: splash
+pagefind: false
+hero:
+  tagline: Guides for tracking your accounts, your household, and your net worth in WealthTrunk on iPhone, iPad, and Mac.
+  actions:
+    - text: Start here
+      link: /help/getting-started/welcome/
+      icon: right-arrow
+    - text: Contact support
+      link: /help/contact/
+      variant: minimal
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Use the **Search** box at the top of any page, or browse by topic:
+
+<CardGrid>
+	<LinkCard
+		title="Getting Started"
+		description="Set up the app, add your first account, and build an updating habit."
+		href="/help/getting-started/welcome/"
+	/>
+	<LinkCard
+		title="Accounts & Balances"
+		description="Account types, recording balances, holdings, and importing from CSV."
+		href="/help/accounts/import-csv/"
+	/>
+	<LinkCard
+		title="Dashboard & Projections"
+		description="Customize your charts and see where your net worth is headed."
+		href="/help/dashboard/customize-dashboard/"
+	/>
+	<LinkCard
+		title="Goals"
+		description="Net worth, savings, and debt payoff goals linked to your accounts."
+		href="/help/goals/wealth-goals/"
+	/>
+	<LinkCard
+		title="Family & Records"
+		description="Profiles for everyone in your household, plus insurance, contacts, and notes."
+		href="/help/family/family-profiles/"
+	/>
+	<LinkCard
+		title="Sync, Backup & Export"
+		description="iCloud sync, backups, PDF statements, and CSV exports."
+		href="/help/data/icloud-sync/"
+	/>
+	<LinkCard
+		title="Subscription"
+		description="What's free, what Pro adds, and Family Sharing."
+		href="/help/subscription/free-vs-pro/"
+	/>
+	<LinkCard
+		title="What's New?"
+		description="Release notes for every version of WealthTrunk."
+		href="https://wealthtrunk.app/release-notes.html"
+	/>
+</CardGrid>

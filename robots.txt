@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://wealthtrunk.app/sitemap.xml
+Sitemap: https://wealthtrunk.app/help/sitemap-index.xml
