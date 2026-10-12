@@ -29,7 +29,7 @@ Tap the **profile picture** (top right) to choose whose accounts, charts, and li
 
 ## Personalize
 
-- **Pop of Color:** each person's accent color
+- **Pop of Color:** each person's theme color. While their profile is selected, it tints buttons, highlights, and other accents across the app. With several people selected, the first one in your family member order sets the color.
 - **Family name:** shown in the app
 - **Group By → Owner:** in the **•••** menu on Accounts, Goals, and Records
 
