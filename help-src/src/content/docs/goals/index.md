@@ -1,5 +1,5 @@
 ---
-title: Wealth Goals
+title: Goals
 description: Set net worth, savings, and debt goals that track themselves.
 sidebar:
   order: 1

@@ -25,7 +25,7 @@ These optional cards can be added with a [Pro subscription](/help/subscription/f
 
 | Card | Shows |
 | --- | --- |
-| **Goals** | Progress on your [goals](/help/goals/wealth-goals/) |
+| **Goals** | Progress on your [goals](/help/goals/) |
 | **Monthly Net Worth** | Assets and liabilities side by side each month |
 | **Portfolio Allocation** | Your [holdings](/help/accounts/holdings/) as a tree map |
 | **FIRE** | Progress toward [financial independence](/help/dashboard/projections/#financial-independence-fire) |

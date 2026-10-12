@@ -7,6 +7,10 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	site: 'https://wealthtrunk.app',
 	base: '/help',
+	// Keeps links to renamed articles working.
+	redirects: {
+		'/goals/wealth-goals/': '/help/goals/',
+	},
 	integrations: [
 		starlight({
 			title: 'WealthTrunk Help',
