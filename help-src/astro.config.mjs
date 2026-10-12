@@ -23,6 +23,7 @@ export default defineConfig({
 			logo: { src: './src/assets/appicon.png', alt: 'WealthTrunk' },
 			favicon: '/favicon.png',
 			customCss: ['./src/styles/custom.css'],
+			markdown: { headingLinks: false },
 			components: {
 				SocialIcons: './src/components/SocialIcons.astro',
 				ThemeProvider: './src/components/ThemeProvider.astro',
