@@ -9,17 +9,26 @@ The Dashboard brings your net worth, trends, and insights together, and you deci
 
 ## Available cards
 
-| Card | Shows | Default |
-| --- | --- | --- |
-| **Net Worth Cards** | Your totals at a glance | On |
-| **Balance History** | Net worth over time | On |
-| **Balance Projection** | Where your net worth is headed | On |
-| **Net Worth Breakdown** | Assets vs. liabilities by group (bar or donut) | On |
-| **Tax Categories** | Wealth by tax treatment (bar or donut) | On |
-| **Goals** | Progress on your goals | Off |
-| **Monthly Net Worth** | Assets and liabilities side by side each month | Off |
-| **Portfolio Allocation** (Pro) | Your [holdings](/help/accounts/holdings/) as a tree map | Off |
-| **FIRE** (Pro) | Progress toward [financial independence](/help/dashboard/projections/#financial-independence-fire) | Off |
+These cards are on the Dashboard to start with:
+
+| Card | Shows |
+| --- | --- |
+| **Net Worth Cards** | Your totals at a glance |
+| **Balance History** | Net worth over time |
+| **Balance Projection** | Where your net worth is headed |
+| **Net Worth Breakdown** | Assets vs. liabilities by group (bar or donut) |
+| **Tax Categories** | Wealth by tax treatment (bar or donut) |
+
+### Pro cards
+
+These optional cards can be added with a [Pro subscription](/help/subscription/free-vs-pro/):
+
+| Card | Shows |
+| --- | --- |
+| **Goals** | Progress on your [goals](/help/goals/wealth-goals/) |
+| **Monthly Net Worth** | Assets and liabilities side by side each month |
+| **Portfolio Allocation** | Your [holdings](/help/accounts/holdings/) as a tree map |
+| **FIRE** | Progress toward [financial independence](/help/dashboard/projections/#financial-independence-fire) |
 
 ## Customize
 

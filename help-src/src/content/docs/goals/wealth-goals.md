@@ -34,7 +34,7 @@ Give a goal a **Target Date** and WealthTrunk shows a **Projected Date**. It als
 
 ## Keep goals in view
 
-- Turn on the **Goals** card in the Dashboard's **Customize** screen.
+- Add the **Goals** card to your Dashboard from **Customize** (Pro).
 - Add a **Goal Card** or **Goal List** [widget](/help/dashboard/widgets/).
 - Group goals by owner, or by status with the furthest-behind first.
 - **Archive** goals you've finished. You can **Unarchive** them later.

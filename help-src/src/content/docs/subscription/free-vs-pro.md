@@ -23,7 +23,7 @@ Everything in Free, plus:
 
 - **Unlimited** accounts, with no upgrade banners
 - [**Track Holdings**](/help/accounts/holdings/) with live market prices
-- **Portfolio Allocation** and **FIRE** Dashboard cards
+- Optional Dashboard cards: **Goals**, **Monthly Net Worth**, **Portfolio Allocation**, and **FIRE**
 - **Restore From Backup**
 - Custom **Footer Text** on PDF statements
 
