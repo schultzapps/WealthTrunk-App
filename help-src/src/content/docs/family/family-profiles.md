@@ -15,9 +15,13 @@ To delete someone, first reassign accounts only they own.
 
 ## Primary vs. dependents
 
-- Up to **2 primary profiles**, each with a **Retirement Age**.
-- Everyone else is a dependent with a **Savings Age**.
-- Up to 15 profiles total.
+**Primary profiles** are for you and your partner or spouse, up to two. An account owned by both shows as **Joint**.
+
+**Dependents** are kids or anyone else you save for, like a 529 or custodial account. Up to 15 profiles total.
+
+## Retirement Age and Savings Age
+
+Each primary profile has a **Retirement Age**, and each dependent has a **Savings Age**. In [projections](/help/dashboard/projections/), an account's monthly contributions stop at its owner's age, then the balance keeps growing on its own. Joint accounts use the later of the two.
 
 ## Filter by person
 
