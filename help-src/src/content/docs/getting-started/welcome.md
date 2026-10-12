@@ -6,6 +6,16 @@ sidebar:
 ---
 WealthTrunk is a manual net worth tracker for your household. You add accounts and update balances; the app shows your net worth, its history, and where it's headed.
 
+## Setting up
+
+The first time you open WealthTrunk, a short setup walks you through:
+
+1. Creating your profile
+2. Adding a partner or spouse (optional)
+3. Adding up to three accounts
+
+This fills in your Dashboard right away. You can [add more accounts](/help/accounts/adding-an-account/) anytime after.
+
 ## Why manual?
 
 - No bank logins or third parties
