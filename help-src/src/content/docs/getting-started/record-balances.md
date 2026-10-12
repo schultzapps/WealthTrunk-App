@@ -59,7 +59,17 @@ Turn on **Net Worth Reminders** in **Settings → Notifications** and choose how
 
 How often is up to you. Some people update weekly or monthly; others quarterly or once a year. Being consistent matters more than how often.
 
-To see which accounts are falling behind, turn on **Highlight Stale Accounts** in **Settings → Charts & Lists** and choose how old is too old.
+## Keep your balances fresh
+
+Your net worth is only as accurate as your oldest balance. If one account hasn't been updated in months, your totals, charts, and projections all treat that old value as current. WealthTrunk has three ways to spot accounts that are falling behind:
+
+1. **Highlight Stale Accounts.** In **Settings → Charts & Lists**, choose how old is too old: 1 week, 1 month, 6 months (the default), or 1 year. In the **Accounts** list, any account older than that has its "last updated" date shown in your accent color.
+2. **Sort by Last Updated.** On the **Accounts** tab, open the **•••** menu and choose **Sort By → Last Updated** to bring the accounts that need attention together.
+3. **Staleness Indicator.** Turn this on in **Settings → Charts & Lists** and the Balance History chart shows a dashed line once your latest update is more than 7 days old.
+
+:::tip
+Match **Highlight Stale Accounts** to your routine. If you update monthly, set it to 1 month, and anything highlighted is an account you missed.
+:::
 
 ## Add past balances
 
