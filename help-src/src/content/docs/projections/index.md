@@ -10,7 +10,14 @@ For example, if you're 40 with a Retirement Age of 65, and your spouse is 35 wit
 
 - **Assets:** **Expected Return** and **Monthly Contribution**
 - **Liabilities:** **Loan Rate (APR)** and **Monthly Payment**
-- **Include In Projections:** off to exclude an account
+
+## Choosing which accounts to project
+
+**Include In Projections** is on for new accounts. To change it, open the account → **Edit** → **Include In Projections**.
+
+Turn it off for money you spend rather than grow. A checking account pays your day-to-day bills, so it isn't really part of your long-term wealth the way a retirement or savings account is. Projecting it would assume that balance keeps growing for decades.
+
+Excluded accounts still count toward today's net worth. They're just left out of projected balances.
 
 ## Growth and Payoff Calculator
 
