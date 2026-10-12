@@ -357,3 +357,12 @@ site-search dialog {
 	line-height: 1.6;
 	text-transform: none;
 }
+
+/* Starlight's footer keeps an empty "last updated" row with a 3rem margin.
+   Drop it so Previous / Next sit closer to the article. */
+footer .meta:empty {
+	display: none;
+}
+.sl-container > footer {
+	margin-top: 2.5rem;
+}
