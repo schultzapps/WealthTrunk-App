@@ -2,7 +2,7 @@
 title: Import accounts from CSV
 description: Bulk-create accounts or backfill balance history from a spreadsheet.
 sidebar:
-  order: 4
+  order: 5
 ---
 | Template | Use |
 | --- | --- |
