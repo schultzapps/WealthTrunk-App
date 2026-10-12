@@ -356,3 +356,14 @@ footer .meta:empty {
 [data-has-hero] header button[data-open-modal] {
 	display: none;
 }
+
+/* Phones: search drops down from the top and grows with results instead of
+   filling the whole screen with an empty panel. */
+@media (max-width: 49.99rem) {
+	site-search dialog {
+		height: max-content;
+		max-height: 100%;
+		border-radius: 0 0 1rem 1rem;
+		border-top: none;
+	}
+}
