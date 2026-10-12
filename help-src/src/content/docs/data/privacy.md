@@ -6,7 +6,7 @@ sidebar:
 ---
 ## Your data
 
-Stored encrypted in your own iCloud account. We can't see it, and there's no sign-up or bank login.
+Stored encrypted in your own iCloud account. There's no sign-up or bank login.
 
 ## Face ID lock
 
