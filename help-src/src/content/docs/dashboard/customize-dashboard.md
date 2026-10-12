@@ -10,13 +10,13 @@ sidebar:
 | --- | --- |
 | **Net Worth Cards** | Your totals |
 | **Balance History** | Net worth over time |
-| **Balance Projection** | Projected net worth |
+| **Balance Projection** | [Projected net worth](/help/projections/net-worth-projections/) |
 | **Net Worth Breakdown** | Assets and liabilities by [account group](/help/accounts/account-types/) |
 | **Tax Categories** | Wealth by [tax type](/help/accounts/tax-types/) |
 | **Goals** | [Goal](/help/goals/) progress |
 | **Monthly Net Worth** | Assets vs. liabilities each month |
 | **Portfolio Allocation** | [Holdings](/help/holdings/) as a tree map |
-| **FIRE** | Progress toward [financial independence](/help/projections/#fire) |
+| **FIRE** | Progress toward [financial independence](/help/projections/net-worth-projections/#fire) |
 
 ## Customize
 
@@ -32,7 +32,7 @@ In **Settings → Charts & Lists**:
 | --- | --- |
 | **Line Smoothing** | Curved lines between updates. Off shows straight lines. |
 | **Staleness Indicator** | Dashed line on Balance History when your latest update is over 7 days old. |
-| **Show in Today's Money** / **Inflation Rate** | Shows projections [adjusted for inflation](/help/projections/#todays-money). |
+| **Show in Today's Money** / **Inflation Rate** | Shows projections [adjusted for inflation](/help/projections/net-worth-projections/#todays-money). |
 | **Safe Withdrawal** | Rate (default 4%) used to estimate income from your projected balance. |
 | **Withdrawal Per Year** | Shows that income yearly instead of monthly. |
 | **Months Displayed** | Months on the Monthly Net Worth chart (1–12). Pinch to zoom. |

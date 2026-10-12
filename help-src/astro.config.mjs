@@ -10,7 +10,8 @@ export default defineConfig({
 	// Keeps links to renamed articles working.
 	redirects: {
 		'/getting-started/record-balances/': '/help/accounts/recording-balances/',
-		'/dashboard/projections/': '/help/projections/',
+		'/dashboard/projections/': '/help/projections/account-projections/',
+		'/projections/': '/help/projections/account-projections/',
 		'/contact/': '/help/',
 		'/subscription/free-vs-pro/': '/help/subscription/wealthtrunk-pro/',
 		'/goals/wealth-goals/': '/help/goals/',

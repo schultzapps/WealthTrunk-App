@@ -21,7 +21,7 @@ To delete someone, first reassign accounts only they own.
 
 ## Retirement Age and Savings Age
 
-Each primary profile has a **Retirement Age**, and each dependent has a **Savings Age**. In [projections](/help/projections/), an account's monthly contributions stop at its owner's age, then the balance keeps growing on its own. Joint accounts use the later of the two.
+Each primary profile has a **Retirement Age**, and each dependent has a **Savings Age**. In [projections](/help/projections/account-projections/), an account's monthly contributions stop at its owner's age, then the balance keeps growing on its own. Joint accounts use the later of the two.
 
 ## Filter by person
 
