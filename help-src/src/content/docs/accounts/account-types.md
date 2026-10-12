@@ -25,6 +25,12 @@ sidebar:
 | **Loans** | Vehicle Loan, Personal Loan, Student Loan, HELOC, Business Loan |
 | **Other Liabilities** | Tax Liability, Medical Debt, Family Loan, Other Liability |
 
+## Net Worth Breakdown card
+
+The **Net Worth Breakdown** [Dashboard card](/help/dashboard/customize-dashboard/) shows an **Assets** bar and a **Liabilities** bar, each split by the groups above. Switch between **%** and amounts at the top.
+
+Use it to see where your wealth sits at a glance: how much is in cash vs. investments vs. property, and which debts make up the most of what you owe.
+
 ## Liquid vs. illiquid
 
 Illiquid types: Real Estate, Vehicle, Collectibles, Private Equity, pensions, Annuity, and Other Asset. All other assets are liquid. The FIRE card counts only liquid assets unless you change it in the card's settings.
