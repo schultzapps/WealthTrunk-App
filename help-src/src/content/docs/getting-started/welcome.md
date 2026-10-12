@@ -14,7 +14,17 @@ WealthTrunk is a manual net worth tracker for your household. You add accounts a
 
 ## Your data
 
-Stored in your own iCloud account and synced across iPhone, iPad, and Mac. No sign-up, and we can't see it.
+Your data is saved in your own iCloud account, not on our servers. There's no sign-up, and we can't see any of it.
+
+It syncs to every iPhone, iPad, and Mac signed in to the same iCloud account. Changes usually show up on your other devices within a few seconds.
+
+To make sure sync is on, open the iPhone **Settings** app, tap your name, then **iCloud**, and check that **WealthTrunk** is turned on.
+
+## New device or reinstalling?
+
+On the first welcome screen, tap **Returning User** to skip setup and load your data from iCloud. It can take 30–60 seconds to appear, even on a fast connection.
+
+See [iCloud sync](/help/data/icloud-sync/) if something doesn't show up.
 
 ## Next steps
 
