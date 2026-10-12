@@ -1,5 +1,5 @@
 ---
-title: Holdings & asset allocation
+title: Account holdings
 description: Track the stocks, ETFs, funds, and crypto inside your accounts, and see how your portfolio is allocated.
 sidebar:
   order: 1
