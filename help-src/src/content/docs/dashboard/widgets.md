@@ -14,6 +14,11 @@ Widgets show your net worth, accounts, and goals without opening the app. They u
 2. Tap **Edit** (top left) → **Add Widget**.
 3. Search for **WealthTrunk**, choose a widget and size, then tap **Add Widget**.
 4. Tap **Done**.
+5. Touch and hold the new widget → **Edit Widget** to choose what it shows (below).
+
+:::note
+**Accounts**, **Goal Card**, and **Goal List** stay empty until you edit them and pick accounts or goals. **Net Worth** shows everyone until you choose **Family Members**.
+:::
 
 ### Available widgets
 
@@ -24,13 +29,16 @@ Widgets show your net worth, accounts, and goals without opening the app. They u
 | **Goal Card** | Small | Progress toward one goal |
 | **Goal List** | Small, Medium | Progress for up to 3 goals |
 
-### Customizing
+### Choosing what a widget shows
 
 Touch and hold the widget → **Edit Widget**:
 
-- **Net Worth:** **Card Type** (Net Worth, Assets, Liabilities, or Liquid Assets), **Time Period** (Past 1 Month, Year To Date, or Past 1 Year), and **Family Members**
-- **Accounts:** which **Accounts** to show
-- **Goal Card** and **Goal List:** which goals to show
+| Widget | Options |
+| --- | --- |
+| **Net Worth** | **Family Members**: whose net worth to show<br />**Card Type**: Net Worth, Assets, Liabilities, or Liquid Assets<br />**Time Period** for the chart: Past 1 Month, Year To Date, or Past 1 Year |
+| **Accounts** | **Accounts**: which balances to show |
+| **Goal Card** | **Goal**: which goal to track |
+| **Goal List** | **Goals**: up to 3 to track |
 
 ## Lock Screen widgets
 
@@ -39,15 +47,14 @@ Touch and hold the widget → **Edit Widget**:
 1. Touch and hold your Lock Screen, then tap **Customize** → **Lock Screen**.
 2. Tap the widget area under the clock, or the space above it.
 3. Choose **WealthTrunk** → **Net Worth**, and pick a style.
-4. Tap **Done**.
+4. Tap the new widget to choose **Family Members** and **Card Type**.
+5. Tap **Done**.
 
 ### Styles
 
 - **Circular:** a small round widget under the clock
 - **Rectangular:** a wider widget under the clock
 - **Inline:** one line of text above the clock
-
-Tap the widget while editing your Lock Screen to choose the **Card Type** and **Family Members**.
 
 ## Control Center
 
