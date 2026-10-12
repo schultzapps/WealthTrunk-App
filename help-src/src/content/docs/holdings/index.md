@@ -9,8 +9,11 @@ Track the stocks, ETFs, funds, and crypto inside an account with live prices. Op
 ## Adding a holding
 
 1. Open the account → **Edit** → turn on **Track Holdings** → **Save**.
-2. Tap **Add Holding** and search by ticker or name (e.g. `AAPL`, `VTSAX`, `BTC-USD`).
-3. Enter the **Quantity**, or type the **Market Value** to fill it in, then **Add Holding**.
+2. On the account's page, tap the empty **Allocation** card.
+3. Tap **+** (top right) and search by ticker or name (e.g. `AAPL`, `VTSAX`, `BTC-USD`).
+4. Enter the **Quantity**, or type the **Market Value** to fill it in, then **Add Holding**.
+
+To add more later, tap the **Allocation** card on the account's page, then **+**.
 
 Uninvested money goes in the account's **Cash** field.
 
