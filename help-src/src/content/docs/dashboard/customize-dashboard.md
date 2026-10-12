@@ -8,7 +8,7 @@ sidebar:
 
 | Card | Shows |
 | --- | --- |
-| **Net Worth Cards** | Your totals |
+| **Net Worth Cards** | Net Worth, Assets, Liabilities, and Liquid Assets totals. Tap one to filter the charts below. |
 | **Balance History** | Net worth over time |
 | **Balance Projection** | [Projected net worth](/help/projections/net-worth-projections/) |
 | **Net Worth Breakdown** | Assets and liabilities by [account group](/help/accounts/account-types/) |
@@ -17,6 +17,12 @@ sidebar:
 | **Monthly Net Worth** | Assets vs. liabilities each month |
 | **Portfolio Allocation** | [Holdings](/help/holdings/) as a tree map |
 | **FIRE** | Progress toward [financial independence](/help/projections/net-worth-projections/#fire) |
+
+## Filter charts with Net Worth Cards
+
+Tap **Net Worth**, **Assets**, **Liabilities**, or **Liquid Assets** at the top of the Dashboard. **Balance History** and **Balance Projection** switch to show just that, so you can see how your debts are shrinking or how your liquid savings are growing.
+
+If you hide **Net Worth Cards**, tap the title of either chart to choose instead.
 
 ## Customize
 
