@@ -7,10 +7,11 @@ sidebar:
 ## Adding an account
 
 1. **Accounts** tab → **+** (Mac: **⌘ N**).
-2. Search for your bank under **Find or add an institution**. For property, enter a name instead, like "Our Home".
-3. Choose the [**Account Type**](/help/accounts/account-types/) and, if needed, the [**Tax Status**](/help/accounts/tax-types/).
-4. Choose the owner. Pick two for a joint account.
-5. Enter the balance and **Balance Date**, then **Save**.
+2. Search for your bank under **Find or add an institution**.
+3. Enter a nickname, like "Primary". For property, enter a name instead, like "Our Home".
+4. Choose the [**Account Type**](/help/accounts/account-types/) and set the [**Tax Status**](/help/accounts/tax-types/).
+5. Choose the owner. Pick two for a joint account.
+6. Enter the balance and **Balance Date**, then **Save**.
 
 ## Projection details
 
