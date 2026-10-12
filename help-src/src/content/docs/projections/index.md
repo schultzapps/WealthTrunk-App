@@ -1,8 +1,6 @@
 ---
-title: Projections & inflation
-description: How WealthTrunk projects your net worth, and how to see it in today's money.
-sidebar:
-  order: 2
+title: Account projections
+description: How WealthTrunk projects each account and your net worth, and how to see it in today's money.
 ---
 Each account is projected from its balance, rate, and contributions to the latest **Retirement Age** among primary profiles.
 

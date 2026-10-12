@@ -9,6 +9,7 @@ export default defineConfig({
 	base: '/help',
 	// Keeps links to renamed articles working.
 	redirects: {
+		'/dashboard/projections/': '/help/projections/',
 		'/contact/': '/help/',
 		'/subscription/free-vs-pro/': '/help/subscription/wealthtrunk-pro/',
 		'/goals/wealth-goals/': '/help/goals/',
@@ -51,7 +52,8 @@ export default defineConfig({
 				{ label: 'Getting Started', items: [{ autogenerate: { directory: 'getting-started' } }] },
 				{ label: 'Accounts & Balances', items: [{ autogenerate: { directory: 'accounts' } }] },
 				{ label: 'Holdings & Asset Allocation', items: [{ autogenerate: { directory: 'holdings' } }] },
-				{ label: 'Dashboard & Projections', items: [{ autogenerate: { directory: 'dashboard' } }] },
+				{ label: 'Dashboard', items: [{ autogenerate: { directory: 'dashboard' } }] },
+				{ label: 'Account Projections', items: [{ autogenerate: { directory: 'projections' } }] },
 				{ label: 'Goals', items: [{ autogenerate: { directory: 'goals' } }] },
 				{ label: 'Family & Records', items: [{ autogenerate: { directory: 'family' } }] },
 				{ label: 'Sync, Backup & Export', items: [{ autogenerate: { directory: 'data' } }] },
