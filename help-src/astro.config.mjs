@@ -20,7 +20,7 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			title: 'WealthTrunk Help',
+			title: 'WealthTrunk Help Center',
 			description:
 				'Guides and answers for WealthTrunk, the manual net worth tracker for the whole household.',
 			logo: { src: './src/assets/appicon.png', alt: 'WealthTrunk' },
@@ -29,6 +29,7 @@ export default defineConfig({
 			markdown: { headingLinks: false },
 			components: {
 				SocialIcons: './src/components/SocialIcons.astro',
+				SiteTitle: './src/components/SiteTitle.astro',
 				ThemeProvider: './src/components/ThemeProvider.astro',
 				ThemeSelect: './src/components/ThemeSelect.astro',
 			},
