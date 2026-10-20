@@ -44,6 +44,7 @@ export default defineConfig({
 					},
 				},
 				{ tag: 'meta', attrs: { property: 'og:image', content: 'https://wealthtrunk.app/images/social-preview.png' } },
+				{ tag: 'script', attrs: { src: '/assets/consent.js' } },
 				{ tag: 'script', attrs: { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-TLDM112N75' } },
 				{
 					tag: 'script',

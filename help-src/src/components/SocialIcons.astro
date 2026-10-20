@@ -8,17 +8,7 @@
 	data-download-location="wt_help_nav">Download</a
 >
 
-<script is:inline>
-	document.addEventListener('click', function (e) {
-		var link = e.target.closest('a[href*="apps.apple.com/app/id6748625363"]');
-		if (!link || typeof gtag !== 'function') return;
-		gtag('event', 'download_app_click', {
-			button_location: link.getAttribute('data-download-location') || 'unknown',
-			destination: 'appstore',
-			app: 'wealthtrunk',
-		});
-	});
-</script>
+<script is:inline src="/assets/app-store-tracking.js" data-app-id="6748625363" data-app="wealthtrunk" defer></script>
 
 <style>
 	a {

@@ -94,6 +94,7 @@
     }
     </script>
 
+    <script src="assets/consent.js"></script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLDM112N75"></script>
     <script>
@@ -383,17 +384,6 @@
             window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent('WealthTrunk');
         });
     </script>
-    <!-- App Store download click tracking (GA4) -->
-    <script>
-        document.addEventListener('click', function (e) {
-            var link = e.target.closest('a[href*="apps.apple.com/app/id6748625363"]');
-            if (!link || typeof gtag !== 'function') return;
-            gtag('event', 'download_app_click', {
-                button_location: link.getAttribute('data-download-location') || 'unknown',
-                destination: 'appstore',
-                app: 'wealthtrunk'
-            });
-        });
-    </script>
+    <script src="assets/app-store-tracking.js" data-app-id="6748625363" data-app="wealthtrunk" defer></script>
 </body>
 </html>
