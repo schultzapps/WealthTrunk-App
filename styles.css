@@ -803,17 +803,17 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     border-radius: 50%;
 }
 
-/* The bezel is a transparent-cutout PNG of a real iPhone laid over the
-   screenshot, so every phone on the page shares one set of proportions.
-   The frame art is 496x1012, with an orange rail, then a ~10px black
-   bezel, then the screen cutout at x 27-466 / y 26-984. .phone-screen is
-   inset slightly LESS than the cutout so the screenshot tucks ~4px under
-   the black band, thinning the visible bezel. Don't reduce these further:
-   past x 17 / y 15 the screenshot would cover the orange rail. */
+/* The bezel is a transparent-cutout image of an iPhone 18 Pro (silver) laid
+   over the screenshot, so every phone on the page shares one set of
+   proportions. The frame art is 1350x2760, with a silver rail, then a black
+   bezel, then the screen cutout at x 72-1277 / y 69-2690. .phone-screen is
+   inset slightly LESS than the cutout (4.8% / 2.2% against the cutout's
+   5.3% / 2.5%) so the screenshot tucks under the black band. Don't reduce
+   these further or the screenshot would cover the silver rail. */
 .phone-frame {
     position: relative;
     width: 274px;
-    aspect-ratio: 496 / 1012;
+    aspect-ratio: 1350 / 2760;
     filter: drop-shadow(0 0 60px var(--accent-glow));
     transform: perspective(700px) rotateY(-16deg) rotateX(9deg);
     transition: transform var(--transition-slow);
@@ -886,13 +886,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .phone-screen {
     position: absolute;
     top: 2.2%;
-    bottom: 2.4%;
-    left: 4.6%;
-    right: 4.6%;
+    bottom: 2.2%;
+    left: 4.8%;
+    right: 4.8%;
     background: var(--bg-secondary);
     /* Follows the cutout's corner curve; the art's corner radius scales
        with the frame, so a percentage radius keeps them aligned. */
-    border-radius: 8% / 3.9%;
+    border-radius: 11% / 5.2%;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1187,7 +1187,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
        bezel art so the frame never stretches. */
     position: relative;
     width: 160px;
-    aspect-ratio: 496 / 1012;
+    aspect-ratio: 1350 / 2760;
     flex: 0 1 auto;
     min-width: 0;
     transition: all var(--transition-slow);
@@ -1433,10 +1433,27 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     color: var(--text-primary);
 }
 
+.reviews-carousel {
+    position: relative;
+}
+
 .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
     gap: var(--space-lg);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 4px 2px var(--space-sm);
+}
+
+.reviews-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.reviews-grid .review-card {
+    flex: 0 0 calc((100% - var(--space-lg)) / 2);
+    scroll-snap-align: start;
 }
 
 .review-card {
@@ -1445,13 +1462,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     border-radius: var(--radius-xl);
     padding: var(--space-lg);
     transition: all var(--transition-base);
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.review-card.animate-in {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .review-card:hover {
@@ -1460,11 +1470,20 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .review-header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "title stars"
+        "author stars";
+    align-items: start;
+    column-gap: var(--space-md);
+    row-gap: 2px;
     margin-bottom: var(--space-md);
 }
+
+.review-header .review-title { grid-area: title; }
+.review-header .review-author { grid-area: author; }
+.review-header .review-stars { grid-area: stars; padding-top: 4px; }
 
 .review-stars {
     display: flex;
@@ -1483,7 +1502,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     font-size: 0.9375rem;
     line-height: 1.7;
     font-style: italic;
-    margin-bottom: var(--space-md);
 }
 
 .review-author {
@@ -1494,8 +1512,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 /* Reviews responsive */
 @media (max-width: 768px) {
-    .reviews-grid {
-        grid-template-columns: 1fr;
+    .reviews-grid .review-card {
+        flex-basis: 85%;
     }
 }
 
