@@ -1169,13 +1169,12 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     order: -1;
 }
 
-/* Showcase Images Group */
+/* Showcase Images Group: a static, flat trio. The centre phone is larger and
+   sits in front; the two side phones are a step smaller and tuck behind it. */
 .showcase-images {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-md);
-    perspective: 1000px;
     /* Never let the three phones push past their column: on a narrow
        phone the fixed widths below would otherwise total ~460px and
        give the whole page a horizontal scrollbar. */
@@ -1186,37 +1185,28 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     /* Width is the flex basis and may shrink; aspect-ratio matches the
        bezel art so the frame never stretches. */
     position: relative;
-    width: 160px;
+    width: 200px;
     aspect-ratio: 1350 / 2760;
     flex: 0 1 auto;
     min-width: 0;
-    transition: all var(--transition-slow);
+    z-index: 1;
     /* drop-shadow rather than box-shadow: the phone's real silhouette is
        the PNG's alpha, not the element's rectangle. */
     filter: drop-shadow(var(--shadow-md));
 }
 
 .showcase-phone:first-child {
-    transform: rotateY(12deg) scale(0.9);
-    opacity: 0.85;
+    margin-right: -44px;
 }
 
 .showcase-phone:last-child {
-    transform: rotateY(-12deg) scale(0.9);
-    opacity: 0.85;
+    margin-left: -44px;
 }
 
 .showcase-phone-center {
-    width: 180px;
-    transform: scale(1) rotateY(0deg) !important;
-    opacity: 1 !important;
-    filter: drop-shadow(var(--shadow-lg)) drop-shadow(0 0 12px var(--accent-glow));
+    width: 236px;
+    filter: drop-shadow(var(--shadow-lg));
     z-index: 2;
-}
-
-.showcase-phone:hover {
-    transform: scale(1.02) rotateY(0deg) !important;
-    opacity: 1 !important;
 }
 
 /* Showcase Content */
@@ -1902,11 +1892,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 
     .showcase-phone {
-        width: 140px;
+        width: 170px;
     }
 
     .showcase-phone-center {
-        width: 160px;
+        width: 200px;
     }
 
     .footer-grid {
@@ -2137,11 +2127,19 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 
     .showcase-phone {
-        width: 120px;
+        width: 112px;
     }
 
     .showcase-phone-center {
-        width: 140px;
+        width: 136px;
+    }
+
+    .showcase-phone:first-child {
+        margin-right: -28px;
+    }
+
+    .showcase-phone:last-child {
+        margin-left: -28px;
     }
 
     .showcase-content {
