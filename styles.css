@@ -1484,6 +1484,17 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .review-header .review-author { grid-area: author; }
 .review-header .review-stars { grid-area: stars; padding-top: 4px; }
 
+@media (max-width: 480px) {
+    .review-header {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "stars"
+            "title"
+            "author";
+    }
+    .review-header .review-stars { padding-top: 0; margin-bottom: var(--space-xs); }
+}
+
 .review-stars {
     display: flex;
     gap: 2px;
