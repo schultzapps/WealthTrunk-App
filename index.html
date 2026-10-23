@@ -190,7 +190,6 @@
     <section id="features" class="features-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Features</span>
                 <h2 class="section-title">Know your net worth. <span class="gradient-text">Supercharge your wealth.</span></h2>
                 <p class="section-description">
                     Knowing the number is the start. Everything here is built to help you grow it. Spot the trends and set the targets, synced across iPhone, iPad, and Mac.
@@ -259,7 +258,6 @@
     <section id="screenshots" class="screenshots-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Screenshots</span>
                 <h2 class="section-title"><span class="gradient-text">Your Wealth</span>, in Your Pocket</h2>
             </div>
 
@@ -341,7 +339,6 @@
     <section id="method" class="how-it-works-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">The Method</span>
                 <h2 class="section-title">Why Manual Tracking <span class="gradient-text">Works</span></h2>
                 <p class="section-description">
                     Intentionality is the secret weapon
@@ -377,7 +374,6 @@
     <section id="reviews" class="reviews-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Reviews</span>
                 <h2 class="section-title">Love from <span class="gradient-text">WealthTrunk Users</span></h2>
                 <div class="rating-badge">
                     <div class="stars">
@@ -643,7 +639,7 @@
             if (best !== activeReview) {
                 const first = activeReview === null;
                 activeReview = best;
-                // Any card change (swipe, button, auto) restarts the 6s countdown
+                // Any card change (swipe, button, auto) restarts the 4s countdown
                 if (!first && reviewsTimer) { stopReviewsAuto(); startReviewsAuto(); }
             }
             reviewCards.forEach((c, i) => {
@@ -662,10 +658,13 @@
         function startReviewsAuto() {
             if (reviewsTimer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             reviewsTimer = setInterval(() => {
-                const atEnd = reviewsTrack.scrollLeft + reviewsTrack.clientWidth >= reviewsTrack.scrollWidth - 2;
-                if (atEnd) reviewsTrack.scrollTo({ left: 0 });
+                // Judge "last card" by which card is centred, not by scroll extent:
+                // the last card snaps to centre before the track reaches its
+                // scroll end, so an extent check wasted a tick nudging in place.
+                const onLast = activeReview === reviewCards[reviewCards.length - 1];
+                if (onLast) reviewsTrack.scrollTo({ left: 0, behavior: 'smooth' });
                 else scrollReviews(1);
-            }, 6000);
+            }, 4000);
         }
         function stopReviewsAuto() {
             clearInterval(reviewsTimer);
