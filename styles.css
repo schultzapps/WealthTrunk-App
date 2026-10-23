@@ -1492,7 +1492,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
             "title"
             "author";
     }
-    .review-header .review-stars { padding-top: 0; margin-bottom: var(--space-xs); }
+    .review-header .review-stars { padding-top: 0; margin-bottom: var(--space-md); }
 }
 
 .review-stars {
