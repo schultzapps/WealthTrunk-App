@@ -1851,7 +1851,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     .hero-container {
         /* minmax(0, 1fr) so wide children can't blow the column out past the viewport */
         grid-template-columns: minmax(0, 1fr);
-        gap: var(--space-xl);
+        gap: var(--space-md);
         text-align: center;
     }
 
@@ -1864,10 +1864,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     .hero-mockup {
         order: 1;
         margin-bottom: -70px;
-    }
-
-    .hero-content {
-        margin-bottom: var(--space-md);
     }
 
     .hero-description {
