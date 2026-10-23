@@ -1484,7 +1484,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .review-header .review-author { grid-area: author; }
 .review-header .review-stars { grid-area: stars; padding-top: 4px; }
 
-@media (max-width: 480px) {
+/* Keyed to the carousel's width (a size container) rather than the viewport,
+   so the stars stack whenever the cards themselves are too narrow for the
+   title to share a row with them. */
+@container (max-width: 600px) {
     .review-header {
         grid-template-columns: 1fr;
         grid-template-areas:
