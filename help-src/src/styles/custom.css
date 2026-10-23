@@ -3,7 +3,8 @@
 
 :root,
 :root[data-theme='light'] {
-	--sl-font: 'Outfit';
+	--sl-font: 'Mulish';
+	--wt-font-heading: 'Poppins';
 	color-scheme: light;
 
 	--sl-color-accent-low: #c8eef0;
@@ -366,4 +367,9 @@ footer .meta:empty {
 		border-radius: 0 0 1rem 1rem;
 		border-top: none;
 	}
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--wt-font-heading), sans-serif;
 }

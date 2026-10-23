@@ -6,8 +6,9 @@
    ============================================ */
 :root {
     /* Typography */
-    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Mulish', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Geist Mono', monospace;
 
     /* Spacing Scale */
     --space-xs: 0.25rem;
@@ -122,8 +123,12 @@ html {
     text-size-adjust: 100%;
 }
 
-body {
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+}
+
+body {
+    font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.6;
     color: var(--text-primary);
@@ -1429,6 +1434,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .reviews-carousel {
     position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    container-type: inline-size;
+    --review-w: min(640px, 72cqw);
 }
 
 .reviews-grid {
@@ -1438,7 +1447,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    padding: 4px 2px var(--space-sm);
+    padding: 4px calc(50cqw - var(--review-w) / 2) var(--space-sm);
+    /* Fade the side cards out so nothing is hard-clipped at the edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
 }
 
 .reviews-grid::-webkit-scrollbar {
@@ -1446,9 +1458,21 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .reviews-grid .review-card {
-    flex: 0 0 calc((100% - var(--space-lg)) / 2);
-    scroll-snap-align: start;
+    flex: 0 0 var(--review-w);
+    scroll-snap-align: center;
+    transition: transform var(--transition-slow), filter var(--transition-slow), opacity var(--transition-slow), border-color var(--transition-base), box-shadow var(--transition-base);
 }
+
+/* Neighbouring cards peek in from the sides, blurred and faded */
+.reviews-grid .review-card:not(.is-active) {
+    filter: blur(3px);
+    opacity: 0.45;
+    transform: scale(0.9);
+}
+
+/* Scale toward the active card so the neighbours keep peeking in */
+.reviews-grid .review-card.is-before { transform-origin: right center; }
+.reviews-grid .review-card.is-after { transform-origin: left center; }
 
 .review-card {
     background: var(--bg-card);
@@ -1502,13 +1526,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-muted);
-}
-
-/* Reviews responsive */
-@media (max-width: 768px) {
-    .reviews-grid .review-card {
-        flex-basis: 85%;
-    }
 }
 
 /* ============================================

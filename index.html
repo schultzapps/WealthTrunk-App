@@ -34,7 +34,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Mulish:wght@300..800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
@@ -628,6 +628,33 @@
             const card = reviewsTrack.querySelector('.review-card');
             reviewsTrack.scrollBy({ left: dir * (card.offsetWidth + 24) });
         }
+
+        // Highlight the card nearest the centre; others render blurred
+        const reviewCards = [...reviewsTrack.querySelectorAll('.review-card')];
+        let activeReview = null;
+        function updateActiveReview() {
+            const mid = reviewsTrack.getBoundingClientRect().left + reviewsTrack.clientWidth / 2;
+            let best = null, bestDist = Infinity;
+            reviewCards.forEach(c => {
+                const r = c.getBoundingClientRect();
+                const d = Math.abs(r.left + r.width / 2 - mid);
+                if (d < bestDist) { best = c; bestDist = d; }
+            });
+            if (best !== activeReview) {
+                const first = activeReview === null;
+                activeReview = best;
+                // Any card change (swipe, button, auto) restarts the 6s countdown
+                if (!first && reviewsTimer) { stopReviewsAuto(); startReviewsAuto(); }
+            }
+            reviewCards.forEach((c, i) => {
+                c.classList.toggle('is-active', c === best);
+                c.classList.toggle('is-before', i < reviewCards.indexOf(best));
+                c.classList.toggle('is-after', i > reviewCards.indexOf(best));
+            });
+        }
+        reviewsTrack.addEventListener('scroll', updateActiveReview, { passive: true });
+        window.addEventListener('resize', updateActiveReview);
+        updateActiveReview();
 
         // Auto-advance (pauses on hover/touch/focus, off for reduced motion)
         const reviewsCarousel = reviewsTrack.closest('.reviews-carousel');

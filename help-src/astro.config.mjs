@@ -40,7 +40,7 @@ export default defineConfig({
 					tag: 'link',
 					attrs: {
 						rel: 'stylesheet',
-						href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap',
+						href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Mulish:wght@400..700&display=swap',
 					},
 				},
 				{ tag: 'meta', attrs: { property: 'og:image', content: 'https://wealthtrunk.app/images/social-preview.png' } },
