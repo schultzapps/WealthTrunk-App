@@ -1,10 +1,28 @@
-/* WealthTrunk brand colors for Starlight, matching the main site's light
-   theme (teal #097276). The help center is light-only. */
+/* WealthTrunk brand colors for Starlight, matching the main site's themes
+   (teal #097276, #289FA7 on dark). ThemeProvider sets data-theme from the
+   device's light/dark setting; dark is Starlight's default on :root. */
 
-:root,
-:root[data-theme='light'] {
+:root {
 	--sl-font: 'Mulish';
 	--wt-font-heading: 'Poppins';
+	color-scheme: dark;
+
+	--sl-color-accent-low: #0d2e30;
+	--sl-color-accent: #289fa7;
+	--sl-color-accent-high: #9ee3e6;
+
+	--sl-color-white: #f0f0f8;
+	--sl-color-gray-1: #e2e2ee;
+	--sl-color-gray-2: #c8c8da;
+	--sl-color-gray-3: #a8a8c0;
+	--sl-color-gray-4: #6b6b8c;
+	--sl-color-gray-5: #2a2a3c;
+	--sl-color-gray-6: #1a1a28;
+	--sl-color-gray-7: #12121c;
+	--sl-color-black: #0a0a12;
+}
+
+:root[data-theme='light'] {
 	color-scheme: light;
 
 	--sl-color-accent-low: #c8eef0;
@@ -86,7 +104,7 @@
 .pagination-links svg {
 	width: 1rem;
 	height: 1rem;
-	color: var(--sl-color-accent);
+	color: var(--sl-color-text-accent);
 }
 
 /* Article typography: smaller headings and tighter, even spacing so pages
@@ -138,7 +156,7 @@ h1#_top {
 	text-underline-offset: 0.2em;
 }
 
-/* Tables as a light bordered card. */
+/* Tables as a bordered card. */
 .sl-markdown-content table {
 	width: max-content;
 	max-width: 100%;
@@ -182,14 +200,14 @@ h1#_top {
 	background-color: var(--sl-color-gray-7);
 }
 .sl-link-card:hover svg {
-	color: var(--sl-color-accent);
+	color: var(--sl-color-text-accent);
 }
 
 /* ---------- Site chrome: header, search, sidebar, table of contents ---------- */
 
 :root {
-	--sl-color-bg-nav: #ffffff;
-	--sl-color-bg-sidebar: #ffffff;
+	--sl-color-bg-nav: var(--sl-color-black);
+	--sl-color-bg-sidebar: var(--sl-color-black);
 	--sl-color-hairline-shade: var(--sl-color-gray-5);
 }
 
@@ -256,7 +274,7 @@ dialog[aria-label] {
 .sidebar-content a[aria-current='page'],
 .sidebar-content a[aria-current='page']:hover,
 .sidebar-content a[aria-current='page']:focus {
-	color: var(--sl-color-accent);
+	color: var(--sl-color-text-accent);
 	background-color: var(--sl-color-accent-low);
 	font-weight: 600;
 }
@@ -283,7 +301,7 @@ dialog[aria-label] {
 }
 .right-sidebar-panel nav a[aria-current='true'] {
 	border-inline-start-color: var(--sl-color-accent);
-	color: var(--sl-color-accent);
+	color: var(--sl-color-text-accent);
 	font-weight: 600;
 }
 
@@ -311,7 +329,7 @@ mobile-starlight-toc summary .toggle {
 	color: var(--sl-color-gray-3);
 }
 
-/* Search popup: white panel, pill input, rounded results. */
+/* Search popup: page-colored panel, pill input, rounded results. */
 site-search dialog {
 	border-radius: 1rem;
 	background-color: var(--sl-color-black);
