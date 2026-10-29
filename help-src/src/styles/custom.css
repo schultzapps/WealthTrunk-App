@@ -391,3 +391,11 @@ footer .meta:empty {
 h1, h2, h3, h4, h5, h6 {
 	font-family: var(--wt-font-heading), sans-serif;
 }
+
+/* Phones: nothing should drag the page sideways. iOS Safari lets the page
+   wiggle if anything pokes past the screen edge, so clip both html and body
+   (clip, unlike hidden, doesn't make them scroll boxes). */
+html,
+body {
+	overflow-x: clip;
+}
