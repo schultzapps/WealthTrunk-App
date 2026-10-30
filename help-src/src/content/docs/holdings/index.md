@@ -1,10 +1,10 @@
 ---
 title: Account holdings
-description: Track the stocks, ETFs, funds, and crypto inside your accounts, and see how your portfolio is allocated.
+description: Track the stocks, ETFs, funds, crypto, and precious metals inside your accounts, and see how your portfolio is allocated.
 sidebar:
   order: 1
 ---
-Track the stocks, ETFs, funds, and crypto inside an account with live prices. Optional.
+Track the stocks, ETFs, funds, crypto, and gold and silver inside an account with live prices. Optional.
 
 ## Adding a holding
 
@@ -27,6 +27,7 @@ Prices and search come from Yahoo Finance.
 - **ETFs** and **mutual funds**
 - **Money market funds**
 - **Crypto**, like `BTC-USD` or `ETH-USD`
+- **Gold and silver**, held by the troy ounce and grouped under **Precious Metals**
 
 Bonds, options, futures, and indexes can't be added. For those, track the account's balance instead.
 

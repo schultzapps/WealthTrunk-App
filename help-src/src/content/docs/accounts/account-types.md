@@ -9,7 +9,7 @@ sidebar:
 | Group | Types |
 | --- | --- |
 | **Cash** | Checking, Savings, High Yield Savings, Money Market, Cash |
-| **Investments** | Brokerage, Retirement, HSA, Crypto, Trust Account, ESPP, Private Equity |
+| **Investments** | Brokerage, Retirement, HSA, Crypto, Trust Account, ESPP, Private Equity, Precious Metals |
 | **Education** | 529 Education, Coverdell ESA |
 | **Custodial** | UTMA/UGMA, Custodial Brokerage |
 | **Property** | Real Estate, Vehicle, Collectibles |
