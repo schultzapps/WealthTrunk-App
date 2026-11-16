@@ -8,6 +8,7 @@ sidebar:
 
 - **Unlimited accounts**, with no upgrade banners
 - **[Holdings](/help/holdings/)** with live prices
+- **[Scenarios](/help/scenarios/)** that project your net worth through retirement
 - **Goals**, **Monthly Net Worth**, **Portfolio Allocation**, and **FIRE** Dashboard cards
 - **Restore From Backup**
 - **Custom PDF statements**: choose the content, formatting, and footer text

@@ -18,4 +18,4 @@ Touch and hold the app icon → **Require Face ID**.
 
 ## Delete your data
 
-**Settings → Import/Export Data → Delete Data**. This deletes from your devices and iCloud and can't be undone.
+**Settings → Import/Export Data → Delete Data**. This deletes from your devices and iCloud and can't be undone. You can delete just your scenarios.

@@ -9,11 +9,14 @@ sidebar:
 | **Dashboard** | Net worth, charts, and projections |
 | **Accounts** | Assets and liabilities, and recording balances |
 | **Goals** | Net worth, savings, and debt goals |
+| **Scenarios** | [Retirement and life-event plans](/help/scenarios/) |
 | **Records** | Insurance, contacts, and notes |
+
+On iPhone, **Goals** and **Scenarios** share the **Planner** tab, with a page for each. On iPad and Mac they are separate tabs.
 
 ## Profile selection
 
-With more than one family member, tap the **profile picture** (top right) to choose whose data you see. Pick one person or up to four together. The selection applies across the whole app: Dashboard, Accounts, Goals, and Records.
+With more than one family member, tap the **profile picture** (top right) to choose whose data you see. Pick one person or up to four together. The selection applies across the whole app: Dashboard, Accounts, Goals, Scenarios, and Records.
 
 - **You and your spouse:** your combined household net worth, including joint accounts
 - **Just you:** your own accounts. Joint accounts show only when both owners are selected.

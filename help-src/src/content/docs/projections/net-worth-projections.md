@@ -41,6 +41,8 @@ Don't subtract inflation from **Expected Return**. It would be counted twice.
 
 The projection stops at retirement and doesn't subtract withdrawals. To estimate the income your projected balance could support, use the [Withdrawal stat](/help/projections/projection-stats/#withdrawal) or the FIRE card.
 
+To see whether your money lasts through retirement, build a [scenario](/help/scenarios/). When your [primary scenario](/help/scenarios/#primary-scenario) is for the people selected, the Balance Projection continues through retirement and spending to life expectancy.
+
 ## FIRE
 
 - **FIRE number** = monthly spending × 12 ÷ withdrawal rate
@@ -51,4 +53,4 @@ FIRE is a simplified estimate (one blended return, no taxes), so it won't exactl
 
 ## Already retired?
 
-Projections need a retirement age in the future. Hide the projection cards if they don't apply.
+Set a person's **Retirement Age** to **Retired** and, once everyone is, projections run 40 years with contributions continuing. A [scenario](/help/scenarios/) can also model spending in retirement. Hide the projection cards if they don't apply.

@@ -6,7 +6,7 @@ sidebar:
 ---
 ## Adding a goal
 
-1. **Goals** tab → **+**.
+1. **Goals** tab (on iPhone, **Planner** → **Goals**) → **+**.
 2. Choose **Net Worth**, **Savings**, or **Debt**, or start from an example like Emergency Fund or Car Loan.
 3. Enter a **Goal Name** and **Target Amount**.
 4. Choose **Linked** or **Manual**, and pick accounts for a linked goal.
@@ -30,3 +30,5 @@ With a **Target Date**, the goal shows a **Projected Date** and roughly how much
 - Add the **Goals** Dashboard card or a Goals [widget](/help/dashboard/widgets/).
 - Group by owner or status.
 - **Archive** finished goals.
+
+Looking to plan retirement or a big life change instead? See [Scenarios](/help/scenarios/).

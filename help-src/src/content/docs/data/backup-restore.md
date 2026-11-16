@@ -12,7 +12,7 @@ sidebar:
 | --- | --- |
 | Accounts, balances, holdings | Attachment files (names are kept) |
 | Profiles, photos, logos | App settings |
-| Goals and records | |
+| Goals, scenarios, and records | |
 | Custom types | |
 
 ## Restore a backup

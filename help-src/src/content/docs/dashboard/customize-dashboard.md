@@ -10,7 +10,7 @@ sidebar:
 | --- | --- |
 | **Net Worth Cards** | Net Worth, Assets, Liabilities, and Liquid Assets totals. Tap one to filter the charts below. |
 | **Balance History** | Net worth over time |
-| **Balance Projection** | [Projected net worth](/help/projections/net-worth-projections/) |
+| **Balance Projection** | [Projected net worth](/help/projections/net-worth-projections/), extended through retirement by your [primary scenario](/help/scenarios/#primary-scenario) |
 | **Net Worth Breakdown** | Assets and liabilities by [account group](/help/accounts/account-types/) |
 | **Tax Categories** | Wealth by [tax type](/help/accounts/tax-types/) |
 | **Goals** | [Goal](/help/goals/) progress |
@@ -43,5 +43,6 @@ In **Settings → Charts & Lists**:
 | **Withdrawal Per Year** | Shows that income yearly instead of monthly. |
 | **Months Displayed** | Months on the Monthly Net Worth chart (1–12). Pinch to zoom. |
 | **Estimate Month-End Value** | Each column shows your net worth on the last day of the month, but manual updates rarely land on that day. If you updated on the 20th and again on the 5th of the next month, this estimates the 31st from the trend between the two. Off uses your last update before month-end, so a month can look flat or lumpy depending on when you updated. |
+| **Show Overview** | Shows the group chips and balance history chart above the [Accounts list](/help/accounts/account-list/). Turn off for a plain list. |
 | **Highlight Stale Accounts** | Colors accounts not updated within a set period. See [Keep balances fresh](/help/accounts/recording-balances/#keep-balances-fresh). |
 | **Show One Currency** | Shows foreign accounts in your app currency. |
