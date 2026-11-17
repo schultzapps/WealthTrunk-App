@@ -75,5 +75,5 @@ Edits save as you make them. Scenarios are included in [backups](/help/data/back
 ## Next
 
 - [Linked vs. Manual](/help/scenarios/linked-vs-manual/): choose how a scenario saves
-- [Common plans](/help/scenarios/common-plans/): retirement, sabbatical, inheritance, and more
+- [Example scenarios](/help/scenarios/example-scenarios/): retirement, sabbatical, inheritance, and more
 - [Homes and moves](/help/scenarios/homes-and-moves/): buy, sell, or move

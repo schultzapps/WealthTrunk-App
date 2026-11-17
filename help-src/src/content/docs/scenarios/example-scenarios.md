@@ -1,5 +1,5 @@
 ---
-title: Common plans
+title: Example scenarios
 description: Step-by-step ways to model retirement, a sabbatical, an inheritance, college, and more, and which projection type to use.
 sidebar:
   order: 7
