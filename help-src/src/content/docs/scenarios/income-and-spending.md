@@ -19,13 +19,13 @@ Changes save as you go.
 | Income | Spending |
 | --- | --- |
 | **Salary** (until retirement) | **Living Expenses** (from retirement) |
-| **Government Pension**, like Social Security (from retirement) | **Housing** |
-| **Workplace Pension** (from retirement) | **Health Care** (from retirement) |
-| **Part-Time Work** (from retirement) | **Travel** (from retirement) |
-| **Rental Income** | **Education** |
-| **Inheritance** (once) | **Charity** |
-| **Custom** | **Vehicle Purchase** (once) |
-| | **Large Purchase** (once) |
+| **Bonus** (once) | **Housing** |
+| **Government Pension**, like Social Security (from retirement) | **Health Care** (from retirement) |
+| **Workplace Pension** (from retirement) | **Travel** (from retirement) |
+| **Part-Time Work** (from retirement) | **Education** |
+| **Rental Income** | **Charity** |
+| **Inheritance** (once) | **Vehicle Purchase** (once) |
+| **Custom** | **Large Purchase** (once) |
 | | **Custom** |
 
 A starting point only fills in a name, symbol, and timing. Every value can be changed, and nothing assumes your country's rules.
