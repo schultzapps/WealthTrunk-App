@@ -1818,6 +1818,16 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     border-radius: 50%;
 }
 
+.release-changes li a {
+    color: var(--accent-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.release-changes li a:hover {
+    text-decoration-thickness: 2px;
+}
+
 .release-changes li > ul {
     display: flex;
     flex-direction: column;

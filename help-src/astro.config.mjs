@@ -59,7 +59,7 @@ export default defineConfig({
 				{ label: 'Account Projections', items: [{ autogenerate: { directory: 'projections' } }] },
 				{ label: 'Account Holdings', items: [{ autogenerate: { directory: 'holdings' } }] },
 				{ label: 'Goals', items: [{ autogenerate: { directory: 'goals' } }] },
-				{ label: 'Scenarios (Coming Soon)', items: [{ autogenerate: { directory: 'scenarios' } }] },
+				{ label: 'Scenarios', items: [{ autogenerate: { directory: 'scenarios' } }] },
 				{ label: 'Family & Records', items: [{ autogenerate: { directory: 'family' } }] },
 				{ label: 'Sync, Backup & Export', items: [{ autogenerate: { directory: 'data' } }] },
 				{ label: 'WealthTrunk Pro', items: [{ autogenerate: { directory: 'subscription' } }] },
