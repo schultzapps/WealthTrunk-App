@@ -27,6 +27,8 @@ With more than one family member, tap the **profile picture** (top right) to cho
 - **iPhone:** tap your **profile picture** (top right), then **Settings**.
 - **iPad and Mac:** **Settings** is in the sidebar. On Mac, **⌘ ,** also works.
 
+See [Settings, subscription, and support](/help/getting-started/settings-and-support/) for what each option does, how to manage your subscription, and how to reach the developer.
+
 ## Hide your balances
 
 **•••** menu on Accounts, Goals, or Records → **Hide Amounts**. Tap the **eye** on the Dashboard to show them again.
