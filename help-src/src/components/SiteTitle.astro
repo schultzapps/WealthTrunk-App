@@ -5,7 +5,7 @@ import logo from '../assets/appicon.png';
 ---
 
 <div class="site-title sl-flex">
-	<a class="brand sl-flex" href="https://wealthtrunk.app/">
+	<a class="brand sl-flex" href="https://wealthtrunk.app/" aria-label="WealthTrunk">
 		<img src={logo.src} width={logo.width} height={logo.height} alt="" />
 		<span translate="no">WealthTrunk</span>
 	</a>
@@ -43,6 +43,14 @@ import logo from '../assets/appicon.png';
 		}
 		.help:hover {
 			color: var(--sl-color-white);
+		}
+		/* Very narrow phones: drop the wordmark and divider so "Help" stays
+		   visible instead of being clipped. The logo still links to the site. */
+		@media (max-width: 24rem) {
+			.brand span,
+			.divider {
+				display: none;
+			}
 		}
 	}
 </style>
