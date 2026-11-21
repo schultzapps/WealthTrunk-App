@@ -44,11 +44,10 @@ import logo from '../assets/appicon.png';
 		.help:hover {
 			color: var(--sl-color-white);
 		}
-		/* Very narrow phones: drop the wordmark and divider so "Help" stays
-		   visible instead of being clipped. The logo still links to the site. */
+		/* Very narrow phones: drop the wordmark so "Help" stays visible instead
+		   of being clipped. The logo still links to the site. */
 		@media (max-width: 24rem) {
-			.brand span,
-			.divider {
+			.brand span {
 				display: none;
 			}
 		}
