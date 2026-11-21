@@ -75,6 +75,14 @@
 	display: none;
 }
 
+/* Starlight hides the whole right-hand header group below 50rem. Keep it
+   visible on phones so the Download button shows. */
+@media (max-width: 49.99rem) {
+	.right-group {
+		display: flex;
+	}
+}
+
 /* Compact Previous / Next links at the bottom of each page. */
 .pagination-links {
 	grid-template-columns: 1fr 1fr;
