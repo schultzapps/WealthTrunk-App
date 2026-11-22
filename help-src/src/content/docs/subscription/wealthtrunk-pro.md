@@ -6,10 +6,11 @@ sidebar:
 ---
 ## What Pro adds
 
-- **Unlimited accounts**, with no upgrade banners
+- **Unlimited accounts**
+- **No upgrade banners**
 - **[Holdings](/help/holdings/)** with live prices
 - **[Scenarios](/help/scenarios/)** that project your net worth through retirement
-- **Goals**, **Monthly Net Worth**, **Portfolio Allocation**, and **FIRE** Dashboard cards
+- **Additional Dashboard cards**: add more cards to your [Dashboard](/help/dashboard/customize-dashboard/), including Goals, Monthly Net Worth, Portfolio Allocation, and FIRE
 - **Restore From Backup**
 - **Custom PDF statements**: choose the content, formatting, and footer text
 
